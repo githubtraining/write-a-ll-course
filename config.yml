@@ -128,7 +128,7 @@ steps:
 # 5
 - title: Create an issue using Learning Lab
   description: Create an issue using Learning Lab
-  event: pull_request.sychronize
+  event: pull_request.synchronize
   actions: 
   - type: respond
     with: add-response.md
@@ -197,12 +197,12 @@ steps:
     position: 35
 
 # 8
-- title: Trigger your first step with a GitHub event
-  description: Trigger your first step with a GitHub event
-  event: pull_request.synchronize
-  actions:
-  - type: respond
-    with: respond
+# - title: Trigger your first step with a GitHub event
+#   description: Trigger your first step with a GitHub event
+#   event: pull_request.synchronize
+#   actions:
+#   - type: respond
+#     with: respond
 # 9. Respond to a learner's pull request
 # 10. Validate a learner's pull request
 # 11. Pass contextual information to a response
