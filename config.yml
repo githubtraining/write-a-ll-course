@@ -25,3 +25,6 @@ steps:
     actions:
     - type: respond
       with: title.md
+
+# pull_request.opened - Give the course a title
+# Deploy your course
