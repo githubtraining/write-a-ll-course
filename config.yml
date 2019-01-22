@@ -160,7 +160,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-        - title: Create a new PR
+      - title: Create a new PR
       ```
     position: 33
   - type: octokit
@@ -172,7 +172,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-          description: Add your name to the README.md file in your new PR
+        description: Add your name to the README.md file in your new PR
       ```
     position: 34
 
@@ -192,7 +192,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-          event: pull_request.opened
+        event: pull_request.opened
       ```
     position: 35
 
