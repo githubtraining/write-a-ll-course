@@ -1,0 +1,27 @@
+# Metadata for your course
+
+title: Write a Learning Lab course
+tagline: Write a Learning Lab course
+description: Write a Learning Lab course
+template:
+  name: lab-starter
+  repo: write-a-ll-course-template
+
+# `before` block
+# Actions to take place after the learner registers, but before they start interacting with their repo
+
+before:
+  - type: createIssue
+    title: Welcome
+    body: welcome.md
+
+# Steps for the course
+# A list of steps that take the learner through the course
+
+steps:
+  - title: Give your course a title
+    description: Give your course a title
+    event: pull_request.opened
+    actions:
+    - type: respond
+      with: title.md
