@@ -39,7 +39,7 @@ steps:
       ```suggestion
       title: An amazing course by %payload.sender.login%.
       ```
-    position: 4
+    position: 6
 
 # 2
 - title: Give your course a title
@@ -59,7 +59,7 @@ steps:
       ```suggestion
         repo: lab-starter-template
       ```
-    position: 8
+    position: 13
 
 # 3. Point to the template repo
 # 4. Give the learner's repo a name
