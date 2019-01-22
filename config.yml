@@ -61,8 +61,70 @@ steps:
       ```
     position: 13
 
-# 3. Point to the template repo
-# 4. Give the learner's repo a name
+# 3
+- title: Point to the template repo
+  description: Point to the template repo
+  event: pull_request.synchronize
+  actions:
+  - type: respond
+    with: add-repo-name.md
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        name: my-sparkles-repo
+      ```
+    position: 12
+
+# 4
+- title: Give the learner's repo a name
+  description: Give the learner's repo a name
+  event: pull_request.synchronize
+  actions:
+  - type: respond
+    with: create-issue.md
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+      - type: createIssue
+      ```
+    position: 22
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        title: Welcome
+      ```
+    position: 23
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        body: welcome-text.md
+      ```
+    position: 24
+
 # 5. Create an issue using Learning Lab
 # 6. Create your first response
 # 7. Name your first step and give it a description
