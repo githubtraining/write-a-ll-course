@@ -26,6 +26,8 @@ steps:
   description: Open a PR to begin crafting your course
   event: pull_request.opened
   actions:
+  - type: respond
+    with: add-title.md
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -40,10 +42,25 @@ steps:
     position: 4
 
 # 2
-# - title: Give your course a title
-#   description: Give your course a title
-#   event: pull_request.synchronize
-#   actions: 
+- title: Give your course a title
+  description: Give your course a title
+  event: pull_request.synchronize
+  actions: 
+  - type: respond
+    with: add-template.md
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        repo: lab-starter-template
+      ```
+    position: 8
+
 # 3. Point to the template repo
 # 4. Give the learner's repo a name
 # 5. Create an issue using Learning Lab
