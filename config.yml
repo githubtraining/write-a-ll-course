@@ -125,10 +125,84 @@ steps:
       ```
     position: 24
 
-# 5. Create an issue using Learning Lab
-# 6. Create your first response
-# 7. Name your first step and give it a description
-# 8. Trigger your first step with a GitHub event
+# 5
+- title: Create an issue using Learning Lab
+  description: Create an issue using Learning Lab
+  event: pull_request.sychronize
+  actions: 
+  - type: respond
+    with: add-response.md
+
+# 6
+- title: Create your first response
+  description: Create your first response
+  event: pull_request.synchronize
+  actions:
+  - type: getTree
+    action_id: tree
+    recursive: true
+    sha: '%payload.pull_request.head.sha%'
+  - type: gate
+    left: '%actions.tree.data.tree%'
+    operator: includes
+    right: path:responses/welcome-text.md
+    else:
+      type: respond
+      with: e-no-response.md
+  - type: respond
+    with: add-first-step.md
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        - title: Create a new PR
+      ```
+    position: 33
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+          description: Add your name to the README.md file in your new PR
+      ```
+    position: 34
+
+# 7
+- title: Name your first step and give it a description
+  description: Name your first step and give it a description
+  event: pull_request.synchronize
+  actions:
+  - type: respond
+    with: add-trigger.md
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+          event: pull_request.opened
+      ```
+    position: 35
+
+# 8
+- title: Trigger your first step with a GitHub event
+  description: Trigger your first step with a GitHub event
+  event: pull_request.synchronize
+  actions:
+  - type: respond
+    with: respond
 # 9. Respond to a learner's pull request
 # 10. Validate a learner's pull request
 # 11. Pass contextual information to a response
