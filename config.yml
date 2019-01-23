@@ -44,6 +44,16 @@ steps:
   description: Give your course a title
   event: pull_request.synchronize
   actions: 
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^title:([^#]\w)+.*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-title.md
   - type: respond
     with: add-template.md
   - type: octokit
