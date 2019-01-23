@@ -214,7 +214,7 @@ steps:
       ```suggestion
         - type: gate
       ```
-    position: 35
+    position: 40
 
 # 9
 - title: Validate a learner's PR
@@ -261,12 +261,12 @@ steps:
     position: 43
 
 # 10
-- title: Pass contextual information to a response
-  description: Pass contextual information to a response
+- title: Use contextual information to validate
+  description: Use contextual information to validate
   event: pull_request.synchronize
   actions:
   - type: respond
-    with: respond-to-pr.md
+    with: respond-success.md
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -292,13 +292,59 @@ steps:
       ```
     position: 46
 
-# 10
-# - title: Respond to a learner's PR
-#   description: Respond to a learner's PR
-#   event: pull_request.synchronize
-#   actions:
+# 11
+- title: Respond to a learner's successful PR
+  description: Respond to a learner's successful PR
+  event: pull_request.synchronize
+  actions:
+  - type: respond
+    with: add-descriptions.md
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+      - tagline: Learn how to open a PR
+      ```
+    position: 7
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+      - description: Go from 0 to PR 1 in less than 10 minutes with this course. 
+      ```
+    position: 8
 
+# 12
+- title: Add some descriptions to your course
+  description: Add some descriptions to your course
+  event: pull_request.synchronize
+  actions:
+  - type: respond
+    with: add-readme.md
 
-# 12. Add some descriptions to your course
-# 13. Add a README to your course
-# 14. Deploy your course to the sandbox
+# 13
+- title: Add a README to your course
+  description: Add a README to your course
+  event: pull_request.synchronize
+  actions:
+  - type: respond
+    with: publish.md
+
+# 14
+- title: Publish your course to the sandbox environment
+  description: Publish your course to the sandbox environment
+  event: pull_request.closed
+  actions: 
+  - type: respond
+    with: congratulations.md
+  
