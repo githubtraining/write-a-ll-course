@@ -17,6 +17,13 @@ steps:
   description: Open a PR to begin crafting your course
   event: pull_request.opened
   actions:
+  - type: gate
+    left: '%payload.pull_request.head.ref%'
+    operator: ===
+    right: add-metadata
+    else:
+    - type: respond
+      with: e-branch.md
   - type: respond
     with: add-title.md
   - type: octokit
