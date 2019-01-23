@@ -308,7 +308,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-      - tagline: Learn how to open a PR
+      tagline: Learn how to open a PR
       ```
     position: 7
   - type: octokit
@@ -320,7 +320,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-      - description: Go from 0 to PR 1 in less than 10 minutes with this course. 
+      description: Go from 0 to PR 1 in less than 10 minutes with this course. 
       ```
     position: 8
 
