@@ -74,6 +74,16 @@ steps:
   description: Point to the template repo
   event: pull_request.synchronize
   actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^\s{2}repo:([^#]\w)+.*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-repo.md
   - type: respond
     with: add-repo-name.md
   - type: octokit
