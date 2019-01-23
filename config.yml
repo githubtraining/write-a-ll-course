@@ -202,26 +202,6 @@ steps:
   event: pull_request.synchronize
   actions:
   - type: respond
-    with: respond-to-pr.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        event: pull_request.opened
-      ```
-    position: 35
-
-# 9
-- title: Respond to a learner's pull request
-  description: Respond to a learner's pull request
-  event: pull_request.synchronize
-  actions:
-  - type: respond
     with: validate.md
   - type: octokit
     method: pullRequests.createComment
@@ -234,11 +214,11 @@ steps:
       ```suggestion
         - type: gate
       ```
-    position: 40
+    position: 35
 
-# 10
-- title: Validate a learner's pull request
-  description: Validate a learner's pull request
+# 9
+- title: Validate a learner's PR
+  description: Validate a learner's PR
   event: pull_request.synchronize
   actions:
   - type: respond
@@ -280,7 +260,45 @@ steps:
       ```
     position: 43
 
-# 11. Pass contextual information to a response
+# 10
+- title: Pass contextual information to a response
+  description: Pass contextual information to a response
+  event: pull_request.synchronize
+  actions:
+  - type: respond
+    with: respond-to-pr.md
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        - type: respond
+      ```
+    position: 45
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+          with: pr-opened.md
+      ```
+    position: 46
+
+# 10
+# - title: Respond to a learner's PR
+#   description: Respond to a learner's PR
+#   event: pull_request.synchronize
+#   actions:
+
+
 # 12. Add some descriptions to your course
 # 13. Add a README to your course
 # 14. Deploy your course to the sandbox
