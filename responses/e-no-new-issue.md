@@ -1,0 +1,1 @@
+I didn't detect the proper new issue syntax.

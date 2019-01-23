@@ -158,6 +158,16 @@ steps:
   description: Create an issue using Learning Lab
   event: pull_request.synchronize
   actions: 
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^- type:\s*createIssue.*\n  title:\s*\w.+\n  body:\s*welcome-text\.md$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-new-issue.md
   - type: respond
     with: add-response.md
 
