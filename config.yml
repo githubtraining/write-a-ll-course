@@ -48,7 +48,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^title:([^#]\w)+.*$/gm'
+    left: '/^title: *\w(?![ \t]*#).*$/gm'
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -78,7 +78,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^\s{2}repo:([^#]\w)+.*$/gm'
+    left: '/^  repo: *lab-starter-template(?!#).*$/gm'
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -108,7 +108,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^\s{2}name:([^#]\w)+.*$/gm'
+    left: '/^  name: *\w(?![ \t]*#).*$/gm'
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -162,7 +162,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^- type:\s*createIssue.*\n  title:\s*\w.+\n  body:\s*welcome-text\.md$/gm'
+    left: '/^- type: *createIssue(?!#).*$\n  title: *(?![ \t]*#).*$\n. body: *welcome-text.md(?!#).*$/gm'
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -253,7 +253,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  event: pull_request.opened(?!#).*$/gm'
+    left: '/^  event: *pull_request.opened(?!#).*$/gm'
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -283,7 +283,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  - type: gate(?!#).*$/gm'
+    left: '/^  - type: *gate(?!#).*$/gm'
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -337,7 +337,7 @@ steps:
   #   action_id: fileContents
   #   filename: 'config.yml'
   # - type: gate
-  #   left: '/^    left: '%payload.pull_request.title%'(?!#).*$\n    operator: ===(?!#).*$\n.   right: Add name to README(?!#).*$/gm'
+  #   left: '/^    left: *'%payload.pull_request.title%'(?!#).*$\n    operator: *===(?!#).*$\n.   right: *Add name to README(?!#).*$/gm'
   #   operator: test
   #   right: '%actions.fileContents%'
   #   else:
@@ -379,7 +379,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  - type: respond(?!#).*$\n    with: pr-opened.md(?!#).*$/gm'
+    left: '/^  - type: *respond(?!#).*$\n    with: *pr-opened.md(?!#).*$/gm'
     operator: test
     right: '%actions.fileContents%'
     else:
