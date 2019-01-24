@@ -310,7 +310,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-          left: '%payload.pull_request.title%'
+          left: # replace me without spaces: ' % payload.pull_request.title % '
       ```
     position: 41
   - type: octokit
