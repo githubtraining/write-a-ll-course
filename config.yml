@@ -223,7 +223,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^\s{2}description:([^#]\w)+.*$/gm'
+    left: '/^  description:(?![ \t]*#).*$/gm'
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -253,7 +253,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^\s{2}event: pull_request.opened([^#])+.*$/gm'
+    left: '/^  event: pull_request.opened(?!#).*$/gm'
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -279,6 +279,16 @@ steps:
   description: Validate a learner's PR
   event: pull_request.synchronize
   actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^  - type: gate(?!#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-gate.md
   - type: respond
     with: add-context.md
   - type: octokit
