@@ -333,6 +333,16 @@ steps:
   description: Use contextual information to validate
   event: pull_request.synchronize
   actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^    left: '%payload.pull_request.title%'(?!#).*$\n    operator: ===(?!#).*$\n.   right: Add name to README(?!#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-gate-options.md  
   - type: respond
     with: respond-success.md
   - type: octokit
