@@ -1,5 +1,5 @@
 Your course is now complete! Let's publish it. 
 
-Merge this PR. Then go to sandbox/org/new and type in this repo's name. I'll respond when the course publishes. 
+Merge this PR.
 
-(Not really - we can't yet listen for a course published event)
+Then go to https://lab-sandbox.github.com/{{ owner }}/new and type in this repo's name. 
