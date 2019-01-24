@@ -219,6 +219,16 @@ steps:
   description: Name your first step and give it a description
   event: pull_request.synchronize
   actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^\s{2}description:([^#]\w)+.*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-step-title.md
   - type: respond
     with: add-trigger.md
   - type: octokit
