@@ -435,6 +435,17 @@ steps:
   description: Add a README to your course
   event: pull_request.synchronize
   actions:
+  - type: getTree
+    action_id: tree
+    recursive: true
+    sha: '%payload.pull_request.head.sha%'
+  - type: gate
+    left: '%actions.tree.data.tree%'
+    operator: includes
+    right: path:README.md
+    else:
+      type: respond
+      with: e-no-readme.md
   - type: respond
     with: publish.md
 
