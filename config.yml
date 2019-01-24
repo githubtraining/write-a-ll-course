@@ -375,6 +375,16 @@ steps:
   description: Respond to a learner's successful PR
   event: pull_request.synchronize
   actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^  - type: respond(?!#).*$\n    with: pr-opened.md(?!#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-respond-action.md  
   - type: respond
     with: add-descriptions.md
   - type: octokit
