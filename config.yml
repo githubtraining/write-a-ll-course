@@ -249,6 +249,16 @@ steps:
   description: Trigger your first step with a GitHub event
   event: pull_request.synchronize
   actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^\s{2}event: pull_request.opened([^#])+.*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-event.md
   - type: respond
     with: validate.md
   - type: octokit
