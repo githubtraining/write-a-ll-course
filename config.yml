@@ -187,6 +187,16 @@ steps:
     else:
       type: respond
       with: e-no-response.md
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'responses/welcome-text.md'
+  - type: gate
+    left: '/\w+/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-response.md
   - type: respond
     with: add-first-step.md
   - type: octokit
