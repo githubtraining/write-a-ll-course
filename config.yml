@@ -174,7 +174,7 @@ steps:
   - type: respond
     with: 05.0_add-response.md
     data:
-      fileUrl: '%payload.repository.html_url%/new/add-metadata/responses?filename=responses%2Fwelcome-text.md&value=Open%20a%20new%20pull%20request%20titled%20%22Add%20name%20to%20README%22%20please'
+      fileUrl: '%payload.repository.html_url%/new/add-metadata/responses?filename=responses/welcome-text.md'
 
 # 6
 - title: Create your first response
