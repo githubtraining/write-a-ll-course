@@ -1,24 +1,15 @@
-# Metadata for your course
-
 title: Write a Learning Lab course
 tagline: Write a Learning Lab course
 description: Write a Learning Lab course
 template:
   name: lab-starter
   repo: write-a-ll-course-template
-
-# `before` block
-# Actions to take place after the learner registers, but before they start interacting with their repo
-
 before:
   - type: createIssue
     title: Welcome
     body: welcome.md
     data:
       prUrl: '%payload.repository.html_url%/compare/master...add-metadata?expand=1'
-# Steps for the course
-# A list of steps that take the learner through the course
-
 steps:
 
 # 1
@@ -26,6 +17,13 @@ steps:
   description: Open a PR to begin crafting your course
   event: pull_request.opened
   actions:
+  - type: gate
+    left: '%payload.pull_request.head.ref%'
+    operator: ===
+    right: add-metadata
+    else:
+    - type: respond
+      with: e-branch.md
   - type: respond
     with: add-title.md
   - type: octokit
@@ -46,6 +44,16 @@ steps:
   description: Give your course a title
   event: pull_request.synchronize
   actions: 
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^title: *\w(?![ \t]*#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-title.md
   - type: respond
     with: add-template.md
   - type: octokit
@@ -66,6 +74,16 @@ steps:
   description: Point to the template repo
   event: pull_request.synchronize
   actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^  repo: *lab-starter-template(?!#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-repo.md
   - type: respond
     with: add-repo-name.md
   - type: octokit
@@ -86,6 +104,16 @@ steps:
   description: Give the learner's repo a name
   event: pull_request.synchronize
   actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^  name: *\w(?![ \t]*#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-name.md
   - type: respond
     with: create-issue.md
   - type: octokit
@@ -130,6 +158,16 @@ steps:
   description: Create an issue using Learning Lab
   event: pull_request.synchronize
   actions: 
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^- type: *createIssue(?!#).*$\n  title: *(?![ \t]*#).*$\n. body: *welcome-text.md(?!#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-new-issue.md
   - type: respond
     with: add-response.md
 
@@ -148,6 +186,16 @@ steps:
     right: path:responses/welcome-text.md
     else:
       type: respond
+      with: e-no-response.md
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'responses/welcome-text.md'
+  - type: gate
+    left: '/\w+/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
       with: e-no-response.md
   - type: respond
     with: add-first-step.md
@@ -181,6 +229,16 @@ steps:
   description: Name your first step and give it a description
   event: pull_request.synchronize
   actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^  description:(?![ \t]*#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-step-title.md
   - type: respond
     with: add-trigger.md
   - type: octokit
@@ -201,6 +259,16 @@ steps:
   description: Trigger your first step with a GitHub event
   event: pull_request.synchronize
   actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^  event: *pull_request.opened(?!#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-event.md
   - type: respond
     with: validate.md
   - type: octokit
@@ -221,6 +289,16 @@ steps:
   description: Validate a learner's PR
   event: pull_request.synchronize
   actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^  - type: *gate(?!#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-gate.md
   - type: respond
     with: add-context.md
   - type: octokit
@@ -232,7 +310,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-          left: '%payload.pull_request.title%'
+          left: # replace me without spaces: ' % payload.pull_request.title % '
       ```
     position: 41
   - type: octokit
@@ -265,6 +343,16 @@ steps:
   description: Use contextual information to validate
   event: pull_request.synchronize
   actions:
+  # - type: getFileContents
+  #   action_id: fileContents
+  #   filename: 'config.yml'
+  # - type: gate
+  #   left: '/^    left: *'%payload.pull_request.title%'(?!#).*$\n    operator: *===(?!#).*$\n.   right: *Add name to README(?!#).*$/gm'
+  #   operator: test
+  #   right: '%actions.fileContents%'
+  #   else:
+  #   - type: respond
+  #     with: e-no-gate-options.md  
   - type: respond
     with: respond-success.md
   - type: octokit
@@ -297,6 +385,16 @@ steps:
   description: Respond to a learner's successful PR
   event: pull_request.synchronize
   actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^  - type: *respond(?!#).*$\n    with: *pr-opened.md(?!#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-respond-action.md  
   - type: respond
     with: add-descriptions.md
   - type: octokit
@@ -329,6 +427,16 @@ steps:
   description: Add some descriptions to your course
   event: pull_request.synchronize
   actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^tagline:(?![ \t]*#).*$\ndescription:(?![ \t]*#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: e-no-meta.md  
   - type: respond
     with: add-readme.md
 
@@ -337,6 +445,17 @@ steps:
   description: Add a README to your course
   event: pull_request.synchronize
   actions:
+  - type: getTree
+    action_id: tree
+    recursive: true
+    sha: '%payload.pull_request.head.sha%'
+  - type: gate
+    left: '%actions.tree.data.tree%'
+    operator: includes
+    right: path:README.md
+    else:
+      type: respond
+      with: e-no-readme.md
   - type: respond
     with: publish.md
 
