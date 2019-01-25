@@ -7,15 +7,18 @@ template:
 before:
   - type: createIssue
     title: Welcome
-    body: welcome.md
+    body: 00.0_welcome.md
     data:
       prUrl: '%payload.repository.html_url%/compare/master...add-metadata?expand=1'
+  - type: updateBranchProtection
+
 steps:
 
 # 1
 - title: Open a PR to begin crafting your course
   description: Open a PR to begin crafting your course
   event: pull_request.opened
+  link: '{{ repoUrl }}/issues/1'
   actions:
   - type: gate
     left: '%payload.pull_request.head.ref%'
@@ -23,9 +26,9 @@ steps:
     right: add-metadata
     else:
     - type: respond
-      with: e-branch.md
+      with: 01.1_e-branch.md
   - type: respond
-    with: add-title.md
+    with: 01.0_add-title.md
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -43,7 +46,7 @@ steps:
 - title: Give your course a title
   description: Give your course a title
   event: pull_request.synchronize
-  actions: 
+  actions:
   - type: getFileContents
     action_id: fileContents
     filename: 'config.yml'
@@ -53,9 +56,9 @@ steps:
     right: '%actions.fileContents%'
     else:
     - type: respond
-      with: e-no-title.md
+      with: 02.1_e-no-title.md
   - type: respond
-    with: add-template.md
+    with: 02.0_add-template.md
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -83,9 +86,9 @@ steps:
     right: '%actions.fileContents%'
     else:
     - type: respond
-      with: e-no-repo.md
+      with: 03.1_e-no-repo.md
   - type: respond
-    with: add-repo-name.md
+    with: 03.0_add-repo-name.md
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -113,9 +116,9 @@ steps:
     right: '%actions.fileContents%'
     else:
     - type: respond
-      with: e-no-name.md
+      with: 04.1_e-no-name.md
   - type: respond
-    with: create-issue.md
+    with: 04.0_create-issue.md
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -157,7 +160,7 @@ steps:
 - title: Create an issue using Learning Lab
   description: Create an issue using Learning Lab
   event: pull_request.synchronize
-  actions: 
+  actions:
   - type: getFileContents
     action_id: fileContents
     filename: 'config.yml'
@@ -167,9 +170,11 @@ steps:
     right: '%actions.fileContents%'
     else:
     - type: respond
-      with: e-no-new-issue.md
+      with: 05.1_e-no-new-issue.md
   - type: respond
-    with: add-response.md
+    with: 05.0_add-response.md
+    data:
+      fileUrl: '%payload.repository.html_url%/new/add-metadata/responses?filename=responses/welcome-text.md'
 
 # 6
 - title: Create your first response
@@ -186,7 +191,7 @@ steps:
     right: path:responses/welcome-text.md
     else:
       type: respond
-      with: e-no-response.md
+      with: 06.1_e-no-response.md
   - type: getFileContents
     action_id: fileContents
     filename: 'responses/welcome-text.md'
@@ -196,9 +201,9 @@ steps:
     right: '%actions.fileContents%'
     else:
     - type: respond
-      with: e-no-response.md
+      with: 06.1_e-no-response.md
   - type: respond
-    with: add-first-step.md
+    with: 06.0_add-first-step.md
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -238,9 +243,9 @@ steps:
     right: '%actions.fileContents%'
     else:
     - type: respond
-      with: e-no-step-title.md
+      with: 07.1_e-no-step-title.md
   - type: respond
-    with: add-trigger.md
+    with: 07.0_add-trigger.md
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -268,9 +273,9 @@ steps:
     right: '%actions.fileContents%'
     else:
     - type: respond
-      with: e-no-event.md
+      with: 08.1_e-no-event.md
   - type: respond
-    with: validate.md
+    with: 08.0_validate.md
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -298,9 +303,9 @@ steps:
     right: '%actions.fileContents%'
     else:
     - type: respond
-      with: e-no-gate.md
+      with: 09.1_e-no-gate.md
   - type: respond
-    with: add-context.md
+    with: 09.0_add-context.md
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -352,9 +357,11 @@ steps:
   #   right: '%actions.fileContents%'
   #   else:
   #   - type: respond
-  #     with: e-no-gate-options.md  
+  #     with: 10.1_e-no-gate-options.md
   - type: respond
-    with: respond-success.md
+    with: 10.0_respond-success.md
+    data:
+      fileUrl: '%payload.repository.html_url%/blob/add-metadata/responses/pr-opened.md'
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -394,9 +401,9 @@ steps:
     right: '%actions.fileContents%'
     else:
     - type: respond
-      with: e-no-respond-action.md  
+      with: 11.1_e-no-respond-action.md
   - type: respond
-    with: add-descriptions.md
+    with: 11.0_add-descriptions.md
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -418,7 +425,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-      description: Go from 0 to PR 1 in less than 10 minutes with this course. 
+      description: Go from 0 to PR 1 in less than 10 minutes with this course.
       ```
     position: 8
 
@@ -436,9 +443,11 @@ steps:
     right: '%actions.fileContents%'
     else:
     - type: respond
-      with: e-no-meta.md  
+      with: 12.1_e-no-meta.md
   - type: respond
-    with: add-readme.md
+    with: 12.0_add-readme.md
+    data:
+      fileUrl: '%payload.repository.html_url%/edit/add-metadata/README.md'
 
 # 13
 - title: Add a README to your course
@@ -455,15 +464,15 @@ steps:
     right: path:README.md
     else:
       type: respond
-      with: e-no-readme.md
-  - type: respond
-    with: publish.md
+      with: 13.1_e-no-readme.md
+  - type: createReview
+    body: 13.0_publish.md
+    event: APPROVE
 
 # 14
 - title: Publish your course to the sandbox environment
   description: Publish your course to the sandbox environment
   event: pull_request.closed
-  actions: 
+  actions:
   - type: respond
-    with: congratulations.md
-  
+    with: 14.0_congratulations.md
