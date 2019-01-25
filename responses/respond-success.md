@@ -10,3 +10,6 @@ Let's respond to the learner letting them know they've completed our course upon
 We created the response file for you but feel free to change it.
 
 You can also accept the suggested changes below.
+
+<hr>
+<h3 align="center">I'll respond below with your next step.</h3>

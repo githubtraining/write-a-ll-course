@@ -5,3 +5,6 @@ The action that will help us validate the learner's PR is a `gate`. Gates are co
 ### :keyboard: Activity: Adding a gate
 
 1. Add a gate or accept the suggested change below.
+
+<hr>
+<h3 align="center">I'll respond below with your next step.</h3>

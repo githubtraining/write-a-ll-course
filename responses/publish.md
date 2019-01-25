@@ -7,3 +7,6 @@ Your course is now complete! Let's publish it.
 1. Navigate to https://lab-sandbox.github.com/{{ owner }}/new.
 1. In the Repository name field, type in **{{ repo }}**
 1. We recommend selecting **Private** so you can test the course with other members of the organization before making it public.
+
+<hr>
+<h3 align="center">I'll respond below with your next step.</h3>

@@ -3,3 +3,6 @@ Awesome! The learner's repository will now be cloned from `lab-starter-template`
 ### :keyboard: Activity: Update the repository name
 
 Change the field `name:` as part of the `template:` section to anything you like. You can also accept the suggestion below.
+
+<hr>
+<h3 align="center">I'll respond below with your next step.</h3>

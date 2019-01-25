@@ -5,3 +5,6 @@ However, we need to fill in some of the fields. I've started a branch with the f
 ### :keyboard: Activity: Open a PR
 
 1. [Open a pull request]({{ prUrl }}) against `add-metadata`.
+
+<hr>
+<h3 align="center">I'll respond in your new pull request with your next step.</h3>

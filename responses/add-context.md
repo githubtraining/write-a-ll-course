@@ -10,3 +10,6 @@ We'll add the `left:` option to the gate, and set it to the pull request's title
 1. Set the gate's `right:` to the title we expect which is `Add name to README`
 
 You can also accept the suggested changes below. They're in batch, so you'll have to go to Files Changed.
+
+<hr>
+<h3 align="center">I'll respond below with your next step.</h3>

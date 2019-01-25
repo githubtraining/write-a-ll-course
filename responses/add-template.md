@@ -7,3 +7,7 @@ Let's add our own template repo. To speed things up, we've created a template re
 You can edit the file directly or accept the suggested change below.
 
 ### :keyboard: Activity: Add a template repo
+
+
+<hr>
+<h3 align="center">I'll respond below with your next step.</h3>
