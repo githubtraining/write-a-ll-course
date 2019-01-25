@@ -48,7 +48,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^title: *\w(?![ \t]*#).*$/gm'
+    left: '/^title: *\w(?![ \t]*#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -78,7 +78,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  repo: *lab-starter-template(?!#).*$/gm'
+    left: '/^  repo: *lab-starter-template(?!#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -108,7 +108,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  name: *\w(?![ \t]*#).*$/gm'
+    left: '/^  name: *\w(?![ \t]*#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -162,7 +162,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^- type: *createIssue(?!#).*$\n  title: *(?![ \t]*#).*$\n. body: *welcome-text.md(?!#).*$/gm'
+    left: '/^- type: *createIssue(?!#).*$\n  title: *(?![ \t]*#).*$\n. body: *welcome-text.md(?!#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -191,7 +191,7 @@ steps:
     action_id: fileContents
     filename: 'responses/welcome-text.md'
   - type: gate
-    left: '/\w+/gm'
+    left: '/\w+/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -233,7 +233,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  description:(?![ \t]*#).*$/gm'
+    left: '/^  description:(?![ \t]*#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -263,7 +263,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  event: *pull_request.opened(?!#).*$/gm'
+    left: '/^  event: *pull_request.opened(?!#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -293,7 +293,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  - type: *gate(?!#).*$/gm'
+    left: '/^  - type: *gate(?!#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -347,7 +347,7 @@ steps:
   #   action_id: fileContents
   #   filename: 'config.yml'
   # - type: gate
-  #   left: '/^    left: *'%payload.pull_request.title%'(?!#).*$\n    operator: *===(?!#).*$\n.   right: *Add name to README(?!#).*$/gm'
+  #   left: '/^    left: *'%payload.pull_request.title%'(?!#).*$\n    operator: *===(?!#).*$\n.   right: *Add name to README(?!#).*$/gm' 
   #   operator: test
   #   right: '%actions.fileContents%'
   #   else:
@@ -389,7 +389,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  - type: *respond(?!#).*$\n    with: *pr-opened.md(?!#).*$/gm'
+    left: '/^  - type: *respond(?!#).*$\n    with: *pr-opened.md(?!#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -431,7 +431,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^tagline:(?![ \t]*#).*$\ndescription:(?![ \t]*#).*$/gm'
+    left: '/^tagline:(?![ \t]*#).*$\ndescription:(?![ \t]*#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -466,3 +466,4 @@ steps:
   actions: 
   - type: respond
     with: congratulations.md
+    
