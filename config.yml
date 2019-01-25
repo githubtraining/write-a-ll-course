@@ -78,7 +78,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  repo: *lab-starter-template(?!#).*$/gm' 
+    left: '/^\s{2}repo: *lab-starter-template(?!#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -108,7 +108,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  name: *\w(?![ \t]*#).*$/gm' 
+    left: '/^\s{2}name: *\w(?![ \t]*#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -233,7 +233,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  description:(?![ \t]*#).*$/gm' 
+    left: '/^\s{2}description:(?![ \t]*#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -263,7 +263,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  event: *pull_request.opened(?!#).*$/gm' 
+    left: '/^\s{2}event: *pull_request.opened(?!#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -293,7 +293,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  - type: *gate(?!#).*$/gm' 
+    left: '/^\s{2}- type: *gate(?!#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
@@ -347,7 +347,7 @@ steps:
   #   action_id: fileContents
   #   filename: 'config.yml'
   # - type: gate
-  #   left: '/^    left: *'%payload.pull_request.title%'(?!#).*$\n    operator: *===(?!#).*$\n.   right: *Add name to README(?!#).*$/gm' 
+  #   left: '/^\s{2}  left: *'%payload.pull_request.title%'(?!#).*$\n    operator: *===(?!#).*$\n.   right: *Add name to README(?!#).*$/gm' 
   #   operator: test
   #   right: '%actions.fileContents%'
   #   else:
@@ -389,7 +389,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^  - type: *respond(?!#).*$\n    with: *pr-opened.md(?!#).*$/gm' 
+    left: '/^\s{2}- type: *respond(?!#).*$\n    with: *pr-opened.md(?!#).*$/gm' 
     operator: test
     right: '%actions.fileContents%'
     else:
