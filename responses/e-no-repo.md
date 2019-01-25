@@ -1,1 +1,4 @@
-I didn't detect a repo name. 
+I didn't detect a repo name.
+
+<hr>
+<h3 align="center">When I detect your new commit, I'll respond in this pull request.</h3>
