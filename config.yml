@@ -360,6 +360,8 @@ steps:
   #     with: 10.1_e-no-gate-options.md
   - type: respond
     with: 10.0_respond-success.md
+    data:
+      fileUrl: '%payload.repository.html_url%/blob/add-metadata/responses/pr-opened.md'
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
