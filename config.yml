@@ -10,6 +10,8 @@ before:
     body: 00.0_welcome.md
     data:
       prUrl: '%payload.repository.html_url%/compare/master...add-metadata?expand=1'
+  - type: updateBranchProtection
+
 steps:
 
 # 1
@@ -457,8 +459,9 @@ steps:
     else:
       type: respond
       with: 13.1_e-no-readme.md
-  - type: respond
-    with: 13.0_publish.md
+  - type: createReview
+    body: 13.0_publish.md
+    event: APPROVE
 
 # 14
 - title: Publish your course to the sandbox environment
