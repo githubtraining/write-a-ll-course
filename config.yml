@@ -310,7 +310,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-          left: # replace me without spaces: ' % payload.pull_request.title % '
+          left: # replace me actual symbols and no spaces: 'percent payload.pull_request.title percent'
       ```
     position: 41
   - type: octokit
@@ -347,7 +347,7 @@ steps:
   #   action_id: fileContents
   #   filename: 'config.yml'
   # - type: gate
-  #   left: '/^\s{2}  left: *'%payload.pull_request.title%'(?!#).*$\n    operator: *===(?!#).*$\n.   right: *Add name to README(?!#).*$/gm' 
+  #   left: '/^\s{4}left: *'%payload.pull_request.title%'(?!#).*$\n    operator: *===(?!#).*$\n.   right: *Add name to README(?!#).*$/gm' 
   #   operator: test
   #   right: '%actions.fileContents%'
   #   else:
