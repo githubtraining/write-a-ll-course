@@ -446,6 +446,8 @@ steps:
       with: 12.1_e-no-meta.md
   - type: respond
     with: 12.0_add-readme.md
+    data:
+      fileUrl: '%payload.repository.html_url%/edit/add-metadata/README.md'
 
 # 13
 - title: Add a README to your course
