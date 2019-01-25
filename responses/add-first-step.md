@@ -4,5 +4,9 @@ Note: `actions` in this context is NOT the same as GitHub Actions.
 
 Let's name our first step.
 
+
+### :keyboard: Activity: Naming our first step
+
+
 <hr>
 <h3 align="center">I'll respond below with your next step.</h3>
