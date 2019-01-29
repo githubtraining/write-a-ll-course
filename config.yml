@@ -315,7 +315,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-          left: # replace me actual symbols and no spaces: 'percent payload.pull_request.title percent'
+          left: '\\%payload.pull_request.title\\%'
       ```
     position: 41
   - type: octokit
