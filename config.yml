@@ -62,7 +62,7 @@ steps:
     - type: respond
       with: 02.1_e-no-title.md
   - type: respond
-    with: 02.0_add-template.md
+    with: 11.0_add-descriptions.md
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -75,6 +75,26 @@ steps:
         repo: lab-starter-template
       ```
     position: 13
+
+# 12
+- title: Add some descriptions to your course
+  description: Add some descriptions to your course
+  event: pull_request.synchronize
+  actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^tagline:(?![ \t]*#).*$\ndescription:(?![ \t]*#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: 12.1_e-no-meta.md
+  - type: respond
+    with: 02.0_add-template.md
+    data:
+      fileUrl: '%payload.repository.html_url%/edit/add-metadata/README.md'
 
 # 3
 - title: Point to the template repo
@@ -407,7 +427,7 @@ steps:
     - type: respond
       with: 11.1_e-no-respond-action.md
   - type: respond
-    with: 11.0_add-descriptions.md
+    with: 12.0_add-readme.md
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -433,25 +453,6 @@ steps:
       ```
     position: 8
 
-# 12
-- title: Add some descriptions to your course
-  description: Add some descriptions to your course
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^tagline:(?![ \t]*#).*$\ndescription:(?![ \t]*#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 12.1_e-no-meta.md
-  - type: respond
-    with: 12.0_add-readme.md
-    data:
-      fileUrl: '%payload.repository.html_url%/edit/add-metadata/README.md'
 
 # 13
 - title: Add a README to your course
