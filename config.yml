@@ -3,13 +3,16 @@ tagline: Write a Learning Lab course
 description: Write a Learning Lab course
 template:
   name: lab-starter
-  repo: write-a-ll-course-template
+  repo: write-a-ll-course-template-2
 before:
-  - type: createIssue
-    title: Welcome
+  - type: createPullRequest
+    title: Add a course title and description
     body: 00.0_welcome.md
+    head: title
     data:
       prUrl: '%payload.repository.html_url%/compare/master...add-metadata?expand=1'
+    comments:
+      - 01.0_add-title.md
   - type: updateBranchProtection
 
 steps:
