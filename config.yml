@@ -315,7 +315,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-          left: '\\%payload.pull_request.title\\%'
+          left: '\%payload.pull_request.title\%'
       ```
     position: 41
   - type: octokit
