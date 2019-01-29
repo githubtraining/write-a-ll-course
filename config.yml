@@ -9,8 +9,6 @@ before:
     title: Add a course title and description
     body: 00.0_welcome.md
     head: title
-    data:
-      prUrl: '%payload.repository.html_url%/compare/master...add-metadata?expand=1'
     comments:
       - 01.0_add-title.md
     action_id: metaPR
@@ -18,14 +16,14 @@ before:
     issue: '%actions.metaPR.data.number%'
   - type: octokit
     method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
+    owner: '%actions.metaPR.data.head.repo.owner.login%'
+    repo: '%actions.metaPR.data.head.repo.name%'
+    number: '%actions.metaPR.data.number%'
+    commit_id: '%actions.metaPR.data.head.sha%'
     path: config.yml
     body: |
       ```suggestion
-      title: An amazing course by %payload.sender.login%
+      title: An amazing course by %actions.metaPR.data.sender.login%
       ```
     position: 6
   - type: updateBranchProtection
