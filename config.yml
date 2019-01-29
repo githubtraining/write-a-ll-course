@@ -13,6 +13,21 @@ before:
       prUrl: '%payload.repository.html_url%/compare/master...add-metadata?expand=1'
     comments:
       - 01.0_add-title.md
+    action_id: metaPR
+  - type: assignRegistrant
+    issue: '%actions.metaPR.data.number%'
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+      title: An amazing course by %payload.sender.login%
+      ```
+    position: 6
   - type: updateBranchProtection
 
 steps:
@@ -32,18 +47,6 @@ steps:
       with: 01.1_e-branch.md
   - type: respond
     with: 01.0_add-title.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-      title: An amazing course by %payload.sender.login%.
-      ```
-    position: 6
 
 # 2
 - title: Give your course a title
