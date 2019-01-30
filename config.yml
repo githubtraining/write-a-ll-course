@@ -427,7 +427,7 @@ steps:
     action_id: fileContents
     filename: 'config.yml'
   - type: gate
-    left: '/^\s{4}left: *'%payload.pull_request.title%'(?!#).*$\n    operator: *===(?!#).*$\n.   right: *Add name to README(?!#).*$/gm'
+    left: '/^\s{4}left: *'\%payload.pull_request.title\%'(?!#).*$\n\s{4}operator: *===(?!#).*$\n\s{4}right: *Add name to README(?!#).*$/gm'
     operator: test
     right: '%actions.fileContents%'
     else:
