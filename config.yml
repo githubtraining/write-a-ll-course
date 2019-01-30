@@ -56,9 +56,21 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-        repo: lab-starter-template
+      tagline: Learn how to open a PR
       ```
-    position: 13
+    position: 7
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+      description: Go from 0 to PR 1 in less than 10 minutes with this course.
+      ```
+    position: 8
 
 # 12
 - title: Add some descriptions to your course
@@ -75,6 +87,18 @@ steps:
     else:
     - type: respond
       with: 12.1_e-no-meta.md
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        repo: lab-starter-template
+      ```
+    position: 13
   - type: respond
     with: 02.0_add-template.md
     data:
@@ -412,30 +436,6 @@ steps:
       with: 11.1_e-no-respond-action.md
   - type: respond
     with: 12.0_add-readme.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-      tagline: Learn how to open a PR
-      ```
-    position: 7
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-      description: Go from 0 to PR 1 in less than 10 minutes with this course.
-      ```
-    position: 8
 
 
 # 13
