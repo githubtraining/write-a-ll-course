@@ -30,22 +30,6 @@ before:
 
 steps:
 
-# 1
-- title: Open a PR to begin crafting your course
-  description: Open a PR to begin crafting your course
-  event: pull_request.opened
-  link: '{{ repoUrl }}/issues/1'
-  actions:
-  - type: gate
-    left: '%payload.pull_request.head.ref%'
-    operator: ===
-    right: add-metadata
-    else:
-    - type: respond
-      with: 01.1_e-branch.md
-  - type: respond
-    with: 01.0_add-title.md
-
 # 2
 - title: Give your course a title
   description: Give your course a title
