@@ -122,7 +122,7 @@ steps:
       ```suggestion
         repo: lab-starter-template
       ```
-    position: 13
+    position: 7
 
 # 3
 - title: Point to the template repo
@@ -152,7 +152,7 @@ steps:
       ```suggestion
         name: my-sparkles-repo
       ```
-    position: 12
+    position: 6
 
 # 4
 - title: Give the learner's repo a name
