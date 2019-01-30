@@ -3,7 +3,7 @@ tagline: Write a Learning Lab course
 description: Write a Learning Lab course
 template:
   name: lab-starter
-  repo: write-a-ll-course-template-2
+  repo: write-a-ll-course-template
 before:
   - type: createPullRequest
     title: Add a course title and description
