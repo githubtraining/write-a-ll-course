@@ -436,7 +436,7 @@ steps:
   - type: respond
     with: 10.0_respond-success.md
     data:
-      fileUrl: '%payload.repository.html_url%/blob/add-metadata/responses/pr-opened.md'
+      fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%/?filename=README.md'
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -479,6 +479,8 @@ steps:
       with: 11.1_e-no-respond-action.md
   - type: respond
     with: 12.0_add-readme.md
+    data:
+      fileUrl: '%payload.repository.html_url%/blob/%payload.pull_request.head.ref%/responses/pr-opened.md'
 
 
 # 13
