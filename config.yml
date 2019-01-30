@@ -497,14 +497,24 @@ steps:
     else:
       type: respond
       with: 13.1_e-no-readme.md
-  - type: createReview
-    body: 13.0_publish.md
-    event: APPROVE
-
-# 14
-- title: Publish your course to the sandbox environment
-  description: Publish your course to the sandbox environment
-  event: pull_request.closed
-  actions:
+  - type: requestReviewFromRegistrant
   - type: respond
-    with: 14.0_congratulations.md
+    with: 13.0_publish.md
+
+- title: Approve the steps
+  description: Approve the steps
+  event: pull_request_review.submitted
+  actions:
+  - type: gate
+    left: '%payload.review.state%'
+    operator: ===
+    right: approved
+  - type: mergePullRequest
+  - type: createIssue
+    title: Publish your course
+    body: 14.0_congratulations.md
+    action_id: publishIssue
+  - type: respond
+    with: goto-publish.md
+    data:
+      url: '%actions.publishIssue.data.html_url%'
