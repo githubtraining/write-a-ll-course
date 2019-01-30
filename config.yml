@@ -108,7 +108,7 @@ steps:
   - type: respond
     with: goto-template-pr.md
     data:
-      url: '%repoPR.data.html_url%'
+      url: '%actions.repoPR.data.html_url%'
   - type: assignRegistrant
     issue: '%actions.repoPR.data.number%'
   - type: octokit
