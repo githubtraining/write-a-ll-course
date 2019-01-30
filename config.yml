@@ -100,24 +100,29 @@ steps:
     operator: ===
     right: approved
   - type: mergePullRequest
+  - type: createPullRequest
+    title: Setup the learner's repo
+    body: 02.0_add-template.md
+    head: repo-setup
+    action_id: repoPR
   - type: respond
-    with: 02.0_add-template.md
+    with: goto-template-pr.md
     data:
-      fileUrl: '%payload.repository.html_url%/edit/add-metadata/README.md'
-
-  # Move to the next PR
-  # - type: octokit
-  #   method: pullRequests.createComment
-  #   owner: '%payload.repository.owner.login%'
-  #   repo: '%payload.repository.name%'
-  #   number: '%payload.number%'
-  #   commit_id: '%payload.pull_request.head.sha%'
-  #   path: config.yml
-  #   body: |
-  #     ```suggestion
-  #       repo: lab-starter-template
-  #     ```
-  #   position: 13
+      url: '%repoPR.data.html_url%'
+  - type: assignRegistrant
+    issue: '%actions.repoPR.data.number%'
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%actions.repoPR.data.head.repo.owner.login%'
+    repo: '%actions.repoPR.data.head.repo.name%'
+    number: '%actions.repoPR.data.number%'
+    commit_id: '%actions.repoPR.data.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        repo: lab-starter-template
+      ```
+    position: 13
 
 # 3
 - title: Point to the template repo
