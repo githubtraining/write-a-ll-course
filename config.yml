@@ -34,6 +34,7 @@ steps:
 - title: Give your course a title
   description: Give your course a title
   event: pull_request.synchronize
+  link: '{{ repoUrl }}/pull/1'
   actions:
   - type: getFileContents
     action_id: fileContents
@@ -169,20 +170,42 @@ steps:
     else:
     - type: respond
       with: 04.1_e-no-name.md
+  - type: requestReviewFromRegistrant
   - type: respond
-    with: 04.0_create-issue.md
+    with: approve-second-pr.md
+
+- title: Approve the repo setup
+  description: Approve the repo setup
+  event: pull_request_review.submitted
+  actions:
+  - type: gate
+    left: '%payload.review.state%'
+    operator: ===
+    right: approved
+  - type: mergePullRequest
+  - type: createPullRequest
+    title: Write the course steps
+    body: 04.0_create-issue.md
+    head: write-steps
+    action_id: stepsPR
+  - type: respond
+    with: goto-steps-pr.md
+    data:
+      url: '%actions.stepsPR.data.html_url%'
+  - type: assignRegistrant
+    issue: '%actions.stepsPR.data.number%'
   - type: octokit
     method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
+    owner: '%actions.stepsPR.data.head.repo.owner.login%'
+    repo: '%actions.stepsPR.data.head.repo.name%'
+    number: '%actions.stepsPR.data.number%'
+    commit_id: '%actions.stepsPR.data.head.sha%'
     path: config.yml
     body: |
       ```suggestion
       - type: createIssue
       ```
-    position: 22
+    position: 7
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -194,7 +217,7 @@ steps:
       ```suggestion
         title: Welcome
       ```
-    position: 23
+    position: 8
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -206,7 +229,7 @@ steps:
       ```suggestion
         body: welcome-text.md
       ```
-    position: 24
+    position: 9
 
 # 5
 - title: Create an issue using Learning Lab
@@ -267,7 +290,7 @@ steps:
       ```suggestion
       - title: Create a new PR
       ```
-    position: 33
+    position: 19
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -279,7 +302,7 @@ steps:
       ```suggestion
         description: Add your name to the README.md file in your new PR
       ```
-    position: 34
+    position: 20
 
 # 7
 - title: Name your first step and give it a description
@@ -309,7 +332,7 @@ steps:
       ```suggestion
         event: pull_request.opened
       ```
-    position: 35
+    position: 21
 
 # 8
 - title: Trigger your first step with a GitHub event
@@ -339,7 +362,7 @@ steps:
       ```suggestion
         - type: gate
       ```
-    position: 40
+    position: 32
 
 # 9
 - title: Validate a learner's PR
@@ -369,7 +392,7 @@ steps:
       ```suggestion
           left: # replace me actual symbols and no spaces: 'percent payload.pull_request.title percent'
       ```
-    position: 41
+    position: 33
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -381,7 +404,7 @@ steps:
       ```suggestion
           operator: ===
       ```
-    position: 42
+    position: 34
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -393,7 +416,7 @@ steps:
       ```suggestion
           right: Add name to README
       ```
-    position: 43
+    position: 35
 
 # 10
 - title: Use contextual information to validate
@@ -425,7 +448,7 @@ steps:
       ```suggestion
         - type: respond
       ```
-    position: 45
+    position: 37
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -437,7 +460,7 @@ steps:
       ```suggestion
           with: pr-opened.md
       ```
-    position: 46
+    position: 38
 
 # 11
 - title: Respond to a learner's successful PR
