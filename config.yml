@@ -87,6 +87,7 @@ steps:
     else:
     - type: respond
       with: 12.1_e-no-meta.md
+  - type: requestReviewFromRegistrant
   - type: respond
     with: approve-first-pr.md
 
