@@ -249,7 +249,7 @@ steps:
   - type: respond
     with: 05.0_add-response.md
     data:
-      fileUrl: '%payload.repository.html_url%/new/add-metadata/responses?filename=responses/welcome-text.md'
+      fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%/responses?filename=responses/welcome-text.md'
 
 # 6
 - title: Create your first response
