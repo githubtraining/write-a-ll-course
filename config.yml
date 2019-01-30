@@ -23,7 +23,7 @@ before:
     path: config.yml
     body: |
       ```suggestion
-      title: An amazing course by %actions.metaPR.data.sender.login%
+      title: My amazing course
       ```
     position: 6
   - type: updateBranchProtection
