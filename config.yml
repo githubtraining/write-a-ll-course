@@ -3,49 +3,38 @@ tagline: Write a Learning Lab course
 description: Write a Learning Lab course
 template:
   name: lab-starter
-  repo: write-a-ll-course-template
+  repo: write-a-ll-course-template-2
 before:
-  - type: createIssue
-    title: Welcome
+  - type: createPullRequest
+    title: Add a course title and description
     body: 00.0_welcome.md
-    data:
-      prUrl: '%payload.repository.html_url%/compare/master...add-metadata?expand=1'
-  - type: updateBranchProtection
-
-steps:
-
-# 1
-- title: Open a PR to begin crafting your course
-  description: Open a PR to begin crafting your course
-  event: pull_request.opened
-  link: '{{ repoUrl }}/issues/1'
-  actions:
-  - type: gate
-    left: '%payload.pull_request.head.ref%'
-    operator: ===
-    right: add-metadata
-    else:
-    - type: respond
-      with: 01.1_e-branch.md
-  - type: respond
-    with: 01.0_add-title.md
+    head: title
+    comments:
+      - 01.0_add-title.md
+    action_id: metaPR
+  - type: assignRegistrant
+    issue: '%actions.metaPR.data.number%'
   - type: octokit
     method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
+    owner: '%actions.metaPR.data.head.repo.owner.login%'
+    repo: '%actions.metaPR.data.head.repo.name%'
+    number: '%actions.metaPR.data.number%'
+    commit_id: '%actions.metaPR.data.head.sha%'
     path: config.yml
     body: |
       ```suggestion
-      title: An amazing course by %payload.sender.login%.
+      title: My amazing course
       ```
     position: 6
+  - type: updateBranchProtection
+
+steps:
 
 # 2
 - title: Give your course a title
   description: Give your course a title
   event: pull_request.synchronize
+  link: '{{ repoUrl }}/pull/1'
   actions:
   - type: getFileContents
     action_id: fileContents
@@ -57,351 +46,6 @@ steps:
     else:
     - type: respond
       with: 02.1_e-no-title.md
-  - type: respond
-    with: 02.0_add-template.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        repo: lab-starter-template
-      ```
-    position: 13
-
-# 3
-- title: Point to the template repo
-  description: Point to the template repo
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^\s{2}repo: *lab-starter-template(?!#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 03.1_e-no-repo.md
-  - type: respond
-    with: 03.0_add-repo-name.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        name: my-sparkles-repo
-      ```
-    position: 12
-
-# 4
-- title: Give the learner's repo a name
-  description: Give the learner's repo a name
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^\s{2}name: *\w(?![ \t]*#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 04.1_e-no-name.md
-  - type: respond
-    with: 04.0_create-issue.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-      - type: createIssue
-      ```
-    position: 22
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        title: Welcome
-      ```
-    position: 23
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        body: welcome-text.md
-      ```
-    position: 24
-
-# 5
-- title: Create an issue using Learning Lab
-  description: Create an issue using Learning Lab
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^- type: *createIssue(?!#).*$\n  title: *(?![ \t]*#).*$\n. body: *welcome-text.md(?!#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 05.1_e-no-new-issue.md
-  - type: respond
-    with: 05.0_add-response.md
-    data:
-      fileUrl: '%payload.repository.html_url%/new/add-metadata/responses?filename=responses/welcome-text.md'
-
-# 6
-- title: Create your first response
-  description: Create your first response
-  event: pull_request.synchronize
-  actions:
-  - type: getTree
-    action_id: tree
-    recursive: true
-    sha: '%payload.pull_request.head.sha%'
-  - type: gate
-    left: '%actions.tree.data.tree%'
-    operator: includes
-    right: path:responses/welcome-text.md
-    else:
-      type: respond
-      with: 06.1_e-no-response.md
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'responses/welcome-text.md'
-  - type: gate
-    left: '/\w+/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 06.1_e-no-response.md
-  - type: respond
-    with: 06.0_add-first-step.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-      - title: Create a new PR
-      ```
-    position: 33
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        description: Add your name to the README.md file in your new PR
-      ```
-    position: 34
-
-# 7
-- title: Name your first step and give it a description
-  description: Name your first step and give it a description
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^\s{2}description:(?![ \t]*#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 07.1_e-no-step-title.md
-  - type: respond
-    with: 07.0_add-trigger.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        event: pull_request.opened
-      ```
-    position: 35
-
-# 8
-- title: Trigger your first step with a GitHub event
-  description: Trigger your first step with a GitHub event
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^\s{2}event: *pull_request.opened(?!#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 08.1_e-no-event.md
-  - type: respond
-    with: 08.0_validate.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        - type: gate
-      ```
-    position: 40
-
-# 9
-- title: Validate a learner's PR
-  description: Validate a learner's PR
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^\s{2}- type: *gate(?!#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 09.1_e-no-gate.md
-  - type: respond
-    with: 09.0_add-context.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-          left: '\%payload.pull_request.title\%'
-      ```
-    position: 41
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-          operator: ===
-      ```
-    position: 42
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-          right: Add name to README
-      ```
-    position: 43
-
-# 10
-- title: Use contextual information to validate
-  description: Use contextual information to validate
-  event: pull_request.synchronize
-  actions:
-  # - type: getFileContents
-  #   action_id: fileContents
-  #   filename: 'config.yml'
-  # - type: gate
-  #   left: '/^\s{4}left: *'%payload.pull_request.title%'(?!#).*$\n    operator: *===(?!#).*$\n.   right: *Add name to README(?!#).*$/gm'
-  #   operator: test
-  #   right: '%actions.fileContents%'
-  #   else:
-  #   - type: respond
-  #     with: 10.1_e-no-gate-options.md
-  - type: respond
-    with: 10.0_respond-success.md
-    data:
-      fileUrl: '%payload.repository.html_url%/blob/add-metadata/responses/pr-opened.md'
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        - type: respond
-      ```
-    position: 45
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-          with: pr-opened.md
-      ```
-    position: 46
-
-# 11
-- title: Respond to a learner's successful PR
-  description: Respond to a learner's successful PR
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^\s{2}- type: *respond(?!#).*$\n    with: *pr-opened.md(?!#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 11.1_e-no-respond-action.md
   - type: respond
     with: 11.0_add-descriptions.md
   - type: octokit
@@ -444,10 +88,400 @@ steps:
     else:
     - type: respond
       with: 12.1_e-no-meta.md
+  - type: requestReviewFromRegistrant
+  - type: respond
+    with: approve-first-pr.md
+
+- title: Approve the course metadata
+  description: Approve the course metadata
+  event: pull_request_review.submitted
+  actions:
+  - type: gate
+    left: '%payload.review.state%'
+    operator: ===
+    right: approved
+  - type: mergePullRequest
+  - type: createPullRequest
+    title: Setup the learner's repo
+    body: 02.0_add-template.md
+    head: repo-setup
+    action_id: repoPR
+  - type: respond
+    with: goto-template-pr.md
+    data:
+      url: '%actions.repoPR.data.html_url%'
+  - type: assignRegistrant
+    issue: '%actions.repoPR.data.number%'
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%actions.repoPR.data.head.repo.owner.login%'
+    repo: '%actions.repoPR.data.head.repo.name%'
+    number: '%actions.repoPR.data.number%'
+    commit_id: '%actions.repoPR.data.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        repo: lab-starter-template
+      ```
+    position: 7
+
+# 3
+- title: Point to the template repo
+  description: Point to the template repo
+  event: pull_request.synchronize
+  actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^\s{2}repo: *lab-starter-template(?!#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: 03.1_e-no-repo.md
+  - type: respond
+    with: 03.0_add-repo-name.md
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        name: my-sparkles-repo
+      ```
+    position: 6
+
+# 4
+- title: Give the learner's repo a name
+  description: Give the learner's repo a name
+  event: pull_request.synchronize
+  actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^\s{2}name: *\w(?![ \t]*#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: 04.1_e-no-name.md
+  - type: requestReviewFromRegistrant
+  - type: respond
+    with: approve-second-pr.md
+
+- title: Approve the repo setup
+  description: Approve the repo setup
+  event: pull_request_review.submitted
+  actions:
+  - type: gate
+    left: '%payload.review.state%'
+    operator: ===
+    right: approved
+  - type: mergePullRequest
+  - type: createPullRequest
+    title: Write the course steps
+    body: 04.0_create-issue.md
+    head: write-steps
+    action_id: stepsPR
+  - type: respond
+    with: goto-steps-pr.md
+    data:
+      url: '%actions.stepsPR.data.html_url%'
+  - type: assignRegistrant
+    issue: '%actions.stepsPR.data.number%'
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%actions.stepsPR.data.head.repo.owner.login%'
+    repo: '%actions.stepsPR.data.head.repo.name%'
+    number: '%actions.stepsPR.data.number%'
+    commit_id: '%actions.stepsPR.data.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+      - type: createIssue
+      ```
+    position: 7
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%actions.stepsPR.data.head.repo.owner.login%'
+    repo: '%actions.stepsPR.data.head.repo.name%'
+    number: '%actions.stepsPR.data.number%'
+    commit_id: '%actions.stepsPR.data.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        title: Welcome
+      ```
+    position: 8
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%actions.stepsPR.data.head.repo.owner.login%'
+    repo: '%actions.stepsPR.data.head.repo.name%'
+    number: '%actions.stepsPR.data.number%'
+    commit_id: '%actions.stepsPR.data.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        body: welcome-text.md
+      ```
+    position: 9
+
+# 5
+- title: Create an issue using Learning Lab
+  description: Create an issue using Learning Lab
+  event: pull_request.synchronize
+  actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^- type: *createIssue(?!#).*$\n  title: *(?![ \t]*#).*$\n. body: *welcome-text.md(?!#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: 05.1_e-no-new-issue.md
+  - type: respond
+    with: 05.0_add-response.md
+    data:
+      fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%/responses?filename=responses/welcome-text.md'
+
+# 6
+- title: Create your first response
+  description: Create your first response
+  event: pull_request.synchronize
+  actions:
+  - type: getTree
+    action_id: tree
+    recursive: true
+    sha: '%payload.pull_request.head.sha%'
+  - type: gate
+    left: '%actions.tree.data.tree%'
+    operator: includes
+    right: path:responses/welcome-text.md
+    else:
+      type: respond
+      with: 06.1_e-no-response.md
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'responses/welcome-text.md'
+  - type: gate
+    left: '/\w+/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: 06.1_e-no-response.md
+  - type: respond
+    with: 06.0_add-first-step.md
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+      - title: Create a new PR
+      ```
+    position: 19
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        description: Add your name to the README.md file in your new PR
+      ```
+    position: 20
+
+# 7
+- title: Name your first step and give it a description
+  description: Name your first step and give it a description
+  event: pull_request.synchronize
+  actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^\s{2}description:(?![ \t]*#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: 07.1_e-no-step-title.md
+  - type: respond
+    with: 07.0_add-trigger.md
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        event: pull_request.opened
+      ```
+    position: 21
+
+# 8
+- title: Trigger your first step with a GitHub event
+  description: Trigger your first step with a GitHub event
+  event: pull_request.synchronize
+  actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^\s{2}event: *pull_request.opened(?!#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: 08.1_e-no-event.md
+  - type: respond
+    with: 08.0_validate.md
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        - type: gate
+      ```
+    position: 32
+
+# 9
+- title: Validate a learner's PR
+  description: Validate a learner's PR
+  event: pull_request.synchronize
+  actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^\s{2}- type: *gate(?!#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: 09.1_e-no-gate.md
+  - type: respond
+    with: 09.0_add-context.md
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+          left: '\%payload.pull_request.title\%'
+      ```
+    position: 33
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+          operator: ===
+      ```
+    position: 34
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+          right: Add name to README
+      ```
+    position: 35
+
+# 10
+- title: Use contextual information to validate
+  description: Use contextual information to validate
+  event: pull_request.synchronize
+  actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  # - type: gate
+  #   left: '/^\s{4}left: *'\%payload.pull_request.title\%'(?!#).*$\n\s{4}operator: *===(?!#).*$\n\s{4}right: *Add name to README(?!#).*$/gm'
+  #   operator: test
+  #   right: '%actions.fileContents%'
+  #   else:
+  #   - type: respond
+  #     with: 10.1_e-no-gate-options.md
+  - type: respond
+    with: 10.0_respond-success.md
+    data:
+      fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%/?filename=README.md'
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+        - type: respond
+      ```
+    position: 36
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%payload.repository.owner.login%'
+    repo: '%payload.repository.name%'
+    number: '%payload.number%'
+    commit_id: '%payload.pull_request.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+          with: pr-opened.md
+      ```
+    position: 37
+
+# 11
+- title: Respond to a learner's successful PR
+  description: Respond to a learner's successful PR
+  event: pull_request.synchronize
+  actions:
+  - type: getFileContents
+    action_id: fileContents
+    filename: 'config.yml'
+  - type: gate
+    left: '/^\s{2}- type: *respond(?!#).*$\n    with: *pr-opened.md(?!#).*$/gm'
+    operator: test
+    right: '%actions.fileContents%'
+    else:
+    - type: respond
+      with: 11.1_e-no-respond-action.md
   - type: respond
     with: 12.0_add-readme.md
     data:
-      fileUrl: '%payload.repository.html_url%/edit/add-metadata/README.md'
+      fileUrl: '%payload.repository.html_url%/blob/%payload.pull_request.head.ref%/responses/pr-opened.md'
+
 
 # 13
 - title: Add a README to your course
@@ -465,14 +499,24 @@ steps:
     else:
       type: respond
       with: 13.1_e-no-readme.md
-  - type: createReview
-    body: 13.0_publish.md
-    event: APPROVE
-
-# 14
-- title: Publish your course to the sandbox environment
-  description: Publish your course to the sandbox environment
-  event: pull_request.closed
-  actions:
+  - type: requestReviewFromRegistrant
   - type: respond
-    with: 14.0_congratulations.md
+    with: 13.0_publish.md
+
+- title: Approve the steps
+  description: Approve the steps
+  event: pull_request_review.submitted
+  actions:
+  - type: gate
+    left: '%payload.review.state%'
+    operator: ===
+    right: approved
+  - type: mergePullRequest
+  - type: createIssue
+    title: Publish your course
+    body: 14.0_congratulations.md
+    action_id: publishIssue
+  - type: respond
+    with: goto-publish.md
+    data:
+      url: '%actions.publishIssue.data.html_url%'
