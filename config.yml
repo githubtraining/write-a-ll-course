@@ -448,7 +448,7 @@ steps:
       ```suggestion
         - type: respond
       ```
-    position: 37
+    position: 36
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -460,7 +460,7 @@ steps:
       ```suggestion
           with: pr-opened.md
       ```
-    position: 38
+    position: 37
 
 # 11
 - title: Respond to a learner's successful PR
