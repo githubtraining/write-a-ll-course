@@ -480,8 +480,7 @@ steps:
   - type: respond
     with: 12.0_add-readme.md
     data:
-      fileUrl: '%payload.repository.html_url%/blob/%payload.pull_request.head.ref%/responses/pr-opened.md'
-
+      fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%?filename=README.md'
 
 # 13
 - title: Add a README to your course
