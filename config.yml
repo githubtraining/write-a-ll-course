@@ -87,22 +87,36 @@ steps:
     else:
     - type: respond
       with: 12.1_e-no-meta.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        repo: lab-starter-template
-      ```
-    position: 13
+  - type: respond
+    with: approve-first-pr.md
+
+- title: Approve the course metadata
+  description: Approve the course metadata
+  event: pull_request_review.submitted
+  actions:
+  - type: gate
+    left: '%payload.review.state%'
+    operator: ===
+    right: approved
+  - type: mergePullRequest
   - type: respond
     with: 02.0_add-template.md
     data:
       fileUrl: '%payload.repository.html_url%/edit/add-metadata/README.md'
+
+  # Move to the next PR
+  # - type: octokit
+  #   method: pullRequests.createComment
+  #   owner: '%payload.repository.owner.login%'
+  #   repo: '%payload.repository.name%'
+  #   number: '%payload.number%'
+  #   commit_id: '%payload.pull_request.head.sha%'
+  #   path: config.yml
+  #   body: |
+  #     ```suggestion
+  #       repo: lab-starter-template
+  #     ```
+  #   position: 13
 
 # 3
 - title: Point to the template repo
