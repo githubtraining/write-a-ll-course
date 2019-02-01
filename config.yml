@@ -338,7 +338,7 @@ steps:
 
 # 10
 - title: Trigger your first step with a GitHub event
-  description: Trigger your first step with a GitHub event
+  description: Add a pull_request.opened event.
   event: pull_request.synchronize
   actions:
   - type: getFileContents
