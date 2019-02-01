@@ -486,7 +486,7 @@ steps:
 
 # 14
 - title: Add a README to your course
-  description: Add a README to your course
+  description: Write a longform description for your course.
   event: pull_request.synchronize
   actions:
   - type: getTree
