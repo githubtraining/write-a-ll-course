@@ -28,11 +28,17 @@ before:
     position: 6
   - type: updateBranchProtection
 
+# Repo artifacts:
+# 1. PR: Add a course title and description
+# 2. PR: Setup the learner's repo
+# 3. PR: Write the course steps
+# 4. Issue: Publish your course
+
 steps:
 
-# 2
+# 1
 - title: Give your course a title
-  description: Give your course a title
+  description: Name your course so learners can find it.
   event: pull_request.synchronize
   link: '{{ repoUrl }}/pull/1'
   actions:
@@ -73,9 +79,10 @@ steps:
       ```
     position: 8
 
-# 12
+# 2
 - title: Add some descriptions to your course
-  description: Add some descriptions to your course
+  description: Give your course a description and tagline so learners can identify it.
+  link: '{{ repoUrl }}/pull/1'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -92,8 +99,10 @@ steps:
   - type: respond
     with: approve-first-pr.md
 
+# 3
 - title: Approve the course metadata
-  description: Approve the course metadata
+  description: Approve the pull request containing the course's metadata.
+  link: '{{ repoUrl }}/pull/1'
   event: pull_request_review.submitted
   actions:
   - type: gate
@@ -125,9 +134,10 @@ steps:
       ```
     position: 7
 
-# 3
+# 4
 - title: Point to the template repo
-  description: Point to the template repo
+  description: Designate a template repository from which to clone.
+  link: '{{ repoUrl }}/pull/2'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -155,9 +165,10 @@ steps:
       ```
     position: 6
 
-# 4
+# 5
 - title: Give the learner's repo a name
-  description: Give the learner's repo a name
+  description: Designate a name for the repository when it is created for the learner.
+  link: '{{ repoUrl }}/pull/2'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -174,8 +185,10 @@ steps:
   - type: respond
     with: approve-second-pr.md
 
+# 6
 - title: Approve the repo setup
-  description: Approve the repo setup
+  description: Approve the template repo information
+  link: '{{ repoUrl }}/pull/2'
   event: pull_request_review.submitted
   actions:
   - type: gate
@@ -231,9 +244,10 @@ steps:
       ```
     position: 9
 
-# 5
+# 7
 - title: Create an issue using Learning Lab
-  description: Create an issue using Learning Lab
+  description: Use the `before` block to create an issue in the learner's repo.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -251,9 +265,10 @@ steps:
     data:
       fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%/responses?filename=responses/welcome-text.md'
 
-# 6
+# 8
 - title: Create your first response
-  description: Create your first response
+  description: Add content to the repo's first issue.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getTree
@@ -304,9 +319,10 @@ steps:
       ```
     position: 20
 
-# 7
+# 9
 - title: Name your first step and give it a description
-  description: Name your first step and give it a description
+  description: Identify the first step so the learner knows what's expected.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -334,9 +350,10 @@ steps:
       ```
     position: 21
 
-# 8
+# 10
 - title: Trigger your first step with a GitHub event
-  description: Trigger your first step with a GitHub event
+  description: Add a pull_request.opened event.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -364,9 +381,10 @@ steps:
       ```
     position: 32
 
-# 9
+# 11
 - title: Validate a learner's PR
-  description: Validate a learner's PR
+  description: Add a gate to determine if the learner took the expected action.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -418,9 +436,10 @@ steps:
       ```
     position: 35
 
-# 10
+# 12
 - title: Use contextual information to validate
-  description: Use contextual information to validate
+  description: Add options to the gate action.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -462,9 +481,10 @@ steps:
       ```
     position: 37
 
-# 11
+# 13
 - title: Respond to a learner's successful PR
-  description: Respond to a learner's successful PR
+  description: Use a respond action when a learner opens their pull request.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -482,9 +502,10 @@ steps:
     data:
       fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%?filename=README.md'
 
-# 13
+# 14
 - title: Add a README to your course
-  description: Add a README to your course
+  description: Write a longform description for your course.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getTree
@@ -502,8 +523,10 @@ steps:
   - type: respond
     with: 13.0_publish.md
 
+# 15
 - title: Approve the steps
-  description: Approve the steps
+  description: Submit an approval for the steps pull request.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request_review.submitted
   actions:
   - type: gate
