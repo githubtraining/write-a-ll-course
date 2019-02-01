@@ -1,7 +1,7 @@
 Learning Lab helps people build real world skills through hands-on activities. This course streamlines the course building process, and gives you all the tools you need to help others learn. 
 
 After completing this course, you'll be able to:
-- identify the components of a course on GitHub Learning Lab
+- identify the structure of a Learning Lab course
 - create course metadata
 - define a template repository
 - create course steps
