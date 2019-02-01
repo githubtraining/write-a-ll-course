@@ -30,7 +30,7 @@ before:
 
 steps:
 
-# 2
+# 1
 - title: Give your course a title
   description: Give your course a title
   event: pull_request.synchronize
@@ -73,7 +73,7 @@ steps:
       ```
     position: 8
 
-# 12
+# 2
 - title: Add some descriptions to your course
   description: Add some descriptions to your course
   event: pull_request.synchronize
@@ -92,6 +92,7 @@ steps:
   - type: respond
     with: approve-first-pr.md
 
+# 3
 - title: Approve the course metadata
   description: Approve the course metadata
   event: pull_request_review.submitted
@@ -125,7 +126,7 @@ steps:
       ```
     position: 7
 
-# 3
+# 4
 - title: Point to the template repo
   description: Point to the template repo
   event: pull_request.synchronize
@@ -155,7 +156,7 @@ steps:
       ```
     position: 6
 
-# 4
+# 5
 - title: Give the learner's repo a name
   description: Give the learner's repo a name
   event: pull_request.synchronize
@@ -174,6 +175,7 @@ steps:
   - type: respond
     with: approve-second-pr.md
 
+# 6
 - title: Approve the repo setup
   description: Approve the repo setup
   event: pull_request_review.submitted
@@ -231,7 +233,7 @@ steps:
       ```
     position: 9
 
-# 5
+# 7
 - title: Create an issue using Learning Lab
   description: Create an issue using Learning Lab
   event: pull_request.synchronize
@@ -251,7 +253,7 @@ steps:
     data:
       fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%/responses?filename=responses/welcome-text.md'
 
-# 6
+# 8
 - title: Create your first response
   description: Create your first response
   event: pull_request.synchronize
@@ -304,7 +306,7 @@ steps:
       ```
     position: 20
 
-# 7
+# 9
 - title: Name your first step and give it a description
   description: Name your first step and give it a description
   event: pull_request.synchronize
@@ -334,7 +336,7 @@ steps:
       ```
     position: 21
 
-# 8
+# 10
 - title: Trigger your first step with a GitHub event
   description: Trigger your first step with a GitHub event
   event: pull_request.synchronize
@@ -364,7 +366,7 @@ steps:
       ```
     position: 32
 
-# 9
+# 11
 - title: Validate a learner's PR
   description: Validate a learner's PR
   event: pull_request.synchronize
@@ -418,7 +420,7 @@ steps:
       ```
     position: 35
 
-# 10
+# 12
 - title: Use contextual information to validate
   description: Use contextual information to validate
   event: pull_request.synchronize
@@ -462,7 +464,7 @@ steps:
       ```
     position: 37
 
-# 11
+# 13
 - title: Respond to a learner's successful PR
   description: Respond to a learner's successful PR
   event: pull_request.synchronize
@@ -482,7 +484,7 @@ steps:
     data:
       fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%?filename=README.md'
 
-# 13
+# 14
 - title: Add a README to your course
   description: Add a README to your course
   event: pull_request.synchronize
@@ -502,6 +504,7 @@ steps:
   - type: respond
     with: 13.0_publish.md
 
+# 15
 - title: Approve the steps
   description: Approve the steps
   event: pull_request_review.submitted
