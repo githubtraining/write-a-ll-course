@@ -308,7 +308,7 @@ steps:
 
 # 9
 - title: Name your first step and give it a description
-  description: Name your first step and give it a description
+  description: Identify the first step so the learner knows what's expected.
   event: pull_request.synchronize
   actions:
   - type: getFileContents
