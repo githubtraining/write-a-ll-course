@@ -7,4 +7,4 @@ Fantastic! Your course now has the required metadata to be listed on the courses
 1. Approve this pull request.
 
 <hr>
-<h3 align="center">I'll respond below when I detect an pull request review approval on this pull request.</h3>
+<h3 align="center">I'll respond below when I detect an approval on this pull request.</h3>

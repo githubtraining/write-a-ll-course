@@ -177,7 +177,7 @@ steps:
 
 # 6
 - title: Approve the repo setup
-  description: Approve the repo setup
+  description: Approve the template repo information
   event: pull_request_review.submitted
   actions:
   - type: gate
