@@ -94,7 +94,7 @@ steps:
 
 # 3
 - title: Approve the course metadata
-  description: Approve the course metadata
+  description: Approve the pull request containing the course's metadata.
   event: pull_request_review.submitted
   actions:
   - type: gate
