@@ -2,7 +2,7 @@ Learning Lab helps people build real world skills through hands-on activities. T
 
 After completing this course, you'll be able to:
 - identify the structure of a Learning Lab course
-- create course metadata
+- define a title and description for your course
 - define a template repository
 - create course steps
 - create responses
