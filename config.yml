@@ -32,7 +32,7 @@ steps:
 
 # 1
 - title: Give your course a title
-  description: Give your course a title
+  description: Name your course so learners can find it.
   event: pull_request.synchronize
   link: '{{ repoUrl }}/pull/1'
   actions:
