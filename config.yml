@@ -235,7 +235,7 @@ steps:
 
 # 7
 - title: Create an issue using Learning Lab
-  description: Create an issue using Learning Lab
+  description: Use the `before` block to create an issue in the learner's repo.
   event: pull_request.synchronize
   actions:
   - type: getFileContents
