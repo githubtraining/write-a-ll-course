@@ -1,3 +1,11 @@
-Take this course if you'd like to learn how to write and publish your own course on GitHub Learning Lab.
+Author your own course on GitHub Learning Lab in just a few minutes! 
 
-You'll need to be a owner of this organization in order to publish the course you create.
+After completing this course, you'll be able to:
+- identify the components of a course on GitHub Learning Lab
+- create course metadata
+- define a template repository
+- create course steps
+- create responses
+- publish a course to GitHub Learning Lab
+
+**Note:** You'll need to be a owner of this organization in order to publish the course you create.
