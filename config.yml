@@ -255,7 +255,7 @@ steps:
 
 # 8
 - title: Create your first response
-  description: Create your first response
+  description: Add content to the repo's first issue.
   event: pull_request.synchronize
   actions:
   - type: getTree
