@@ -128,7 +128,7 @@ steps:
 
 # 4
 - title: Point to the template repo
-  description: Point to the template repo
+  description: Designate a template repository from which to clone.
   event: pull_request.synchronize
   actions:
   - type: getFileContents
