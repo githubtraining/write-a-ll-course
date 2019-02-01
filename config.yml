@@ -506,7 +506,7 @@ steps:
 
 # 15
 - title: Approve the steps
-  description: Approve the steps
+  description: Submit an approval for the steps pull request.
   event: pull_request_review.submitted
   actions:
   - type: gate
