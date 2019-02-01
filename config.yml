@@ -158,7 +158,7 @@ steps:
 
 # 5
 - title: Give the learner's repo a name
-  description: Give the learner's repo a name
+  description: Designate a name for the repository when it is created for the learner.
   event: pull_request.synchronize
   actions:
   - type: getFileContents
