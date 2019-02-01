@@ -82,6 +82,7 @@ steps:
 # 2
 - title: Add some descriptions to your course
   description: Give your course a description and tagline so learners can identify it.
+  link: '{{ repoUrl }}/pull/1'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -101,6 +102,7 @@ steps:
 # 3
 - title: Approve the course metadata
   description: Approve the pull request containing the course's metadata.
+  link: '{{ repoUrl }}/pull/1'
   event: pull_request_review.submitted
   actions:
   - type: gate
@@ -135,6 +137,7 @@ steps:
 # 4
 - title: Point to the template repo
   description: Designate a template repository from which to clone.
+  link: '{{ repoUrl }}/pull/2'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -165,6 +168,7 @@ steps:
 # 5
 - title: Give the learner's repo a name
   description: Designate a name for the repository when it is created for the learner.
+  link: '{{ repoUrl }}/pull/2'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -184,6 +188,7 @@ steps:
 # 6
 - title: Approve the repo setup
   description: Approve the template repo information
+  link: '{{ repoUrl }}/pull/2'
   event: pull_request_review.submitted
   actions:
   - type: gate
@@ -242,6 +247,7 @@ steps:
 # 7
 - title: Create an issue using Learning Lab
   description: Use the `before` block to create an issue in the learner's repo.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -262,6 +268,7 @@ steps:
 # 8
 - title: Create your first response
   description: Add content to the repo's first issue.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getTree
@@ -315,6 +322,7 @@ steps:
 # 9
 - title: Name your first step and give it a description
   description: Identify the first step so the learner knows what's expected.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -345,6 +353,7 @@ steps:
 # 10
 - title: Trigger your first step with a GitHub event
   description: Add a pull_request.opened event.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -375,6 +384,7 @@ steps:
 # 11
 - title: Validate a learner's PR
   description: Add a gate to determine if the learner took the expected action.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -429,6 +439,7 @@ steps:
 # 12
 - title: Use contextual information to validate
   description: Add options to the gate action.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -473,6 +484,7 @@ steps:
 # 13
 - title: Respond to a learner's successful PR
   description: Use a respond action when a learner opens their pull request.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getFileContents
@@ -493,6 +505,7 @@ steps:
 # 14
 - title: Add a README to your course
   description: Write a longform description for your course.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
   actions:
   - type: getTree
@@ -513,6 +526,7 @@ steps:
 # 15
 - title: Approve the steps
   description: Submit an approval for the steps pull request.
+  link: '{{ repoUrl }}/pull/3'
   event: pull_request_review.submitted
   actions:
   - type: gate
