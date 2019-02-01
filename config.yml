@@ -28,6 +28,12 @@ before:
     position: 6
   - type: updateBranchProtection
 
+# Repo artifacts:
+# 1. PR: Add a course title and description
+# 2. PR: Setup the learner's repo
+# 3. PR: Write the course steps
+# 4. Issue: Publish your course
+
 steps:
 
 # 1
