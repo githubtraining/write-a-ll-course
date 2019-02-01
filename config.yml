@@ -466,7 +466,7 @@ steps:
 
 # 13
 - title: Respond to a learner's successful PR
-  description: Respond to a learner's successful PR
+  description: Use a respond action when a learner opens their pull request.
   event: pull_request.synchronize
   actions:
   - type: getFileContents
