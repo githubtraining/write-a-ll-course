@@ -368,7 +368,7 @@ steps:
 
 # 11
 - title: Validate a learner's PR
-  description: Validate a learner's PR
+  description: Add a gate to determine if the learner took the expected action.
   event: pull_request.synchronize
   actions:
   - type: getFileContents
