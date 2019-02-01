@@ -75,7 +75,7 @@ steps:
 
 # 2
 - title: Add some descriptions to your course
-  description: Add some descriptions to your course
+  description: Give your course a description and tagline so learners can identify it.
   event: pull_request.synchronize
   actions:
   - type: getFileContents
