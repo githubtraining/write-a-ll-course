@@ -422,7 +422,7 @@ steps:
 
 # 12
 - title: Use contextual information to validate
-  description: Use contextual information to validate
+  description: Add options to the gate action.
   event: pull_request.synchronize
   actions:
   - type: getFileContents
