@@ -31,10 +31,8 @@ steps:
     else:
     - type: createPullRequest
       title: Add a course title and description
-      body: 00.0_welcome.md
+      body: 01.0_add-title.md
       head: title
-      comments:
-        - 01.0_add-title.md
       action_id: metaPR
     - type: assignRegistrant
       issue: '%actions.metaPR.data.number%'
@@ -50,9 +48,18 @@ steps:
         title: My amazing course
         ```
       position: 6
+    - type: respond
+      with: goto-first-pr.md
+      data:
+        url: '%actions.metaPR.data.html_url%'
   - type: createIssue
     title: Transfer your course
-    body: 14.0_congratulations.md      
+    body: 14.0_congratulations.md
+    action_id: transferIssue
+  - type: respond
+    with: goto-transfer.md
+    data:
+      url: '%actions.transferIssue.data.html_url%'
 
 # 1
 - title: Give your course a title
