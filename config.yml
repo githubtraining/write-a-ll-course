@@ -39,9 +39,22 @@ steps:
 # 1
 - title: Give your course a title
   description: Name your course so learners can find it.
-  event: pull_request.synchronize
+  event: pull_request
   link: '{{ repoUrl }}/pull/1'
   actions:
+  - type: gate
+    left: '%payload.pull_request.action'
+    operator: ===
+    right: synchronize
+    else:
+    - type: gate
+      left: '%payload.pull_request.action%'
+      operator: ===
+      right: closed
+      required: false
+    - type: createIssue
+      title: Transfer your course
+      body: 14.0_congratulations.md
   - type: getFileContents
     action_id: fileContents
     filename: 'config.yml'
