@@ -5,27 +5,11 @@ template:
   name: lab-starter
   repo: write-a-ll-course-template
 before:
-  - type: createPullRequest
-    title: Add a course title and description
+  - type: createIssue
+    title: Welcome
     body: 00.0_welcome.md
-    head: title
     comments:
-      - 01.0_add-title.md
-    action_id: metaPR
-  - type: assignRegistrant
-    issue: '%actions.metaPR.data.number%'
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%actions.metaPR.data.head.repo.owner.login%'
-    repo: '%actions.metaPR.data.head.repo.name%'
-    number: '%actions.metaPR.data.number%'
-    commit_id: '%actions.metaPR.data.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-      title: My amazing course
-      ```
-    position: 6
+      - welcome-2.md
   - type: updateBranchProtection
 
 # Repo artifacts:
@@ -37,24 +21,45 @@ before:
 steps:
 
 # 1
-- title: Give your course a title
-  description: Name your course so learners can find it.
-  event: pull_request
-  link: '{{ repoUrl }}/pull/1'
+- title: Welcome
+  description: Decide whether to complete a guided course, or use boilerplate as is.
+  event: issues.closed
+  link: '{{ repoUrl }}/issues/1'
   actions:
   - type: gate
-    left: '%payload.pull_request.action'
-    operator: ===
-    right: synchronize
+    left: '%payload.issue.assignee%'
     else:
-    - type: gate
-      left: '%payload.pull_request.action%'
-      operator: ===
-      right: closed
-      required: false
-    - type: createIssue
-      title: Transfer your course
-      body: 14.0_congratulations.md
+    - type: createPullRequest
+      title: Add a course title and description
+      body: 00.0_welcome.md
+      head: title
+      comments:
+        - 01.0_add-title.md
+      action_id: metaPR
+    - type: assignRegistrant
+      issue: '%actions.metaPR.data.number%'
+    - type: octokit
+      method: pullRequests.createComment
+      owner: '%actions.metaPR.data.head.repo.owner.login%'
+      repo: '%actions.metaPR.data.head.repo.name%'
+      number: '%actions.metaPR.data.number%'
+      commit_id: '%actions.metaPR.data.head.sha%'
+      path: config.yml
+      body: |
+        ```suggestion
+        title: My amazing course
+        ```
+      position: 6
+  - type: createIssue
+    title: Transfer your course
+    body: 14.0_congratulations.md      
+
+# 1
+- title: Give your course a title
+  description: Name your course so learners can find it.
+  event: pull_request.synchronize
+  link: '{{ repoUrl }}/pull/1'
+  actions:
   - type: getFileContents
     action_id: fileContents
     filename: 'config.yml'
