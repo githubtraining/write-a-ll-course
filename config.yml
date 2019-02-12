@@ -43,6 +43,8 @@ steps:
       right: assigned
     - type: respond
       with: how-to-publish.md
+      data: 
+        url: '%payload.repository.html_url%/fork'
     - type: respond
       with: change-mind.md
   - type: createPullRequest
@@ -571,8 +573,11 @@ steps:
     title: Publish your course
     body: 14.0_congratulations.md
     action_id: publishIssue
-    comments:
-      - how-to-publish.md
+  - type: respond
+    issue: '%actions.publishIssue.data.title%'
+    with: how-to-publish.md
+    data: 
+      url: '%payload.repository.html_url%/fork'
   - type: respond
     with: goto-publish.md
     data:
