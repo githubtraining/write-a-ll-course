@@ -18,7 +18,6 @@ before:
 # 3. PR: Setup the learner's repo
 # 4. PR: Write the course steps
 # 5. Issue: Publish your course
-# Note: if the learner chooses to transfer their course immediately, there will be an issue inserted after PR#2 with those instructions
 
 steps:
 
@@ -42,14 +41,10 @@ steps:
       left: '%payload.action%'
       operator: ===
       right: assigned
-    - type: createIssue
-      title: Transfer your course
-      body: how-to-publish.md
-      action_id: transferIssue
     - type: respond
-      with: goto-transfer.md
-      data:
-        url: '%actions.transferIssue.data.html_url%'
+      with: how-to-publish.md
+    - type: respond
+      with: change-mind.md
   - type: createPullRequest
     title: Add a course title and description
     body: 01.0_add-title.md
