@@ -1,6 +1,6 @@
 title: Write a Learning Lab course
-tagline: Write a Learning Lab course
-description: Write a Learning Lab course
+tagline: Learn how to author your own Learning Lab course.
+description: Get starter code, or let the Learning Lab bot guide you as you author your first course.
 template:
   name: lab-starter
   repo: write-a-ll-course-template
