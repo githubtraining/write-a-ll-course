@@ -574,7 +574,7 @@ steps:
     body: 14.0_congratulations.md
     action_id: publishIssue
   - type: respond
-    issue: '%actions.publishIssue.data.title%'
+    issue: '%actions.publishIssue.data.number%'
     with: how-to-publish.md
     data: 
       url: '%payload.repository.html_url%/fork'
