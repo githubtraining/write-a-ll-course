@@ -8,4 +8,4 @@ Register for this course to get the starter files needed to build your Learning 
 - create responses
 - publish a course to GitHub Learning Lab
 
-**Note:** You'll need to be a owner of this organization in order to publish the course you create.
+**Note:** In order to publish your final course, you'll need to transfer it to your designated Learning Lab organization.

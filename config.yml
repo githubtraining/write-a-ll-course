@@ -5,12 +5,52 @@ template:
   name: lab-starter
   repo: write-a-ll-course-template
 before:
+  - type: createIssue
+    title: Welcome
+    body: 00.0_welcome.md
+    comments:
+      - welcome-2.md
+  - type: updateBranchProtection
+
+# Repo artifacts:
+# 1. Issue: Welcome
+# 2. PR: Add a course title and description
+# 3. PR: Setup the learner's repo
+# 4. PR: Write the course steps
+# 5. Issue: Publish your course
+
+steps:
+
+# 1
+- title: Welcome
+  description: Decide whether to complete a guided course, or use boilerplate as is.
+  event: issues
+  link: '{{ repoUrl }}/issues/1'
+  actions:
+  - type: gate
+    left: '%payload.issue.title%'
+    operator: ===
+    right: Welcome
+  - type: gate
+    left: '%payload.action%'
+    operator: ===
+    right: closed
+    required: false
+    else:
+    - type: gate
+      left: '%payload.action%'
+      operator: ===
+      right: assigned
+    - type: respond
+      with: how-to-publish.md
+      data: 
+        url: '%payload.repository.html_url%/fork'
+    - type: respond
+      with: change-mind.md
   - type: createPullRequest
     title: Add a course title and description
-    body: 00.0_welcome.md
+    body: 01.0_add-title.md
     head: title
-    comments:
-      - 01.0_add-title.md
     action_id: metaPR
   - type: assignRegistrant
     issue: '%actions.metaPR.data.number%'
@@ -26,17 +66,12 @@ before:
       title: My amazing course
       ```
     position: 6
-  - type: updateBranchProtection
+  - type: respond
+    with: goto-first-pr.md
+    data:
+      url: '%actions.metaPR.data.html_url%'
 
-# Repo artifacts:
-# 1. PR: Add a course title and description
-# 2. PR: Setup the learner's repo
-# 3. PR: Write the course steps
-# 4. Issue: Publish your course
-
-steps:
-
-# 1
+# 2
 - title: Give your course a title
   description: Name your course so learners can find it.
   event: pull_request.synchronize
@@ -79,7 +114,7 @@ steps:
       ```
     position: 8
 
-# 2
+# 3
 - title: Add some descriptions to your course
   description: Give your course a description and tagline so learners can identify it.
   link: '{{ repoUrl }}/pull/1'
@@ -99,7 +134,7 @@ steps:
   - type: respond
     with: approve-first-pr.md
 
-# 3
+# 4
 - title: Approve the course metadata
   description: Approve the pull request containing the course's metadata.
   link: '{{ repoUrl }}/pull/1'
@@ -134,7 +169,7 @@ steps:
       ```
     position: 7
 
-# 4
+# 5
 - title: Point to the template repo
   description: Designate a template repository from which to clone.
   link: '{{ repoUrl }}/pull/2'
@@ -165,7 +200,7 @@ steps:
       ```
     position: 6
 
-# 5
+# 6
 - title: Give the learner's repo a name
   description: Designate a name for the repository when it is created for the learner.
   link: '{{ repoUrl }}/pull/2'
@@ -185,7 +220,7 @@ steps:
   - type: respond
     with: approve-second-pr.md
 
-# 6
+# 7
 - title: Approve the repo setup
   description: Approve the template repo information
   link: '{{ repoUrl }}/pull/2'
@@ -244,7 +279,7 @@ steps:
       ```
     position: 9
 
-# 7
+# 8
 - title: Create an issue using Learning Lab
   description: Use the `before` block to create an issue in the learner's repo.
   link: '{{ repoUrl }}/pull/3'
@@ -265,7 +300,7 @@ steps:
     data:
       fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%/responses?filename=responses/welcome-text.md'
 
-# 8
+# 9
 - title: Create your first response
   description: Add content to the repo's first issue.
   link: '{{ repoUrl }}/pull/3'
@@ -319,7 +354,7 @@ steps:
       ```
     position: 20
 
-# 9
+# 10
 - title: Name your first step and give it a description
   description: Identify the first step so the learner knows what's expected.
   link: '{{ repoUrl }}/pull/3'
@@ -350,7 +385,7 @@ steps:
       ```
     position: 21
 
-# 10
+# 11
 - title: Trigger your first step with a GitHub event
   description: Add a pull_request.opened event.
   link: '{{ repoUrl }}/pull/3'
@@ -381,7 +416,7 @@ steps:
       ```
     position: 32
 
-# 11
+# 12
 - title: Validate a learner's PR
   description: Add a gate to determine if the learner took the expected action.
   link: '{{ repoUrl }}/pull/3'
@@ -436,7 +471,7 @@ steps:
       ```
     position: 35
 
-# 12
+# 13
 - title: Use contextual information to validate
   description: Add options to the gate action.
   link: '{{ repoUrl }}/pull/3'
@@ -481,7 +516,7 @@ steps:
       ```
     position: 37
 
-# 13
+# 14
 - title: Respond to a learner's successful PR
   description: Use a respond action when a learner opens their pull request.
   link: '{{ repoUrl }}/pull/3'
@@ -502,7 +537,7 @@ steps:
     data:
       fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%?filename=README.md'
 
-# 14
+# 15
 - title: Add a README to your course
   description: Write a longform description for your course.
   link: '{{ repoUrl }}/pull/3'
@@ -523,7 +558,7 @@ steps:
   - type: respond
     with: 13.0_publish.md
 
-# 15
+# 16
 - title: Approve the steps
   description: Submit an approval for the steps pull request.
   link: '{{ repoUrl }}/pull/3'
@@ -538,6 +573,11 @@ steps:
     title: Publish your course
     body: 14.0_congratulations.md
     action_id: publishIssue
+  - type: respond
+    issue: '%actions.publishIssue.data.number%'
+    with: how-to-publish.md
+    data: 
+      url: '%payload.repository.html_url%/fork'
   - type: respond
     with: goto-publish.md
     data:
