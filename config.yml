@@ -14,55 +14,65 @@ before:
 
 # Repo artifacts:
 # 1. Issue: Welcome
-# 2. Issue: Transfer your course 
-#    -OR- 
 # 2. PR: Add a course title and description
 # 3. PR: Setup the learner's repo
 # 4. PR: Write the course steps
 # 5. Issue: Publish your course
+# Note: if the learner chooses to transfer their course immediately, there will be an issue inserted after PR#2 with those instructions
 
 steps:
 
 # 1
 - title: Welcome
   description: Decide whether to complete a guided course, or use boilerplate as is.
-  event: issues.closed
+  event: issues
   link: '{{ repoUrl }}/issues/1'
   actions:
   - type: gate
-    left: '%payload.issue.assignee%'
+    left: '%payload.issue.title%'
+    operator: ===
+    right: Welcome
+  - type: gate
+    left: '%payload.action%'
+    operator: ===
+    right: closed
+    required: false
     else:
-    - type: createPullRequest
-      title: Add a course title and description
-      body: 01.0_add-title.md
-      head: title
-      action_id: metaPR
-    - type: assignRegistrant
-      issue: '%actions.metaPR.data.number%'
-    - type: octokit
-      method: pullRequests.createComment
-      owner: '%actions.metaPR.data.head.repo.owner.login%'
-      repo: '%actions.metaPR.data.head.repo.name%'
-      number: '%actions.metaPR.data.number%'
-      commit_id: '%actions.metaPR.data.head.sha%'
-      path: config.yml
-      body: |
-        ```suggestion
-        title: My amazing course
-        ```
-      position: 6
+    - type: gate
+      left: '%payload.action%'
+      operator: ===
+      right: assigned
+    - type: createIssue
+      title: Transfer your course
+      body: how-to-publish.md
+      action_id: transferIssue
     - type: respond
-      with: goto-first-pr.md
+      with: goto-transfer.md
       data:
-        url: '%actions.metaPR.data.html_url%'
-  - type: createIssue
-    title: Transfer your course
-    body: how-to-publish.md
-    action_id: transferIssue
+        url: '%actions.transferIssue.data.html_url%'
+  - type: createPullRequest
+    title: Add a course title and description
+    body: 01.0_add-title.md
+    head: title
+    action_id: metaPR
+  - type: assignRegistrant
+    issue: '%actions.metaPR.data.number%'
+  - type: octokit
+    method: pullRequests.createComment
+    owner: '%actions.metaPR.data.head.repo.owner.login%'
+    repo: '%actions.metaPR.data.head.repo.name%'
+    number: '%actions.metaPR.data.number%'
+    commit_id: '%actions.metaPR.data.head.sha%'
+    path: config.yml
+    body: |
+      ```suggestion
+      title: My amazing course
+      ```
+    position: 6
   - type: respond
-    with: goto-transfer.md
+    with: goto-first-pr.md
     data:
-      url: '%actions.transferIssue.data.html_url%'
+      url: '%actions.metaPR.data.html_url%'
 
 # 2
 - title: Give your course a title
