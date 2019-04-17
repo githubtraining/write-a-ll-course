@@ -5,7 +5,7 @@ Since Learning Lab courses must be owned by your organization, you'll need to [f
 1. Confirm that you are an owner of the chosen Learning Lab course organization, or a member of a team named **lab-assistants** in that organization.
 1. [Fork this repository]({{ url }}) to your chosen organization.
 1. [Fork the template repository](https://github.com/githubtraining/lab-starter-template/fork) to your chosen organization.
-1. Navigate to `https://lab-sandbox.github.com/YOUR-ORGANIZATION/new`
+1. Navigate to `https://lab.github.com/YOUR-ORGANIZATION/new`
 1. In the Repository name field, type in **{{ repo }}**
 1. We recommend selecting **Private** so you can test the course with other members of the organization before making it public.
-1. Take the course, which should be available at https://lab-sandbox.github.com/YOUR-ORGANIZATION/{{ repo }}
+1. Take the course, which should be available at https://lab.github.com/YOUR-ORGANIZATION/{{ repo }}
