@@ -7,7 +7,3 @@ Register for this course to get the starter files needed to build your Learning 
 - create course steps
 - create responses
 - publish a course to GitHub Learning Lab
-
-> Note: Creating courses on Learning Lab is currently available in public beta. If you're not a member of the public beta, you will be unable to publish your course.
->
-> Features and requirements may change at any time during this period. You can request to join the public beta by [contacting us](https://lab.github.com/organizations#form).
