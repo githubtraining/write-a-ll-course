@@ -1,6 +1,6 @@
 ### Documentation 
 
-:book: The official [Learning Lab docs](https://lab.github.com/docs/) contain full instructions on how to create courses. We'll link to the docs throughout the course. Take a look if you'd like more information about steps we take in this course.
+:book: The official [Learning Lab docs](https://lab.github.com/docs/writing-quickstart) contain full instructions on how to create courses. We'll link to the docs throughout the course. Take a look if you'd like more information about steps we take in this course.
 
 ### New to GitHub?
 
