@@ -414,7 +414,7 @@ steps:
       ```suggestion
         - type: gate
       ```
-    position: 32
+    position: 27
 
 # 12
 - title: Validate a learner's PR
@@ -445,7 +445,7 @@ steps:
       ```suggestion
           left: '\%payload.pull_request.title\%'
       ```
-    position: 33
+    position: 28
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -457,7 +457,7 @@ steps:
       ```suggestion
           operator: ===
       ```
-    position: 34
+    position: 29
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -469,7 +469,7 @@ steps:
       ```suggestion
           right: Add name to README
       ```
-    position: 35
+    position: 30
 
 # 13
 - title: Use contextual information to validate
@@ -502,7 +502,7 @@ steps:
       ```suggestion
         - type: respond
       ```
-    position: 36
+    position: 31
   - type: octokit
     method: pullRequests.createComment
     owner: '%payload.repository.owner.login%'
@@ -514,7 +514,7 @@ steps:
       ```suggestion
           with: pr-opened.md
       ```
-    position: 37
+    position: 32
 
 # 14
 - title: Respond to a learner's successful PR
