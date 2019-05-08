@@ -1,1 +1,1 @@
-Let's go to the [first PR]({{ url }}) which I've opened for you. 
+Let's go to the [first pull request]({{ url }}) which I've opened for you. 

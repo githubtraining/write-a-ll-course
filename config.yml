@@ -98,7 +98,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-      tagline: Learn how to open a PR
+      tagline: Learn how to open a pull request
       ```
     position: 7
   - type: octokit
@@ -110,7 +110,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-      description: Go from 0 to PR 1 in less than 10 minutes with this course.
+      description: Go from 0 to pull request 1 in less than 10 minutes with this course.
       ```
     position: 8
 
@@ -338,7 +338,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-      - title: Create a new PR
+      - title: Create a new pull request
       ```
     position: 19
   - type: octokit
@@ -350,7 +350,7 @@ steps:
     path: config.yml
     body: |
       ```suggestion
-        description: Add your name to the README.md file in your new PR
+        description: Add your name to the README.md file in your new pull request
       ```
     position: 20
 
@@ -417,7 +417,7 @@ steps:
     position: 32
 
 # 12
-- title: Validate a learner's PR
+- title: Validate a learner's pull request
   description: Add a gate to determine if the learner took the expected action.
   link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
@@ -517,7 +517,7 @@ steps:
     position: 37
 
 # 14
-- title: Respond to a learner's successful PR
+- title: Respond to a learner's successful pull request
   description: Use a respond action when a learner opens their pull request.
   link: '{{ repoUrl }}/pull/3'
   event: pull_request.synchronize
