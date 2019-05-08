@@ -3,12 +3,11 @@
 ⚠️ | This course uses features not yet supported by GHES.
 --- | ---
 
-This course makes use of [suggested changes](https://github.blog/changelog/2018-10-16-suggested-changes/), a feature that is currently in beta for GitHub.com but not available on GHES. Courses will still work, but suggested changes will appear as pull request comments with the syntax:
-<code>
-```suggestion
-A suggestion
-```
-</code>
+This course makes use of [suggested changes](https://github.blog/changelog/2018-10-16-suggested-changes/), a feature that is currently in beta for GitHub.com but not available on GHES. **The course will still work**, but suggested changes will appear as pull request comments with the syntax:
+
+    ```suggestion
+      A suggestion
+    ```
 
 ### Course dependencies
 
