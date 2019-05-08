@@ -1,1 +1,0 @@
-Let's take a look at some [instructions for transferring this repo]({{ url }}).
