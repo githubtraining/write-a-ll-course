@@ -1,11 +1,25 @@
-Learning Lab helps people build real world skills through hands-on activities. This course streamlines the course building process, and gives you all the tools you need to help others learn. 
+<p align="center"><a href="https://lab.github.com/"><img alt="Learning Lab bot" src="https://user-images.githubusercontent.com/16547949/62085817-83232580-b22a-11e9-8693-7c54205b04e5.png"></a></p>
 
-Register for this course to get the starter files needed to build your Learning Lab course, or complete the course steps for a fully guided experience. If you choose to complete the course, you'll be able to:
+<h1 align="center">Course: Write a Learning Lab course </h1>
 
-- Identify the structure of a Learning Lab course
-- Define a title and description for your course
-- Define a template repository
-- Create course steps
-- Create responses
-- Publish a course to GitHub Learning Lab
+This repository powers the Learning Lab course [_Write a Learning Lab course_](https://lab.github.com/githubtraining/write-a-learning-lab-course). 
 
+Every Learning Lab course is made up of:
+- a [course repository](https://github.com/githubtraining/write-a-ll-course), and
+- a [template repository](https://github.com/githubtraining/write-a-ll-course-template)
+
+The course repository is written in YAML and Markdown. The template repository could be written in any language that supports the learning objectives.
+
+For more information on the goals of this course, check out the [`course-details.md`](course-details.md). 
+
+## Contribute
+
+See something we could improve? Check out the contributing guide in the [community contributors repository](https://github.com/githubtraining/community-contributors/blob/master/CONTRIBUTING.md) for more information on the types of contributions we :heart: and instructions.
+
+We :heart: our community and take great care to ensure it is fun, safe and rewarding. Please review our [Code of Conduct](https://github.com/githubtraining/community-contributors/blob/master/CODE_OF_CONDUCT.md) for community expectations and guidelines for reporting concerns.
+
+## License
+
+All Learning Lab course repositories are licensed under [CC-BY-4.0](../LICENSE) (c) 2019 GitHub, Inc. The template repositories associated with each course may have different licenses.
+
+When using the GitHub logos, be sure to follow the [GitHub logo guidelines](https://github.com/logos)
