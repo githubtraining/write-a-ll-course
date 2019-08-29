@@ -3,7 +3,7 @@
 ✅ | This course is fully compatible GHES version 2.17.4 or higher.
 --- | ---
 
-*Supported versions of GHES are visible by using the drop-down in the [official documentation](https://help.github.com/enterprise/).
+*Supported versions of GHES are visible by using the drop-down in the [official documentation](https://help.github.com/enterprise/).*
 
 ### Course dependencies
 
