@@ -3,26 +3,42 @@ tagline: Learn how to author your own Learning Lab course.
 description: Use Learning Lab's strengths for fast feedback to author your own course.
 template:
   name: lab-starter
-  repo: write-a-ll-course-template
+  repo: write-a-ll-course-template-2.0
 before:
+  - type: createLabel
+    name: help
+    color: ff0000
+  - type: createLabel
+    name: example 1
+    color: 4b0082
+  - type: createLabel
+    name: example 2
+    color: 0000cd
+  - type: createLabel
+    name: example 3
+    color: 40e0d0
+  - type: createLabel
+    name: example 4
+    color: e9967a
 
 # Template: 
-  # commented config, README, course-details, /responses. 
-  # Has labels "help", plus labels corresponding to answers in step 7.
-  # Branch `course-planning` for step 1: adding `course-planning.md` file, with a few ideas. User told not to edit the first two.
-  # Branch `template` for step 4, with comments added to the place where the template repository goes
-  # Branch `map-events` for step 5, with learning objective for 1 mapped out, and 2 is ready to go with comments 
-  # Branch `first-response` for step 8. After step 7 it gets merged into `map-events`. It has an empty response file for the first step.
-  # Branch `first-feedback` for step 11. After step 10 it gets merged into `map-events`. It has two empty response files.
+  # [x] Template: commented config, README, course-details.
+  # [x] Has labels "help", plus labels corresponding to answers in step 7.
+  # [x] Branch `course-planning` for step 1: adding `course-planning.md` file, with a few ideas. User told not to edit the first two.
+  # [x] Branch `template` for step 4, with comments added to the place where the template repository goes
+  # [x] Branch `map-events` for step 5, with learning objective for 1 mapped out, and 2 is ready to go with comments 
+  # [x] Branch `first-response` for step 8. After step 7 it gets merged into `map-events`. It has an empty response file for the first step.
+  # [x] Branch `first-feedback` for step 11. After step 10 it gets merged into `map-events`. It has two empty response files.
 
 # Can we check to see if the user imports a course in Learning Lab? :tada:
 # Q: Can users take draft courses?
+# I need to make a step for the user to transition their events and steps to the config.
 
 # Step 1: Decide what to teach - what's the right step? 
   # README.md or course-details
   # We have suggestions but they can also write their own. Our suggestions are ideas, not solutions. Ex: Introduction to GitHub, Introduction to Markdown
 
-  # 1.1
+  # 1.1: 01_welcome.md
     # (This is a pull request) Welcome! Prereqs are: this. If you'd like to teach something on Learning Lab, you probably already have something in mind. For this course, you can actually start writing that idea and making it reality! If you're just curious about how to write a course and would rather use our idea, here are a few: like that. The first thing we're going to do is talk about and choose a topic. 
     # Here are some things to think about: Does it happen on GitHub anyway? Learning Lab is best when it's working with something that it can interact with naturally. Things like painting would be difficult! But things that are committed, or interacted with on GitHub, are the perfect fit.
     # What's the scope or size? For example, JavaScript makes a lot of sense to teach on Learning Lab because code happens on GitHub. But, it's a really big topic. It may be a good idea to segment your topic into smaller parts, that can be their own Labs, and then users can take a series of Labs. If you aren't sure what the right size is, that's OK - that should become more clear as we go on.
