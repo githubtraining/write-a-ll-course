@@ -1,5 +1,13 @@
-Great! The title will appear anywhere the course is referenced. We'll fill in some more of the course metadata later. First, let's get into its foundation.
+Nice job merging! 
 
+    # One of the things that makes Learning Lab special is the ability to learn a skill _in context_. As you think about what you want to teach, it's critical to think about the context that you want to teach your topic in.
+    # If you're teaching JavaScript, an app makes sense. If you're teaching Markdown, maybe you don't need a project at all! With CSS, you could use a project relating to design.
+    # Think of a project that is "real" and practical with the skill you're teaching, without introducing too many additional and possibly confusing concepts. 
+    # This will become the template repository - the codebase that's created as a repository for the learner, which they can (and probably will, depending on your choices) interact with throughout the course.
+    # The template will need to be under _the same account as the one who owns this course_, so make sure you do that now.
+    # Select a template repository - or use ours - based on the things above. Here's how it needs to be stored. Edit the config to link to that template repository.
+
+```
 ### Template Repositories
 Most courses make use of a [:book: template repository](https://lab.github.com/docs/course-ownership-and-repositories#the-repositories). Template repositories are cloned for the learner and can contain starter code or resources to help them find their way.
 
@@ -17,5 +25,6 @@ Let's add our own template repository. To speed things up, we've created a templ
 1. Replace the commented `repo:` under `template:` in the `config.yml` file with a title of your template repository.
     - Note: You can do this by editing the file, or accepting my suggested change
 
-<hr>
+```
+
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

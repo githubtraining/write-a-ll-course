@@ -1,0 +1,9 @@
+  # 12.1
+    # To put this response in the config, it will be very similar to phase 1. But, _where_ the action goes is different. 
+    # We need to be careful of the gate here. If the gate fails, we can have special logic for the "unhappy path" response, like:
+    # The "happy path" response will be a regular response triggered if the gate is successful, like: 
+    # Go ahead and edit the config to add the unhappy path _and_ the happy path response.
+    # Are you noticing that we're asking a bit more of you now? Since you've already added a response before, we're now asking you to do two at a time. This is on purpose - it's important to balance how much you're asking learners to do. It's bad to bore them, but it's also really bad to overwhelm them. Every learner is different, so try to pick a "middle of the road" solution. This is ours. What do you think?
+  
+
+<h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

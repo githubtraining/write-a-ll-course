@@ -1,0 +1,3 @@
+    # Nice work. As a robot, this kind of thing is really hard for me to check. If you'd like to get some feedback on your steps before continuing with the course, here's how: here. Once you're ready, merge this pull request to move on to the next step.
+
+Next, we'll merge this pull request. You can go ahead and take your time breaking these stpes down - as many commits as you want. Once you're ready, merge this pull request.
