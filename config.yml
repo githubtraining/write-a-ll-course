@@ -43,11 +43,11 @@ before:
     title: Choose a topic for your course
     body: 01_welcome.md
     head: course-planning
-steps:
 
+steps:
   - title: Choose a topic for your course
     description: Choose what you'd like to teach through Learning Lab, or borrow one of our suggestions for practice.
-    event: issue.comment
+    event: issue_comment.created
     link: '{{ repoUrl }}/pull/1'
     actions:
     # Step 2: Break course into smaller, targeted learning objectives
@@ -65,9 +65,16 @@ steps:
 
   - title: Merge your learning objectives
     description: Merge the pull request breaking down your course topic into smaller learning objectives.
-    event: pull_request.close
+    event: pull_request.closed
     link: '{{ repoUrl }}/pull/1'
     actions:
+    - type: gate
+      every: true
+      gates:
+      - left: '%payload.action%'
+        operator: ===
+        right: closed
+      - left: '%payload.pull_request.merged%'
     - type: respond
       with: 03_nice-work.md
     # Step 4: Choose a template project
@@ -84,7 +91,7 @@ steps:
     - type: gate # we validate that the repository exists
     - type: respond
       with: 04_good-template.md
-    - type: merge 
+    - type: mergeBranch
       head: template
   # Step 5: Mapping learning objectives to events and how to choose events that align with the learning objective
     - type: createPullRequest
@@ -107,17 +114,17 @@ steps:
     event: pull_request.synchronize
     link: '{{ repoUrl }}/pull/3'
     actions:
-    - type: gate # we validate that there are actually events
+    # - type: gate  we validate that there are actually events
     # Step 7: 3 phases of a step
     - type: respond
       with: 07_3-phases.md
 
   - title: Choose the example that shows the three phases
     description: Apply a label that corresponds to the example showing the three phases of a step.
-    event: # label
+    event: pull_request.labeled
     link: '{{ repoUrl }}/pull/3'
     actions:
-    - type: gate # check that the correct label was applied
+    #- type: gate check that the correct label was applied
       # else: If user needs help, longer explanation of each example, plus instructions/video of how to add labels
     # Step 8: Pick 1 learning objective and write the phase 1 response
     - type: respond
@@ -138,7 +145,7 @@ steps:
     event: pull_request.synchronize
     link: '{{ repoUrl }}/pull/3'
     actions:
-    - type: gate # We validate that the proper text is added, with an action response pointing to the right file in the right line of the config.
+    # - type: gate We validate that the proper text is added, with an action response pointing to the right file in the right line of the config.
     # Step 10: Phase 2 - checking if the user did it, intro to Gate
     - type: respond
       with: 10_gate.md
@@ -148,11 +155,11 @@ steps:
     event: pull_request.synchronize
     link: '{{ repoUrl }}/pull/3'
     actions: 
-    - type: gate # We validate it's actually a gate
+    # - type: gate We validate it's actually a gate
     # Step 11: Phase 3 - feedback, create the response
     - type: respond
       with: 11_feedback.md
-    - type: merge
+    - type: mergeBranch
       base: map-events
       head: first-feedback
 
@@ -161,7 +168,7 @@ steps:
     event: pull_request.synchronize
     link: '{{ repoUrl }}/pull/3'
     actions: 
-    - type: gate # we validate that the correct file was changed, with enough words
+    # - type: gate we validate that the correct file was changed, with enough words
     # Step 12: Code the response action for phase 3 into the config
     - type: respond
       with: 12_phase-3-config.md
@@ -171,7 +178,7 @@ steps:
     event: pull_request.synchronize
     link: '{{ repoUrl }}/pull/3'
     actions:
-    - type: gate # we check that they have both responses
+    # - type: gate we check that they have both responses
     # Step 13: Config metadata (title, etc)
     - type: respond
       with: 13_metadata.md
@@ -181,11 +188,11 @@ steps:
     event: pull_request.synchronize
     link: '{{ repoUrl }}/pull/3'
     actions:
-    - type: gate     # We validate they committed valid metadata
+    # - type: gate  We validate they committed valid metadata
     # Step 14: Import the course as a draft
     - type: respond
       with: 13_nice-job.md
-    - type: merge
+    - type: mergeBranch
       head: map-events
     - type: createIssue
       title: Import the course
@@ -193,7 +200,7 @@ steps:
 
   - title: Import the course
     description: Import this repository as a course on GitHub Learning Lab.
-    event: # ???
+    event: issue_comment.created # should be import ???
     link: '{{ repoUrl }}/issues/4'
     actions:
     # Step 15: Try to take your own course 
