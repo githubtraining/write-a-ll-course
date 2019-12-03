@@ -39,7 +39,6 @@ before:
   # README.md or course-details
   # We have suggestions but they can also write their own. Our suggestions are ideas, not solutions. Ex: Introduction to GitHub, Introduction to Markdown
 
-before:
   - type: createPullRequest
     title: Choose a topic for your course
     body: 01_welcome.md
