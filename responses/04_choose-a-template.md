@@ -22,7 +22,7 @@ Second, is the finished product useful? At the end of the course, the finished r
 
 Select a template repository - or use ours - based on the things above. Here's how it needs to be stored. Edit the config to link to that template repository.
 
-### :keyboard: Activity: Edit the config file to reference your chosen template repository.
+### :keyboard: Activity: Edit the config file to reference your chosen template repository
 
 1. Create the repository under the same account that will own the course
   - It doesn't have to be complete, but it should have at least one commit

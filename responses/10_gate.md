@@ -46,8 +46,9 @@ actions:
   operator: ===                         # check for strict equality, see more at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Identity
   right: Add name to README             # this is the expected value
 ```
+## Step 10: Write a gate
 
-### :keyboard: Activity: Adding validation
+### :keyboard: Activity: Write a gate to check the user's first step
 
 1. Add a `left:` option to the gate
 1. Set the gate's `left:` option to the pull request's title which is `'%payload.pull_request.title%'`

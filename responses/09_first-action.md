@@ -10,4 +10,8 @@
     # You've got the response file, and now it's time to edit the `config` file with the proper action: respond. Here are some examples:
     # Do that now.
 
+## Step 9: Write the first Learning Lab action
+
+### :keyboard: Activity: Write the first Learning Lab action for a response into your course's configuration file
+
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

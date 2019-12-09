@@ -6,6 +6,6 @@ If you'd like to get some feedback on your steps before continuing with the cour
 
 Next, we'll merge this pull request. You can go ahead and take your time breaking these steps down - as many commits as you want.
 
-### :keyboard: Activity: Merge the pull request breaking down your course topic into smaller learning objectives.
+### :keyboard: Activity: Merge the pull request breaking down your course topic into smaller learning objectives
 
 1. Once you're ready, merge this pull request

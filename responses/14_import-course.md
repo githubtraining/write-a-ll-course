@@ -32,3 +32,7 @@ When you're ready to [publish your course](https://lab.github.com/docs/publishin
 ```
 
 For now, before the right event exists, just comment.
+
+## Step 14: Import the course
+
+### :keyboard: Activity: Import this repository as a course on GitHub Learning Lab

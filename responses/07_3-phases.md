@@ -16,3 +16,7 @@
     # This is the process that we are going to use for each of the learning objectives you've written. 
     # Before we start writing some for this course, let's practice identifying this three phase process. I've written four examples below - some of which are examples of this three phase process, and some of which _aren't_. For each example, there is a label. For each example that _is_ a good example of the three phases, add the corresponding issue label to this pull request. Once all of them match what I expect, I'll give you the next instructions.
     # If you get stuck, add the issue label "help" and I'll give you some more detail. (include instructions for how to add labels)
+
+## Step 7: Choose the example that shows the three phases
+
+### :keyboard: Activity: Apply a label that corresponds to the example showing the three phases of a step

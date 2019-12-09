@@ -21,7 +21,7 @@ Imagine you're taking a course on SQL as a beginner. If one of the steps is to w
 
 In the file in this pull request, write the steps as observable behaviors. It's OK if there are a lot - it's better to break it down into the right size of steps, then realize the scope of the course is wrong, than to have HUGE steps.
 
-### :keyboard: Activity: Break down what you'd like to teach into smaller learning objectives.
+### :keyboard: Activity: Break down what you'd like to teach into smaller learning objectives
 
 1. [Edit the `course-planning.md` document]({{ url }}) to add your goal, and break it down into smaller steps
 2. Commit your changes

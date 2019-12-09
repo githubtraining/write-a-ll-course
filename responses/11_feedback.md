@@ -10,6 +10,8 @@
     # Fill in those response files now with:
 
 
+## Step 11: Write feedback for the learner
 
+### :keyboard: Activity: Write feedback into the feedback response for the learner to let them know they've done it right
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

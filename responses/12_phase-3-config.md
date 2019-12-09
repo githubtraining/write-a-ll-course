@@ -4,6 +4,9 @@
     # The "happy path" response will be a regular response triggered if the gate is successful, like: 
     # Go ahead and edit the config to add the unhappy path _and_ the happy path response.
     # Are you noticing that we're asking a bit more of you now? Since you've already added a response before, we're now asking you to do two at a time. This is on purpose - it's important to balance how much you're asking learners to do. It's bad to bore them, but it's also really bad to overwhelm them. Every learner is different, so try to pick a "middle of the road" solution. This is ours. What do you think?
-  
+
+## Step 12: Write the config logic
+
+### :keyboard: Activity: Write the config logic for both responses to the learner in their first step
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

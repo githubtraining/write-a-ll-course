@@ -32,10 +32,10 @@ Here are some things to think about: Does it happen on GitHub anyway? Learning L
 
 What's the scope or size? For example, JavaScript makes a lot of sense to teach on Learning Lab because code happens on GitHub. But, it's a really big topic. It may be a good idea to segment your topic into smaller parts, that can be their own Labs, and then users can take a series of Labs. If you aren't sure what the right size is, that's OK - that should become more clear as we go on.
 
-## Step 1: Choose a topic
+## Step 1: Choose a topic for your course
 
 Whether you choose your own topic or one of ours, we'll stick with the same one throughout this course, so it's good go choose one now.
 
-### :keyboard: Activity: Declare your topic
+### :keyboard: Activity: Choose what you'd like to teach through Learning Lab, or borrow one of our suggestions for practice
 
-1. Please comment below with the subject that you'd like to teach in your Learning Lab course.
+1. Please comment below with the subject that you'd like to teach in your Learning Lab course

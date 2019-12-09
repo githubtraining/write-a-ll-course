@@ -4,5 +4,8 @@
     # Edit the config file (lines x, y, and z) so the comments are gone, and your information is there! If you want help, here are a few examples:
     # Make sure the name is different than the name of this repository, or else you'll have some trouble taking the course yourself.
 
+## Step 13: Create course metadata
+
+### :keyboard: Activity: Add the course metadata like title and description to the configuration file
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>
