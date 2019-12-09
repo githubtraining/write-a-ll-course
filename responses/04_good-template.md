@@ -1,1 +1,1 @@
-Nice template. I'm going to merge this for you. You can find your next stuff here:
+Nice template. I'm going to merge this for you. You can find your next steps in [your next pull request]({{ repoUrl }}/pull/3).
