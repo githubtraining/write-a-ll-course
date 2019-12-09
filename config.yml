@@ -88,7 +88,7 @@ steps:
     event: pull_request.synchronize
     link: '{{ repoUrl }}/pull/2'
     actions:
-    - type: gate # we validate that the repository exists
+  # - type: gate # we validate that the repository exists
     - type: respond
       with: 04_good-template.md
     - type: mergeBranch
