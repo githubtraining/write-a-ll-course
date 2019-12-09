@@ -18,12 +18,11 @@ Try to choose events that correspond directly to what you want the learner to do
 
 ## Step 5: Map learning objectives to events
 
-Remember the steps you wrote earlier? Before we dive into those, let's practice on one together. Here's where you find them all. Just do the first one, which I've already defined for you.
+Remember the steps you wrote earlier? Let's find the corresponding events. You'll see some are already done for the examples, but you can focus on your own.
 
 ### :keyboard: Activity: Map the learning objectives you wrote to specific events from GitHub webhooks
 
 1. Take a look through [GitHub's documentation for event triggers](https://developer.github.com/v3/activity/events/types/)
-2. Choose an event to correspond to...
-3. Edit the `config.yml` file on line `X` to match the correct event.
+2. Edit the `config.yml` file and make note of the event trigger that matches your first objective
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

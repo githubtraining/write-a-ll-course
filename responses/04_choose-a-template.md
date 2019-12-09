@@ -25,8 +25,8 @@ Select a template repository - or use ours - based on the things above. Here's h
 ### :keyboard: Activity: Edit the config file to reference your chosen template repository
 
 1. Create the repository under the same account that will own the course
-  - It doesn't have to be complete, but it should have at least one commit
-2. Replace the commented `repo:` under `template:` in the `config.yml` file with a title of your template repository.
+    - It doesn't have to be complete, but it should have at least one commit
+2. [Edit this file]({{ url }}) to replace the commented `repo:` under `template:` in the `config.yml` file with a title of your template repository.
     - Note: You can do this by editing the file, or accepting my suggested change
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>
