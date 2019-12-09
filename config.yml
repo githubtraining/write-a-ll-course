@@ -96,12 +96,17 @@ steps:
       with: 04_good-template.md
     - type: mergeBranch
       head: template
+    - type: mergeBranch
+      head: master
+      base: map-events
   # Step 5: Mapping learning objectives to events and how to choose events that align with the learning objective
     - type: createPullRequest
       title: Map learning objectives to events
       body: 05_map-events.md
       head: map-events
-    
+      data:
+        url: '%payload.repository.ytml_url%/edit/course-planning/course-planning.md?pr=/%payload.repository.full_name%/pull%2F3'
+
   - title: Map learning objectives to events
     description: Map the learning objectives you wrote to specific events from GitHub webhooks.
     event: pull_request.synchronize

@@ -23,6 +23,6 @@ Remember the steps you wrote earlier? Let's find the corresponding events. You'l
 ### :keyboard: Activity: Map the learning objectives you wrote to specific events from GitHub webhooks
 
 1. Take a look through [GitHub's documentation for event triggers](https://developer.github.com/v3/activity/events/types/)
-2. Edit the `config.yml` file and make note of the event trigger that matches your first objective
+2. [Edit the `config.yml` file]({{ url }}) and make note of the event trigger that matches your first objective
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>
