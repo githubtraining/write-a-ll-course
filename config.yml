@@ -112,7 +112,7 @@ steps:
     event: pull_request.synchronize
     link: '{{ repoUrl }}/pull/3'
     actions:
-    - type: gate #  we check if they have events or things that aren't events where events should be
+   # - type: gate #  we check if they have events or things that aren't events where events should be
     # Step 6: Rough outline of learning objectives as events
     - type: respond
       with: 06_create-outline.md
