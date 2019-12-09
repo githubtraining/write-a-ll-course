@@ -208,7 +208,7 @@ steps:
       with: 15_try-it.md
 
   - title: Close the issue
-    description: To signal that you've tested your course, close this issue
+    description: To signal that you've tested your course, close this issue.
     event: issues.closed
     link: '{{ repoUrl }}/issues/4'
     actions:
