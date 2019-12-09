@@ -105,7 +105,7 @@ steps:
       body: 05_map-events.md
       head: map-events
       data:
-        url: '%payload.repository.html_url%/edit/course-planning/course-planning.md?'
+        url: '%payload.repository.html_url%/edit/map-events/course-planning.md?'
 
   - title: Map learning objectives to events
     description: Map the learning objectives you wrote to specific events from GitHub webhooks.
