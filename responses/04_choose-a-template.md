@@ -7,6 +7,10 @@ Nice job merging!
     # The template will need to be under _the same account as the one who owns this course_, so make sure you do that now.
     # Select a template repository - or use ours - based on the things above. Here's how it needs to be stored. Edit the config to link to that template repository.
 
+### Examples
+
+- Links to examples, source and published pages sites
+
 ```
 ### Template Repositories
 Most courses make use of a [:book: template repository](https://lab.github.com/docs/course-ownership-and-repositories#the-repositories). Template repositories are cloned for the learner and can contain starter code or resources to help them find their way.
@@ -22,6 +26,8 @@ Let's add our own template repository. To speed things up, we've created a templ
 
 ### :keyboard: Activity: Add a template repository
 
+1. Create the repository under the same account that will own the course
+  - It doesn't have to be complete, but it should have at least one commit
 1. Replace the commented `repo:` under `template:` in the `config.yml` file with a title of your template repository.
     - Note: You can do this by editing the file, or accepting my suggested change
 
