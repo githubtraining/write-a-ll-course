@@ -54,7 +54,7 @@ steps:
     - type: respond
       with: 02_break-it-down.md
       data:
-        url: '%payload.repository.ytml_url%//edit/course-planning/course-planning.md?pr=/%payload.repository.full_name%/pull%2F1'
+        url: '%payload.repository.ytml_url%/edit/course-planning/course-planning.md?pr=/%payload.repository.full_name%/pull%2F1'
   - title: Break your course into smaller steps
     description: Break down what you'd like to teach into smaller learning objectives.
     event: pull_request.synchronize
@@ -83,6 +83,8 @@ steps:
       title: Choose a template project
       body: 04_choose-a-template.md
       head: template
+      data:
+        url: '%payload.repository.ytml_url%/edit/template/config.yml?pr=/%payload.repository.full_name%/pull%/2'
 
   - title: Reference the template
     description: Edit the config file to reference your chosen template repository.
