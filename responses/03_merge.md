@@ -1,3 +1,11 @@
-    # Nice work. As a robot, this kind of thing is really hard for me to check. If you'd like to get some feedback on your steps before continuing with the course, here's how: here. Once you're ready, merge this pull request to move on to the next step.
+Nice work. As a robot, some things are really hard for me to check. This is one of them!
 
-Next, we'll merge this pull request. You can go ahead and take your time breaking these stpes down - as many commits as you want. Once you're ready, merge this pull request.
+If you'd like to get some feedback on your steps before continuing with the course, reach out in the [GitHub Community]({{ communityBoard }}). Once you're ready, merge this pull request to move on to the next step.
+
+## Step 3: Merge your learning objectives
+
+Next, we'll merge this pull request. You can go ahead and take your time breaking these steps down - as many commits as you want.
+
+### :keyboard: Activity: Merge the pull request breaking down your course topic into smaller learning objectives.
+
+1. Once you're ready, merge this pull request

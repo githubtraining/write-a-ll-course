@@ -1,1 +1,1 @@
-Nice job merging! Find your next stuff here:
+Nice job merging! You can find your next steps in [your next pull request]({{ repoUrl }}/pull/2).
