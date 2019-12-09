@@ -53,6 +53,8 @@ steps:
     # Step 2: Break course into smaller, targeted learning objectives
     - type: respond
       with: 02_break-it-down.md
+      data:
+        url: '%payload.repository.html_url%/edit/%payload.pull_request.head.ref%/course-planning.md?pr=/%payload.repository.full_name%/pull/%payload.number%'
 
   - title: Break your course into smaller steps
     description: Break down what you'd like to teach into smaller learning objectives.
