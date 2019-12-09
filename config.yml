@@ -54,7 +54,7 @@ steps:
     - type: respond
       with: 02_break-it-down.md
       data:
-        url: '%payload.repository.ytml_url%/edit/course-planning/course-planning.md?pr=/%payload.repository.full_name%/pull%2F1'
+        url: '%payload.repository.html_url%/edit/course-planning/course-planning.md?'
   - title: Break your course into smaller steps
     description: Break down what you'd like to teach into smaller learning objectives.
     event: pull_request.synchronize
@@ -84,7 +84,7 @@ steps:
       body: 04_choose-a-template.md
       head: template
       data:
-        url: '%payload.repository.ytml_url%/edit/template/config.yml?pr=/%payload.repository.full_name%/pull%/2'
+        url: '%payload.repository.html_url%/edit/template/config.yml?'
 
   - title: Reference the template
     description: Edit the config file to reference your chosen template repository.
@@ -105,7 +105,7 @@ steps:
       body: 05_map-events.md
       head: map-events
       data:
-        url: '%payload.repository.ytml_url%/edit/course-planning/course-planning.md?pr=/%payload.repository.full_name%/pull%2F3'
+        url: '%payload.repository.html_url%/edit/course-planning/course-planning.md?'
 
   - title: Map learning objectives to events
     description: Map the learning objectives you wrote to specific events from GitHub webhooks.
