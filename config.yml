@@ -142,6 +142,9 @@ steps:
       with: 08_first-response.md
       data:
         url: '%payload.repository.html_url%/edit/branch/file.md?'
+    - type: mergeBranch
+      base: map-events
+      head: first-response
 
   - title: Create the first response
     description: Write the first response, phase 1, for the first step of your course.
