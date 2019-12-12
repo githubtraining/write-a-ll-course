@@ -4,7 +4,7 @@ If you'd like to get some feedback on your steps before continuing with the cour
 
 ## Step 3: Merge your learning objectives
 
-Next, we'll merge this pull request. You can go ahead and take your time breaking these steps down - as many commits as you want.
+Next, we'll merge this pull request. You can go ahead and take your time breaking these steps down. Use as many commits as you want.
 
 ### :keyboard: Activity: Merge the pull request breaking down your course topic into smaller learning objectives
 
