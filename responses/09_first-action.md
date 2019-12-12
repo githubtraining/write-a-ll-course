@@ -30,6 +30,6 @@ You've got the response file, and now it's time to edit the `config` file with t
 
 ### :keyboard: Activity: Write the first Learning Lab action for a response into your course's configuration file
 
-1. Edit the file in this pull request to add a respond type, referencing the file that you created for the response
+1. Edit the file in this pull request to add a respond type, referencing the file that you created for the response.
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

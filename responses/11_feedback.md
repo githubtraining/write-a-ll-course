@@ -12,5 +12,5 @@ There are two response files in this pull request that I just added - one for th
 
 1. Edit the files in this pull request with feedback about the success of their behavior.
 1. Because you are editing multiple files, it will be difficult for me to see that you have modified them both. To let me  know you're done, comment in this pull request.
-2. 
+
 <h3 align="center">I'll respond below when you let me know you're ready by commenting in this pull request.</h3>

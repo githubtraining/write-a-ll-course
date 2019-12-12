@@ -13,7 +13,7 @@ To break down the thing you want to teach, think about the observable behaviors.
 
 ### What NOT to do
 
-It is _not_ a good idea to have huge or ambiguous steps. 
+It is _not_ a good idea to have huge or ambiguous steps.
 
 Put yourself in the shoes of a beginner. If you're asked to do something too big that you don't understand, it can be frustrating. Asking the learner to do something poorly defined creates confusion and misunderstandings. This can make the learner give up!
 
@@ -25,8 +25,8 @@ In the file in this pull request, write the steps as observable behaviors. It's 
 
 ### :keyboard: Activity: Break down what you'd like to teach into smaller learning objectives
 
-1. [Edit the `course-planning.md` document]({{ url }}) to add your goal, and break it down into smaller steps
-2. Commit your changes
+1. [Edit the `course-planning.md` document]({{ url }}) to add your goal, and break it down into smaller steps.
+2. Commit your changes.
 
 <hr>
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

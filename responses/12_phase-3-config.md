@@ -14,6 +14,6 @@ _Are you noticing that we're asking a bit more of you now? Since you've already 
 
 ### :keyboard: Activity: Write the config logic for both responses to the learner in their first step
 
-1. Edit the config file in this pull request to include the logic for both responses around the gate
+1. Edit the config file in this pull request to include the logic for both responses around the gate.
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>
