@@ -162,7 +162,7 @@ steps:
     event: pull_request.synchronize
     link: '{{ repoUrl }}/pull/3'
     actions:
-    - type: gate # we validate that it's more than 5 words or something.
+   # - type: gate # we validate that it's more than 5 words or something.
     # Step 9: How to give the user the response? ACTIONS in the config
     - type: respond
       with: 09_first-action.md
