@@ -8,4 +8,4 @@ Next, we'll merge this pull request. You can go ahead and take your time breakin
 
 ### :keyboard: Activity: Merge the pull request breaking down your course topic into smaller learning objectives
 
-1. Once you're ready, merge this pull request and delete the branch.
+1. Once you're ready, merge this pull request.
