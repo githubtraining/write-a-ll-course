@@ -7,4 +7,4 @@ So, you've done it - you've started your own Learning Lab course. I will leave y
   - Phase 3 - tell them if they did it or not.
 - Remember, the "events" or "gates" should be as literally and closely mapped to the learning objective as possible.
 
-If you need help, reach out in the {{ communityBoard }}, or let us know at learninglab@github.com.
+If you need help, reach out in the [community forum]({{ communityBoard }}), or let us know at learninglab@github.com.
