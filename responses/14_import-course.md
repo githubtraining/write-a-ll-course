@@ -1,38 +1,37 @@
+# Import your course
 
+Woohoo! You could keep going, and we will later - but now your course can actually be _tested_. Let's talk about that.
 
+### Create and test draft courses
 
-  # 14.1
-    # (Issue) Woohoo! You could keep going, and we will later - but now your course can actually be _tested_. Let's talk about that. 
-    # What are draft courses?
-    # What are public vs private?
-    # How can you keep working once it's launched?
-    # Course builder or not course builder?
-    # Instructions: Import the course
+The first time you create a course on Learning Lab, the course will be [a draft](https://lab.github.com/docs/testing).  While in draft, you can test your courses by going to the course dashboard, and clicking on View course page next to the course title.
 
-    ```
+You can continue to [work on your course](https://lab.github.com/docs/testing#test-your-course) while it is in draft -- it will only be visible to you and other administrators of your repo.
 
-    Since Learning Lab courses must be owned by your organization, you'll need to [fork](https://help.github.com/articles/fork-a-repo/) the course and template repositories there first. Here are the instructions:
+### Choosing public vs private courses
 
-## Create the draft course
-1. Choose an organization that will house your Learning Lab courses. You may have done this prior to taking the course.
-1. Confirm that you are an owner of the chosen Learning Lab course organization, or a member of a team named **lab-assistants** in that organization.
-1. [Fork this repository]({{ url }}) to your chosen organization.
-1. [Add the template repository](https://github.com/githubtraining/lab-starter-template/fork) to your chosen organization.
-1. Navigate to `{{ host }}/YOUR-ORGANIZATION/new`
-1. In the Repository name field, type in **{{ repo }}**.
-1. Take the draft course, which should be available at {{ host }}/YOUR-ORGANIZATION/{{ repo }}.
+If you'd like, you can sign up for private course options as an organization. Contact learninglab@github.com to learn more.
 
-You can continue to [work on your course](https://lab.github.com/docs/testing#test-your-course) while it is in draft -- it will only be visible to you and other administrators of your repo. 
+### Publish a course
 
-## Publish the course
+When you're ready to [publish your course](https://lab.github.com/docs/publishing), just go to your course's administration panel and click the button! Then, other users can register for and take your course.
 
-When you're ready to [publish your course](https://lab.github.com/docs/publishing), just go to your course's administration panel and click the button!
+### Maintaining launched courses
 
+Once a course is published, you can continue to maintain it by using drafts. When you create a branch and a pull request in an existing course, Learning Lab will automatically create a draft deployment of that pull request so you can test. There will be links directly in your pull request, so you should be able to find it easily. These drafts are only accessible to the owner, or if the owner is an organization, those with administrator access.
 
-```
+### Using the Course Builder
 
-For now, before the right event exists, just comment.
+This Learning Lab course has walked you through course creation from scratch - but you have other options. You can start with a boilerplate and create courses directly through the Course Builder UI.
 
 ## Step 14: Import the course
 
+Importing the course will create the course as a **draft**. While in draft, you can test your courses by going to the course dashboard, and clicking on **View course** page next to the course title.
+
 ### :keyboard: Activity: Import this repository as a course on GitHub Learning Lab
+
+1. Navigate to `{{ host }}/COURSE_OWNER/new`.
+2. In the Repository name field, type in **{{ repo }}**.
+3. Click **Create course**.
+4. Take the draft course, which should be available at {{ host }}/COURSE_OWNER/{{ repo }}.
+5. (For now, before the right event exists, just comment.)

@@ -178,7 +178,7 @@ steps:
 
   - title: Write feedback for the learner
     description: Write feedback into the feedback response for the learner to let them know they've done it right.
-    event: pull_request.synchronize
+    event: issue_comment.created
     link: '{{ repoUrl }}/pull/3'
     actions: 
     # - type: gate we validate that the correct file was changed, with enough words
@@ -201,7 +201,7 @@ steps:
     event: pull_request.synchronize
     link: '{{ repoUrl }}/pull/3'
     actions:
-    # - type: gate  We validate they committed valid metadata
+    # - type: gate  We validate they committed valid metadata. gate that course title is different than the course repo
     # Step 14: Import the course as a draft
     - type: respond
       with: 13_nice-job.md
