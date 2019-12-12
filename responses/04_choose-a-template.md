@@ -26,7 +26,7 @@ Select a template repository - or use ours - based on the things above. Here's h
 
 1. Create the repository under the same account that will own the course.
     - It doesn't have to be complete, but it should have at least one commit.
-2. [Edit this file]({{ url }}) to replace the commented `repo:` under `template:` in the `config.yml` file with a title of your template repository.
-    - Note: You can do this by editing the file, or accepting my suggested change.
+2. [Edit the `config.yml` file in this branch]({{ url }}) to replace the commented `name` and `repo`.
+    - **Important!** Make sure the `name:` field is _different_ than this repository! Otherwise, you won't be able to take your own course.
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>
