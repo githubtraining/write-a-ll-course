@@ -41,8 +41,8 @@ If you get stuck, add the issue label "help" and I'll give you some more detail.
 
 1. Read the following examples, and their corresponding "labels". (Click the triangle next to each title to drop down the full text.)
 2. When an example correctly includes all three phases, add the corresponding label to this issue. (You can include multiple labels!)
- - _Not sure how to add a label? On the right side of this issue, you'll see a section titled **Labels**. Click the word **Labels** to bring up a menu. Click a label title to toggle adding or removing it from an issue or pull request._
- - If you get stuck, apply the `help` label.
+    - _Not sure how to add a label? On the right side of this issue, you'll see a section titled **Labels**. Click the word **Labels** to bring up a menu. Click a label title to toggle adding or removing it from an issue or pull request._
+    - If you get stuck, apply the `help` label.
 
 <details>
  <summary>1: Committing a header</summary>

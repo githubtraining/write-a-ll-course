@@ -39,6 +39,6 @@ To practice, I've got a file ready for you in this pull request. Go ahead and wr
 ### :keyboard: Activity: Write the first response, phase 1, for the first step of your course
 
 1. [Edit the file]({{ url }}) and write the instructions for your first step.
-  - Remember, this is _your_ course. You choose what to teach, what the steps are, and what to say!
+    - Remember, this is _your_ course. You choose what to teach, what the steps are, and what to say!
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>
