@@ -46,6 +46,7 @@ before:
     title: Choose a topic for your course
     body: 01_welcome.md
     head: course-planning
+  - type: updateBranchProtection
 
 steps:
   - title: Choose a topic for your course
@@ -64,6 +65,7 @@ steps:
     link: '{{ repoUrl }}/pull/1'
     actions: 
     # Step 3: Merge the pull request
+    - type: removeBranchProtection
     - type: respond
       with: 03_merge.md
 
@@ -88,6 +90,9 @@ steps:
       head: template
       data:
         url: '%payload.repository.html_url%/edit/template/config.yml?'
+    - type: updateBranchProtection
+    - type: deleteBranch
+      branch: course-planning
 
   - title: Reference the template
     description: Edit the config file to reference your chosen template repository.
@@ -102,6 +107,8 @@ steps:
     - type: mergeBranch
       head: master
       base: map-events
+    - type: deleteBranch
+      branch: template
   # Step 5: Mapping learning objectives to events and how to choose events that align with the learning objective
     - type: createPullRequest
       title: Map learning objectives to events
