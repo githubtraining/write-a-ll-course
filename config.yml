@@ -218,6 +218,8 @@ steps:
     # Step 13: Config metadata (title, etc)
     - type: respond
       with: 13_metadata.md
+      data:
+        url: '%payload.repository.html_url%/edit/map-events/config.yml?'
 
   - title: Create course metadata
     description: Add the course metadata like title and description to the configuration file.
