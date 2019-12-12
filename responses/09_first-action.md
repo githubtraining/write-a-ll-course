@@ -2,11 +2,7 @@
 
 Awesome! You're probably thinking - how is Learning Lab validating that I did the thing just now!? And you have a point. With text, it's tricky - so I checked to make sure you wrote more than 5 words, but I'm not checking to see if you wrote anything that makes sense. This is a limitation of Learning Lab.
 
-For now, here are a couple examples of real, human-proofed answers. Compare your answer and notice - is yours similar? Is it very different? What would you change?
-
-- Link
-- Link
-- Link
+Every comment that I make is an example of a real, human-proofed answer. Compare your answer and notice - is yours similar? Is it very different? What would you change?
 
 ### Action `type: respond`
 
@@ -16,20 +12,15 @@ There are all kinds of actions so your bot can do different things like respondi
 
 ## Step 9: Write the first Learning Lab action
 
-You've got the response file, and now it's time to edit the `config` file with the proper action: respond. This will come after the event, or the trigger, as a "type". It will look like this:
+You've got the response file, and now it's time to edit the `config` file with the proper action: respond. This can come in the before step or after the event as a "type". Because this is our first instruction, we will put it in the "before" step. It will look like this:
 
 ```
-  - title: Reference the template
-    description: Edit the config file to reference your chosen template repository.
-    event: pull_request.synchronize
-    link: '{{ repoUrl }}/pull/2'
-    actions:
     - type: respond
-      with: 04_good-template.md
+      with: 01_first-response.md
 ```
 
 ### :keyboard: Activity: Write the first Learning Lab action for a response into your course's configuration file
 
-1. Edit the file in this pull request to add a respond type, referencing the file that you created for the response.
+1. [Edit the `config.yml` file in this pull request]({{ url }}) on lines 17 and 18 to add a respond type, referencing the file that you created for the response.
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>
