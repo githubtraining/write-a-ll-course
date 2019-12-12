@@ -102,6 +102,7 @@ steps:
   # - type: gate # we validate that the repository exists
     - type: respond
       with: 04_good-template.md
+    - type: removeBranchProtection
     - type: mergeBranch
       head: template
     - type: mergeBranch
@@ -116,6 +117,7 @@ steps:
       head: map-events
       data:
         url: '%payload.repository.html_url%/edit/map-events/course-planning.md?'
+    - type: updateBranchProtection
 
   - title: Map learning objectives to events
     description: Map the learning objectives you wrote to specific events from GitHub webhooks.
@@ -217,6 +219,7 @@ steps:
     # Step 14: Import the course as a draft
     - type: respond
       with: 13_nice-job.md
+    - type: removeBranchProtection
     - type: mergeBranch
       head: map-events
     - type: createIssue
