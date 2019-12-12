@@ -3,7 +3,15 @@
 To put this response in the config, it will be very similar to phase 1. But, _where_ the action goes is different. We need to be careful of the gate here. If the gate fails, we can have special logic for the "unhappy path" response. The "happy path" response will be a regular response triggered if the gate is successful, like:
 
 ```
-example
+- type: gate
+    left: '%payload.pull_request.base.ref%'
+    operator: ===
+    right: master
+    else:
+    - type: respond
+      with: unhappy-path-respond.md
+- type: respond
+  with: happy-path-response.md
 ```
 
 ## Step 12: Write the config logic
@@ -14,6 +22,6 @@ _Are you noticing that we're asking a bit more of you now? Since you've already 
 
 ### :keyboard: Activity: Write the config logic for both responses to the learner in their first step
 
-1. Edit the config file in this pull request to include the logic for both responses around the gate.
+1. [Edit the config file]({{ url }}) in this pull request to include the logic for both responses around the gate.
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>
