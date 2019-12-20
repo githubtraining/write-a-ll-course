@@ -14,6 +14,15 @@ For example, you may want to show a lot of information to the learner, and then 
 
 Try to choose events that correspond directly to what you want the learner to do. If you're trying to teach the learner to import a `npm` module into a `package.json` file, that commit should be the event.
 
+| Behavior | Events |
+| ------------- | ------------- |
+| What can I observe that confirms the user demonstrated the skill or knowledge? | What event triggers are available through GitHub? |
+| Write a function (commit) | [`pull_request.synchronize`](https://developer.github.com/v3/activity/events/types/#pullrequestevent) |
+| Solve a merge conflict (commit | [`push`](https://developer.github.com/v3/activity/events/types/#pushevent) |
+| Open a pull request | [`pull_request`](https://developer.github.com/v3/activity/events/types/#pullrequestevent) |
+| Implement a test | [`status`](https://developer.github.com/v3/activity/events/types/#statusevent) |
+| Comment on an issue | [`issue_commented.created`](https://developer.github.com/v3/activity/events/types/#issuecommentevent) |
+
 ## Step 5: Map learning objectives to events
 
 Next, your job is to map your learning objectives to events.
