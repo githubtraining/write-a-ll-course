@@ -236,6 +236,9 @@ steps:
     - type: createIssue
       title: Import the course
       body: 14_import-course.md 
+    - type: respond
+      with: 14_troubleshooting.md
+      issue: Import the course
 
   - title: Import the course
     description: Import this repository as a course on GitHub Learning Lab.
