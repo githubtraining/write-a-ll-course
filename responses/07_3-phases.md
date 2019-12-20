@@ -13,6 +13,8 @@ Just like we broke down your teaching goal into smaller steps, let's break down 
 
 For starters, let's choose writing unordered lists in Markdown. That's what we want the user to know how to do. Let's apply those three phases.
 
+![Visual of three phases in circle](./3-phases.png)
+
 ### Phase 1: Tell the learner what to do
 
 What does the learner need to be able to exhibit the behavior that we want? Well, they'd need to know about Markdown, and it'd be nice if they had a computer with a keyboard, and a place to type the text. Let's assume those contextual things are taken care of. The main information that a learner would need would be, what is an unordered list? How is that written in Markdown? Then, we'd ask the user to do that.
