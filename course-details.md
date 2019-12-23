@@ -9,3 +9,8 @@ If you'd like to get started in building courses for others, this is the course 
 - Create course steps
 - Create responses
 - Publish a course to GitHub Learning Lab
+
+Prerequisites:
+
+- **GitHub knowledge**: For this course, you'll need to know about GitHub. If you need a refresher on the GitHub flow, check out [the Introduction to GitHub course]({{ host}}/courses/introduction-to-github).
+- **Webhooks & the GitHub API**: You'll also need a general understanding of webhooks and the GitHub API.  Try [the Getting started with GitHub Apps course]({{ host}}/courses/getting-started-with-github-apps).
