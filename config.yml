@@ -179,7 +179,6 @@ steps:
    # - type: gate # we validate that it's more than 5 words or something.
     - type: getFileContents
       filename: 'responses/01_first-response.md'
-      sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
       left: '/(\w+\s){4,}\w+/'
@@ -257,7 +256,7 @@ steps:
     actions: 
     # - type: gate we validate that the correct file was changed, with enough words
     - type: getFileContents
-      filename: responses/01_first-feedback.md
+      filename: 'responses/01_first-feedback.md'
       sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
@@ -282,7 +281,7 @@ steps:
     actions:
     # - type: gate we check that they have both responses
     - type: getFileContents
-      filename: config.yml
+      filename: 'config.yml'
       sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
@@ -307,7 +306,7 @@ steps:
     actions:
     # - type: gate  We validate they committed valid metadata. 
     - type: getFileContents
-      filename: config.yml
+      filename: 'config.yml'
       sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
