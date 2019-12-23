@@ -12,10 +12,10 @@ right:
 But, each learner may have a different exact version. Yours may look like:
 
 ```
-type: gate
-left: '%payload.pull_request.title%'
-operator: ===
-right: "Creating the config file"
+- type: gate
+  left: '%payload.pull_request.title%'
+  operator: ===
+  right: "Creating the config file"
 ```
 
-Try again by [committing to the `config.yml` file on this branch]({{ url }}), and make sure your changes match my example above.
+Try again by [committing to the `config.yml` file on this branch]({{ url }}), and make sure your changes match my example above. (Make sure your indentations are correct, too!)
