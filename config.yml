@@ -330,7 +330,7 @@ steps:
       right: '%actions.contents%'
       else:
         - type: respond
-          with: 013_check-metadata.md
+          with: 13_check-metadata.md
           data:
             url: '%payload.repository.html_url%/edit/map-events/config.yml?'           
     # Step 14: Import the course as a draft
