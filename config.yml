@@ -259,7 +259,7 @@ steps:
       action_id: pull_request
     - type: getFileContents
       filename: 'responses/01_nice-work.md'
-      sha: '%actions.pull_request.head.sha%'
+      sha: '%actions.pull_request.data.head.sha%'
       action_id: contents
     - type: gate
       left: '/((\w+\s)|(\w+.\s)){4,}\w+/'
@@ -272,7 +272,7 @@ steps:
             url: '%payload.repository.html_url%/edit/map-events/responses/01_nice-work.md?'
     - type: getFileContents
       filename: 'responses/01_try-again.md'
-      sha: '%actions.pull_request.head.sha%'
+      sha: '%actions.pull_request.data.head.sha%'
       action_id: contents
     - type: gate
       left: '/((\w+\s)|(\w+.\s)){4,}\w+/'
