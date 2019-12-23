@@ -10,7 +10,9 @@ There are two response files in this pull request that I just added - one for th
 
 ### :keyboard: Activity: Write feedback into the feedback response for the learner to let them know they've done it right
 
-1. Edit the [feedback file, `responses/01_first-feedback.md`, in this pull request]({{ url }}) with feedback about the success of their behavior.
+1. Edit the feedback files in this pull request with feedback about the success of their behavior.
+   1. The first file is called [`responses/01_nice-work.md`]({{ niceUrl }})
+   2. The second file is called [`responses/01_try-again.md`]({{ tryagainUrl }})
 2. Because you are editing multiple files, it will be difficult for me to see that you have modified them both. To let me  know you're done, comment in this pull request.
 
 <h3 align="center">I'll respond below when you let me know you're ready by commenting in this pull request.</h3>
