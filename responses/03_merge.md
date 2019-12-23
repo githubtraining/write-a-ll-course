@@ -8,5 +8,5 @@ Next, we'll merge this pull request. You can go ahead and take your time breakin
 
 ### :keyboard: Activity: Merge the pull request breaking down your course topic into smaller learning objectives
 
-1. Make any other changes or tweaks to the steps of your course by [editing the planning file]({{ url }}). Take your time!
+1. Make any other changes or tweaks to the steps of your course by [editing the config]({{ url }}). Take your time!
 1. Once you're ready, merge this pull request.
