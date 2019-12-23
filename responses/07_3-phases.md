@@ -13,7 +13,7 @@ Just like we broke down your teaching goal into smaller steps, let's break down 
 
 For starters, let's choose writing unordered lists in Markdown. That's what we want the user to know how to do. Let's apply those three phases.
 
-![Visual of three phases in circle](./3-phases.png)
+![Visual of three phases in circle](https://user-images.githubusercontent.com/9906718/71356286-051d3d80-2582-11ea-8048-af6bdabd52f0.png)
 
 ### Phase 1: Tell the learner what to do
 
