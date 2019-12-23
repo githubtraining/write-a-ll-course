@@ -256,7 +256,7 @@ steps:
     actions: 
     # - type: gate we validate that the correct file was changed, with enough words
     - type: getPullRequest
-      action_id: pull_Request
+      action_id: pull_request
     - type: getFileContents
       filename: 'responses/01_nice-work.md'
       sha: '%actions.pull_request.head.sha%'
