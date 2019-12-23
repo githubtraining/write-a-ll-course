@@ -237,6 +237,26 @@ steps:
     link: '{{ repoUrl }}/pull/3'
     actions: 
     # - type: gate we validate that the correct file was changed, with enough words
+    - type: getTree
+      action_id: tree
+      recursive: true
+      sha: '%payload.pull_request.head.sha%'
+    - type: findInTree
+      action_id: file
+      tree: '%actions.tree.data.tree%'
+      path: '/^_responses\/01_first-feedback.md$/'
+    - type: getFileContents
+      filename: '%actions.file.path%'
+      action_id: contents
+    - type: gate
+      left: '/(\w+\s){4,}\w+/'
+      operator: test
+      right: '%actions.contents%'
+      else:
+        - type: respond
+          with: 11_correct-response.md
+          data:
+            url: '%payload.repository.html_url%/edit/map-events/responses/01_first-feedback.md?'
     # Step 12: Code the response action for phase 3 into the config
     - type: respond
       with: 12_phase-3-config.md
