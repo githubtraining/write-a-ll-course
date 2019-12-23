@@ -4,7 +4,7 @@ I'm using a `gate` and using regular expressions to check that you have somethin
 
 ```
 type: respond
-with: 01_first-feedback.md
+with: 01_nice-work.md
 ```
 
 Try again by [committing to the `config.yml` file on this branch]({{ url }}), and make sure your changes match my example above.

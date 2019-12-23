@@ -300,7 +300,7 @@ steps:
       sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
-      left: '/(type: respond)(\n|\r)(  |\t)(with: 01_nice-work.md)/'
+      left: '/(type: respond)(\n|\r)(    |\t\t)(with: 01_nice-work.md)/'
       operator: test
       right: '%actions.contents%'
       else:
