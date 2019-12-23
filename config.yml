@@ -149,12 +149,21 @@ steps:
     #- type: gate check that the correct label was applied - correct labels are 2 "2: Closing an issue" and 3 "3: Fixing a bug"
       # else: If user needs help, longer explanation of each example, plus instructions/video of how to add labels
     - type: gate
-      left: '%payload.pull_request.labels%'
-      operator: ===
-      right: ["2: Closing an issue", "3: Fixing a bug"]
-      else:
-        - type: respond
-          with: 07_help.md
+      every: true
+      gates:
+      - left: '%payload.pull_request.labels.0.name%'
+        operator: ===
+        right: "2: Closing an issue"
+      - left: '%payload.pull_request.labels.1.name%'
+        operator: ===
+        right: "3: Fixing a bug"
+        else:
+          - type: gate
+            left: '%payload.pull_request.labels.0.name%'
+            operator: ===
+            right: "help"
+          - type: respond
+            with: 07_help.md
       # Step 8: Pick 1 learning objective and write the phase 1 response
     - type: respond
       with: 08_first-response.md
