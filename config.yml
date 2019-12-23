@@ -206,7 +206,7 @@ steps:
       sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
-      left: '/(type: respond)(\n|\r)(with: 01_first-response.md)/'
+      left: '/(type: respond)(\n|\r)(  |\t)(with: 01_first-response.md)/'
       operator: test
       right: '%actions.contents%'
       else:
@@ -285,7 +285,7 @@ steps:
       sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
-      left: '/(type: respond)(\n|\r)(with: 01_first-feedback.md)/'
+      left: '/(type: respond)(\n|\r)(  |\t)(with: 01_first-feedback.md)/'
       operator: test
       right: '%actions.contents%'
       else:
