@@ -31,8 +31,8 @@ actions:
 
 ### :keyboard: Activity: Write a gate to check the user's first step
 
-1. [Edit the `config.yml` file]({{ url }}) on this branch on lines 29-32.
-2. On line 30 with `event:`, add the event you chose earlier (like `event: issue_comment.created`).
+1. [Edit the `config.yml` file]({{ url }}) on this branch around line 32.
+2. Add a `type: gate` action on line 32.
 3. Add a `left:` option to the gate.
 4. Set the gate's `left:` option. This could be to the pull request's title (`'%payload.pull_request.title%'`) or some other information from the payload based on the event trigger.
 5. Set the gate's `operator:`, usually to `===`.
