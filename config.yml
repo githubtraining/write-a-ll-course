@@ -202,16 +202,9 @@ steps:
     link: '{{ repoUrl }}/pull/3'
     actions:
     # - type: gate We validate that the proper text is added, with an action response pointing to the right file in the right line of the config.
-    - type: getTree
-      action_id: tree
-      recursive: true
-      sha: '%payload.pull_request.head.sha%'
-    - type: findInTree
-      action_id: file
-      tree: '%actions.tree.data.tree%'
-      path: '/config.yml$/'
     - type: getFileContents
-      filename: '%actions.file.path%'
+      filename: 'config.yml'
+      sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
       left: '/(type: respond)(\n|\r)(with: 01_first-response.md)/'
@@ -234,16 +227,9 @@ steps:
     link: '{{ repoUrl }}/pull/3'
     actions: 
     # - type: gate We validate it's actually a gate
-    - type: getTree
-      action_id: tree
-      recursive: true
-      sha: '%payload.pull_request.head.sha%'
-    - type: findInTree
-      action_id: file
-      tree: '%actions.tree.data.tree%'
-      path: '/config.yml$/'
     - type: getFileContents
-      filename: '%actions.file.path%'
+      filename: 'config.yml'
+      sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
       left: '/(type: gate)(\n|\r)(left:.+)(\n|\r)(operator:.+)(\n|\r)(right:.+)/'
@@ -270,16 +256,9 @@ steps:
     link: '{{ repoUrl }}/pull/3'
     actions: 
     # - type: gate we validate that the correct file was changed, with enough words
-    - type: getTree
-      action_id: tree
-      recursive: true
-      sha: '%payload.pull_request.head.sha%'
-    - type: findInTree
-      action_id: file
-      tree: '%actions.tree.data.tree%'
-      path: '/^_responses\/01_first-feedback.md$/'
     - type: getFileContents
-      filename: '%actions.file.path%'
+      filename: responses/01_first-feedback.md
+      sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
       left: '/(\w+\s){4,}\w+/'
@@ -302,16 +281,9 @@ steps:
     link: '{{ repoUrl }}/pull/3'
     actions:
     # - type: gate we check that they have both responses
-    - type: getTree
-      action_id: tree
-      recursive: true
-      sha: '%payload.pull_request.head.sha%'
-    - type: findInTree
-      action_id: file
-      tree: '%actions.tree.data.tree%'
-      path: '/config.yml$/'
     - type: getFileContents
-      filename: '%actions.file.path%'
+      filename: config.yml
+      sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
       left: '/(type: respond)(\n|\r)(with: 01_first-feedback.md)/'
@@ -334,16 +306,9 @@ steps:
     link: '{{ repoUrl }}/pull/3'
     actions:
     # - type: gate  We validate they committed valid metadata. 
-    - type: getTree
-      action_id: tree
-      recursive: true
-      sha: '%payload.pull_request.head.sha%'
-    - type: findInTree
-      action_id: file
-      tree: '%actions.tree.data.tree%'
-      path: '/config.yml$/'
     - type: getFileContents
-      filename: '%actions.file.path%'
+      filename: config.yml
+      sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
       left: '/(title:.+)(\n|\r)(tagline:.+)(\n|\r)(description:.+)(\n|\r)(template:)/'
