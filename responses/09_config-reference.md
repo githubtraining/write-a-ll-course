@@ -1,6 +1,6 @@
 I noticed that your commit to the `config.yml` file doesn't have what I am expecting.
 
-I'm using a `gate` and using regular expressions to check that you have something committed like:
+I'm using a `gate` and using regular expressions to check that you have something committed that looks like:
 
 ```
 type: respond
