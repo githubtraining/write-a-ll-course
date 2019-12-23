@@ -25,7 +25,7 @@ In the file in this pull request, write the steps as observable behaviors. It's 
 
 ### :keyboard: Activity: Break down what you'd like to teach into smaller learning objectives
 
-1. [Edit the `course-planning.md` document]({{ url }}) to add your goal, and break it down into smaller steps.
+1. [Edit lines `config.yml` document]({{ url }}). Break down the larger goal into smaller steps and add them to the commented descriptions on lines 26, 35, 40, 47, and 54.
 2. Commit your changes.
 
 <hr>

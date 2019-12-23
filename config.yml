@@ -70,7 +70,7 @@ steps:
     - type: respond
       with: 02_break-it-down.md
       data:
-        url: '%payload.repository.html_url%/edit/course-planning/course-planning.md?'
+        url: '%payload.repository.html_url%/edit/course-planning/config.yml?'
   - title: Break your course into smaller steps
     description: Break down what you'd like to teach into smaller learning objectives.
     event: pull_request.synchronize
