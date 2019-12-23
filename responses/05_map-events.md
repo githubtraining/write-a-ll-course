@@ -34,4 +34,6 @@ Remember the steps you wrote earlier? Let's find the corresponding events. You'l
 1. Take a look through [GitHub's documentation for event triggers](https://developer.github.com/v3/activity/events/types/).
 2. [Edit the `config.yml` file]({{ url }}) on line 29 and make note of the event trigger that matches your first objective.
 
+> Not sure where to start? Use some of the events in the table above to get started!
+
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>
