@@ -91,8 +91,6 @@ steps:
       data:
         url: '%payload.repository.html_url%/edit/template/config.yml?'
     - type: updateBranchProtection
-    - type: deleteBranch
-      branch: course-planning
 
   - title: Reference the template
     description: Edit the config file to reference your chosen template repository.
