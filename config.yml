@@ -309,6 +309,26 @@ steps:
     link: '{{ repoUrl }}/pull/3'
     actions:
     # - type: gate we check that they have both responses
+    - type: getTree
+      action_id: tree
+      recursive: true
+      sha: '%payload.pull_request.head.sha%'
+    - type: findInTree
+      action_id: file
+      tree: '%actions.tree.data.tree%'
+      path: '/config.yml$/'
+    - type: getFileContents
+      filename: '%actions.file.path%'
+      action_id: contents
+    - type: gate
+      left: '/(type: respond)(\n|\r)(with: 01_first-feedback.md)/'
+      operator: test
+      right: '%actions.contents%'
+      else:
+        - type: respond
+          with: 12_feedback-reference.md
+          data:
+            url: '%payload.repository.html_url%/edit/map-events/config.yml?'
     # Step 13: Config metadata (title, etc)
     - type: respond
       with: 13_metadata.md
