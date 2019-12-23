@@ -30,8 +30,8 @@ Importing the course will create the course as a **draft**. While in draft, you 
 
 ### :keyboard: Activity: Import this repository as a course on GitHub Learning Lab
 
-1. Navigate to `{{ host }}/COURSE_OWNER/new`.
+1. Navigate to `{{ host }}/{{ owner }}/new`.
 2. In the Repository name field, type in **{{ repo }}**.
 3. Click **Create course**.
-4. Take the draft course, which should be available at {{ host }}/COURSE_OWNER/{{ repo }}.
+4. Take the draft course, which should be available at {{ host }}/{{ owner }}/{{ repo }}.
 5. (For now, before the right event exists, just comment.)
