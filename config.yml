@@ -228,10 +228,9 @@ steps:
     # - type: gate We validate it's actually a gate
     - type: getFileContents
       filename: 'config.yml'
-      sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
-      left: '/(type: gate)(\n|\r)(left:.+)(\n|\r)(operator:.+)(\n|\r)(right:.+)/'
+      left: '/(type: gate)(\n|\r)(    |\t\t)(left:.+)(\n|\r)(    |\t\t)(operator:.+)(\n|\r)(    |\t\t)(right:.+)/'
       operator: test
       right: '%actions.contents%'
       else:
