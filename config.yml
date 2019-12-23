@@ -209,6 +209,26 @@ steps:
     link: '{{ repoUrl }}/pull/3'
     actions:
     # - type: gate We validate that the proper text is added, with an action response pointing to the right file in the right line of the config.
+    - type: getTree
+      action_id: tree
+      recursive: true
+      sha: '%payload.pull_request.head.sha%'
+    - type: findInTree
+      action_id: file
+      tree: '%actions.tree.data.tree%'
+      path: '/config.yml$/'
+    - type: getFileContents
+      filename: '%actions.file.path%'
+      action_id: contents
+    - type: gate
+      left: '/(type: respond)(\n|\r)(with: 01_first-response.md)/'
+      operator: test
+      right: '%actions.contents%'
+      else:
+        - type: respond
+          with: 09_config-reference.md
+          data:
+            url: '%payload.repository.html_url%/edit/map-events/config.yml?'
     # Step 10: Phase 2 - checking if the user did it, intro to Gate
     - type: respond
       with: 10_gate.md
