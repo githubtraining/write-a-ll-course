@@ -8,6 +8,7 @@ Go ahead and put in the events for the rest of the learning objectives. You can 
 
 ### :keyboard: Activity: Using the same strategy of mapping learning objectives to events, create an outline of events for your course
 
-1. [Edit the `course-planning.md` file]({{ url }}) and map the rest of your learning objectives to [GitHub Events](https://developer.github.com/v3/activity/events/types/).
+1. [Edit the `config.yml` file]({{ url }}) on lines 36, 43, 50, and 57.
+2. Map the rest of your learning objectives to [GitHub Events](https://developer.github.com/v3/activity/events/types/).
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

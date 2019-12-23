@@ -129,7 +129,7 @@ steps:
     - type: respond
       with: 06_create-outline.md
       data:
-        url: '%payload.repository.html_url%/edit/map-events/course-planning.md?'
+        url: '%payload.repository.html_url%/edit/map-events/config.yml?'
 
   - title: Create an outline of learning objectives as events
     description: Using the same strategy of mapping learning objectives to events, create an outline of events for your course.
