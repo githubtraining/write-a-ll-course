@@ -58,7 +58,7 @@ before:
     body: 05_map-events.md
     head: map-events
     data:
-      url: '%payload.repository.html_url%/edit/map-events/course-planning.md?'
+      url: '%payload.repository.html_url%/edit/map-events/config.yml?'
 
 steps:
   - title: Choose a topic for your course
