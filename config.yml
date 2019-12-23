@@ -80,6 +80,8 @@ steps:
     - type: removeBranchProtection
     - type: respond
       with: 03_merge.md
+      data:
+        url: '%payload.repository.html_url%/edit/course-planning/course-planning.md?'
 
   - title: Merge your learning objectives
     description: Merge the pull request breaking down your course topic into smaller learning objectives.
