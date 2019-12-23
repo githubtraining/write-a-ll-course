@@ -177,7 +177,27 @@ steps:
     link: '{{ repoUrl }}/pull/3'
     actions:
    # - type: gate # we validate that it's more than 5 words or something.
-    # Step 9: How to give the user the response? ACTIONS in the config
+    - type: getTree
+      action_id: tree
+      recursive: true
+      sha: '%payload.pull_request.head.sha%'
+    - type: findInTree
+      action_id: file
+      tree: '%actions.tree.data.tree%'
+      path: '/^_responses\/01_first-response.md$/'
+    - type: getFileContents
+      filename: '%actions.file.path%'
+      action_id: contents
+    - type: gate
+      left: '/(\w+\s){4,}\w+/'
+      operator: test
+      right: '%actions.contents%'
+      else:
+        - type: respond
+          with: 08_correct-response.md
+          data:
+            url: '%payload.repository.html_url%/edit/map-events/responses/01_first-response.md?'
+   # Step 9: How to give the user the response? ACTIONS in the config
     - type: respond
       with: 09_first-action.md
       data:
