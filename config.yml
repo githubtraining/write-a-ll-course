@@ -177,16 +177,9 @@ steps:
     link: '{{ repoUrl }}/pull/3'
     actions:
    # - type: gate # we validate that it's more than 5 words or something.
-    - type: getTree
-      action_id: tree
-      recursive: true
-      sha: '%payload.pull_request.head.sha%'
-    - type: findInTree
-      action_id: file
-      tree: '%actions.tree.data.tree%'
-      path: '/(_responses\/01_first-response.md)/'
     - type: getFileContents
-      filename: '%actions.file.path%'
+      filename: 'responses/01_first-response.md'
+      sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
       left: '/(\w+\s){4,}\w+/'
