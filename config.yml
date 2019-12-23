@@ -354,6 +354,7 @@ steps:
     # Step 15: Try to take your own course 
     - type: respond
       with: 15_try-it.md
+      issue: 4
 
   - title: Close the issue
     description: To signal that you've tested your course, close this issue.
