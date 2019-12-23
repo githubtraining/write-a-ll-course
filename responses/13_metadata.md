@@ -41,6 +41,6 @@ template:
 
 ### :keyboard: Activity: Add the course metadata like title and description to the configuration file
 
-1. [Edit the config file]({{ url }}) (lines x, y, and z) so the comments are gone, and your information is there.
+1. [Edit the config file]({{ url }}) (lines 1, 2, and 3) so the comments are gone, and your information is there.
 
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>
