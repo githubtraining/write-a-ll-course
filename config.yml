@@ -325,7 +325,7 @@ steps:
       sha: '%payload.pull_request.head.sha%'
       action_id: contents
     - type: gate
-      left: '/(title:.+)(\n|\r)(tagline:.+)(\n|\r)(description:.+)(\n|\r)(template:)/'
+      left: '/(title:.+)(\n|\r)(tagline:.+)(\n|\r)(description:)/'
       operator: test
       right: '%actions.contents%'
       else:
