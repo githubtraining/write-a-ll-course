@@ -47,6 +47,18 @@ before:
     body: 01_welcome.md
     head: course-planning
   - type: updateBranchProtection
+  - type: createPullRequest
+    title: Choose a template project
+    body: 04_choose-a-template.md
+    head: template
+    data:
+      url: '%payload.repository.html_url%/edit/template/config.yml?'
+  - type: createPullRequest
+    title: Map learning objectives to events
+    body: 05_map-events.md
+    head: map-events
+    data:
+      url: '%payload.repository.html_url%/edit/map-events/course-planning.md?'
 
 steps:
   - title: Choose a topic for your course
@@ -84,12 +96,6 @@ steps:
     - type: respond
       with: 03_nice-work.md
     # Step 4: Choose a template project
-    - type: createPullRequest
-      title: Choose a template project
-      body: 04_choose-a-template.md
-      head: template
-      data:
-        url: '%payload.repository.html_url%/edit/template/config.yml?'
     - type: updateBranchProtection
 
   - title: Reference the template
@@ -109,12 +115,6 @@ steps:
     - type: deleteBranch
       branch: template
   # Step 5: Mapping learning objectives to events and how to choose events that align with the learning objective
-    - type: createPullRequest
-      title: Map learning objectives to events
-      body: 05_map-events.md
-      head: map-events
-      data:
-        url: '%payload.repository.html_url%/edit/map-events/course-planning.md?'
     - type: updateBranchProtection
 
   - title: Map learning objectives to events
