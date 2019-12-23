@@ -184,7 +184,7 @@ steps:
     - type: findInTree
       action_id: file
       tree: '%actions.tree.data.tree%'
-      path: '/^_responses\/01_first-response.md$/'
+      path: '/(_responses\/01_first-response.md)/'
     - type: getFileContents
       filename: '%actions.file.path%'
       action_id: contents
