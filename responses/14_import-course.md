@@ -34,4 +34,6 @@ Importing the course will create the course as a **draft**. While in draft, you 
 2. In the Repository name field, type in **{{ repo }}**.
 3. Click **Create course**.
 4. Take the draft course, which should be available at {{ host }}/{{ owner }}/{{ repo }}.
-5. (For now, before the right event exists, just comment.)
+5. Once you are done, comment in this issue.
+
+> If you need help troubleshooting, scroll down for some tips!
