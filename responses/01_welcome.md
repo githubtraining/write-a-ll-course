@@ -36,3 +36,6 @@ Whether you choose your own topic or one of ours, we'll stick with the same one 
 ### :keyboard: Activity: Choose what you'd like to teach through Learning Lab, or borrow one of our suggestions for practice
 
 1. Please comment below with the subject that you'd like to teach in your Learning Lab course.
+
+<hr>
+<h3 align="center">I'll respond below when I detect a comment in this pull request.</h3>

@@ -10,3 +10,6 @@ Next, we'll merge this pull request. You can go ahead and take your time breakin
 
 1. Make any other changes or tweaks to the steps of your course by [editing the config]({{ url }}). Take your time!
 1. Once you're ready, merge this pull request.
+
+<hr>
+<h3 align="center">I'll respond below this pull request is merged.</h3>

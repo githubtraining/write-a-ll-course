@@ -37,3 +37,6 @@ Importing the course will create the course as a **draft**. While in draft, you 
 5. Once you are done, comment in this issue.
 
 > If you need help troubleshooting, scroll down for some tips!
+
+<hr>
+<h3 align="center">I'll respond below when I detect a comment in this issue.</h3>
