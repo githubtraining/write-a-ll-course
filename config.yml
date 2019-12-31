@@ -22,21 +22,12 @@ before:
     color: e9967a
 
 # Template: 
-  # [x] Template: commented config, README, course-details.
-  # [x] Has labels "help", plus labels corresponding to answers in step 7.
-  # [x] Branch `course-planning` for step 1: adding `course-planning.md` file, with a few ideas. User told not to edit the first two.
-  # [x] Branch `template` for step 4, with comments added to the place where the template repository goes
-  # [x] Branch `map-events` for step 5, with learning objective for 1 mapped out, and 2 is ready to go with comments 
-  # [x] Branch `first-response` for step 8. After step 7 it gets merged into `map-events`. It has an empty response file for the first step.
-  # [x] Branch `first-feedback` for step 11. After step 10 it gets merged into `map-events`. It has two empty response files.
-
-# Can we check to see if the user imports a course in Learning Lab? :tada:
-# Q: Can authors take draft courses?
-# I need to make a step for the user to transition their events and steps to the config.
-# Maybe make all PRs at beginning, put them on a project board, and link to it for the first step, letting them know they can reuse this and think about these steps when they write courses of their own
-# TODO: Can we programmatically get all of the events currently used, and rank them by popularity? For step 5 or 6?
-# TODO is step 9 in the config or still planning? Directions are currently unclear. Should it be as a before step, or within another step?
-
+  # Template: commented config, README, course-details.
+  # Branch `course-planning` for step 1: adding `course-planning.md` file, with a few ideas. User told not to edit the first two.
+  # Branch `template` for step 4, with comments added to the place where the template repository goes
+  # Branch `map-events` for step 5, with learning objective for 1 mapped out, and 2 is ready to go with comments 
+  # Branch `first-response` for step 8. After step 7 it gets merged into `map-events`. It has an empty response file for the first step.
+  # Branch `first-feedback` for step 11. After step 10 it gets merged into `map-events`. It has two empty response files.
 
 # Step 1: Decide what to teach - what's the right step? 
   # README.md or course-details
