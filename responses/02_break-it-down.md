@@ -38,6 +38,8 @@ Put yourself in the shoes of a beginner. If you're asked to do something too big
 
 In the file in this pull request, write the steps as observable behaviors. It's OK if there are a lot. It's better to break it down into small steps. Then, you may realize the scope of the course is wrong. That is better than having huge or unmanageable steps.
 
+> What's `#` in YAML? Any lines starting with `#` in the `config.yml` file are _comments_. We will use these for planning and documentation.
+
 ### :keyboard: Activity: Break down what you'd like to teach into smaller learning objectives
 
 1. [Edit lines `config.yml` document]({{ url }}). Break down the larger goal into smaller steps and add them to the commented descriptions on lines 26, 35, 40, 47, and 54.
