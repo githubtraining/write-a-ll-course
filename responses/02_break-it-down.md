@@ -44,6 +44,7 @@ In the file in this pull request, write the steps as observable behaviors. It's 
 
 1. [Edit lines `config.yml` document]({{ url }}). Break down the larger goal into smaller steps and add them to the commented descriptions on lines 26, 35, 40, 47, and 54.
 2. In each step, notice the fields for `title` and `description`. These will be shown to the learner on Learning Lab. Write the titles and descriptions of each of your steps.
+  - _You only need to worry about the title and description now. We'll fill in the rest later!_
 3. Commit your changes.
 
 <hr>
