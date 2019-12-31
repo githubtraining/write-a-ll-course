@@ -23,7 +23,7 @@ before:
 
 # Template: 
   # Template: commented config, README, course-details.
-  # Branch `course-planning` for step 1: adding `course-planning.md` file, with a few ideas. User told not to edit the first two.
+  # Branch `course-planning` for step 1 with a few ideas. User told not to edit the first two.
   # Branch `template` for step 4, with comments added to the place where the template repository goes
   # Branch `map-events` for step 5, with learning objective for 1 mapped out, and 2 is ready to go with comments 
   # Branch `first-response` for step 8. After step 7 it gets merged into `map-events`. It has an empty response file for the first step.
@@ -112,7 +112,7 @@ steps:
       body: 05_map-events.md
       head: map-events
       data:
-        url: '%payload.repository.html_url%/edit/map-events/course-planning.md?'
+        url: '%payload.repository.html_url%/edit/map-events/config.yml?'
     - type: updateBranchProtection
 
   - title: Map learning objectives to events
