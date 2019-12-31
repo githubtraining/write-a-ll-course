@@ -1,8 +1,8 @@
 # Events
 
-Alright - you've gotten a project chosen, and you've laid out the steps for your learners. Next, we're going to get into something new with Learning Lab: events! (You can learn more detail about this in [the documentation](https://lab.github.com/docs/events).)
+Alright - you've chosen a project, and you've laid out the steps for your learners. Next, we're going to get into something new with Learning Lab: events! (You can learn more about events in [the documentation](https://lab.github.com/docs/events).)
 
-An `event` is the webhook that the learner triggers. Events tell Learning Lab that it should do something. [You can see all of the events in GitHub's documentation](https://developer.github.com/v3/activity/events/types/). Some of the most common examples are `pull_request.synchronize` or `issue.comment`. 
+An `event` is the webhook that is triggered when the learner does something in their repository. Every webhook for the learner's repository is sent to Learning Lab. These events are "read" by Learning Lab. If it is the event the bot has been waiting for, the bot will do what you command. Otherwise, it will ignore the event.  [You can see all of the events in GitHub's documentation](https://developer.github.com/v3/activity/events/types/). Some of the most common examples are `pull_request.synchronize` or `issue.comment`. 
 
 ### Map behaviors to events
 
