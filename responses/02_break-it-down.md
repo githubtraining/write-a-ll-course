@@ -11,6 +11,21 @@ To break down the thing you want to teach, think about the observable behaviors.
 - Merge a pull request
 - Change code so a particular test passes
 
+### How many goals?
+
+The right number of "goals" may be different for different courses. But, our courses usually have between 7 and 20. For example, in the Communicating Using Markdown course, the steps (or goals) are:
+
+- Create a task list
+- Turn on GitHub Pages
+- Add headers
+- Merge your headers
+- Add an image
+- Add a profile link
+- Merge your image and profile link
+- Add a list
+- Use emphasis
+- Merge lists and emphasis
+
 ### What NOT to do
 
 It is _not_ a good idea to have huge or ambiguous steps.
