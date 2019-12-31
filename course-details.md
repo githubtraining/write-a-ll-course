@@ -23,7 +23,7 @@ If you'd like to get started in building courses for others, this is the course 
 
 # Prerequisites
 
-- **GitHub knowledge**: For this course, you'll need to know about GitHub. If you need a refresher on the GitHub flow, check out [the Introduction to GitHub course]({{ host}}/courses/introduction-to-github).
+- **GitHub knowledge**: For this course, you'll need to know how to use GitHub to work with text files. If you need a refresher on the GitHub flow, check out [the Introduction to GitHub course]({{ host}}/courses/introduction-to-github). If you need a refresher on Markdown, check out [the Communicating using Markdown course]({{ host}}/courses/communicating-using-markdown).
 - **Webhooks & the GitHub API**: You'll also need a general understanding of webhooks and the GitHub API.  Try [the Getting started with GitHub Apps course]({{ host}}/courses/getting-started-with-github-apps).
 
 # Course steps

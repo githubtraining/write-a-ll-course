@@ -3,7 +3,7 @@
 This course will walk you through creating your own Learning Lab course. If you've ever wanted to create a learning resource using Learning Lab, then you're in the right place! Together, we'll go through:
 
 - Picking a topic
-- Breaking the topic down into smaller steps
+- Breaking the topic down into small steps
 - Designing a course flow for the learners
 - Choosing a project repository
 - Mapping the smaller steps into GitHub events
