@@ -4,9 +4,9 @@ This course will walk you through creating your own Learning Lab course. If you'
 
 - Picking a topic
 - Breaking the topic down into small steps
-- Designing a course flow for the learners
+- Designing a learner centered course flow
 - Choosing a project repository
-- Mapping the smaller steps into GitHub events
+- Mapping the small steps into GitHub events
 - Writing responses
 - Importing and creating your course
 
@@ -19,11 +19,13 @@ This course will walk you through creating your own Learning Lab course. If you'
 
 The first thing we're going to do is talk about and choose a topic.
 
-If you'd like to teach something on Learning Lab, you may already have something in mind. For this course, you can actually start writing that idea and making it reality! If you're curious about how to write a course and would rather use our idea, try  Markdown as a topic.
+You may already have something in mind for your first course. In this course, you can actually start writing that idea and making it reality! If you're just curious about how to write a course or don't have an idea (yet), try  Markdown as a topic.
+
+Here are some things to think about as you select your topic:
 
 #### Things that work with GitHub
 
-Here are some things to think about: Does it happen on GitHub anyway? Learning Lab is best when it's working with something that it can interact with naturally. Things like painting would be difficult! Commits or interactions with GitHub are the perfect fit.
+Does it happen on GitHub anyway? Learning Lab is best when it's working with something that it can interact with naturally. Things like painting would be difficult! Commits or interactions with GitHub are the perfect fit.
 
 #### Scope and size
 
@@ -31,11 +33,11 @@ What's the scope or size? For example, JavaScript makes a lot of sense to teach 
 
 ## Step 1: Choose a topic for your course
 
-Whether you choose your own topic or one of ours, we'll stick with the same one throughout this course. Choose one now.
+Whether you choose your own topic or one of ours, you'll stick with the same one throughout this course. Don't worry, you don't have to publish it right away - we'll show you how to keep your course hidden as a _Draft_ until you are ready to show it to the world.
 
-### :keyboard: Activity: Choose what you'd like to teach through Learning Lab, or borrow one of our suggestions for practice
+### :keyboard: Activity: Tell us what you'd like to teach
 
-1. Please comment below with the subject that you'd like to teach in your Learning Lab course.
+1. Please comment below with the subject that you'd like to teach in your Learning Lab course. If you don't have an idea yet, you can use Markdown as your topic.
 
 <hr>
 <h3 align="center">I'll respond below when I detect a comment in this pull request.</h3>
