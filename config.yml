@@ -91,6 +91,11 @@ steps:
     link: '{{ repoUrl }}/pull/2'
     actions:
   # - type: gate # we validate that the repository exists
+    - type: gate
+        left: "%actions.pr.data.mergeable%"
+        else:
+          type: respond
+          with: 04_merge-conflict.md
     - type: respond
       with: 04_good-template.md
     - type: removeBranchProtection
