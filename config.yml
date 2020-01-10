@@ -91,6 +91,9 @@ steps:
     link: '{{ repoUrl }}/pull/2'
     actions:
   # - type: gate # we validate that the repository exists
+    - type: getPullRequest
+      waitForMergeable: true
+      action_id: pr
     - type: gate
       left: "%actions.pr.data.mergeable%"
       else:
