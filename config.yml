@@ -335,14 +335,14 @@ steps:
           data:
             url: '%payload.repository.html_url%/edit/map-events/config.yml?'           
     # Step 14: Import the course as a draft
+    - type: createIssue
+      title: Import the course
+      body: 14_import-course.md 
     - type: respond
       with: 13_nice-job.md
     - type: removeBranchProtection
     - type: mergeBranch
       head: map-events
-    - type: createIssue
-      title: Import the course
-      body: 14_import-course.md 
     - type: respond
       with: 14_troubleshooting.md
       issue: Import the course
