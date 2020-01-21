@@ -35,9 +35,9 @@ This is the process that we are going to use for each of the learning objectives
 
 ## Step 7: Choose the example that shows the three phases
 
-Before we start writing some for this course, let's practice identifying this three phase process. There are four examples below - some of which are examples of this three phase process, and some of which _aren't_. For each example, there is a label. For each example that _is_ a good example of the three phases, add the corresponding issue label to this pull request. Once all of them match what I expect, I'll give you the next instructions.
+Before we start writing some for this course, let's practice identifying this three phase process. There are four examples below - some of which are examples of this three phase process, and some of which _aren't_. For each example, there is a label. For each example that _is_ a good example of the three phases, add the corresponding label to this pull request. Once all of them match what I expect, I'll give you the next instructions.
 
-If you get stuck, add the issue label "help" and I'll give you some more detail. (include instructions for how to add labels)
+If you get stuck, add the issue label "help" and I'll give you some more detail. 
 
 ### :keyboard: Activity: Apply a label that corresponds to the example showing the three phases of a step
 
@@ -90,4 +90,5 @@ If you get stuck, add the issue label "help" and I'll give you some more detail.
  - **Phase 3**: Since we are listening for a commit, and the gate is set to check after that event, there is no feedback triggered when the user comments on the issue.
 
 </details>
-
+<hr>
+<h3 align="center">I'll respond below after you've added the correct labels.</h3>

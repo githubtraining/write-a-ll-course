@@ -29,7 +29,8 @@ Select a template repository - or use ours - based on the points listed above.
 1. Choose a repository to be a template. 
     - It's important that {{ owner }}, the owner of _this_ repository, is also the owner of the template repository.
     - The template repository doesn't have to be complete at this point, but it should have at least one commit. If you don't know where to begin, create a new repository with a README on your account.
-2. [Edit the `config.yml` file in this branch]({{ url }}) to replace the commented `name` and `repo`.
+2. [Edit the `config.yml` file in this branch]({{ url }}) to replace the commented template `name` and `repo`.
     - **Important!** Make sure the `name:` field is _different_ than this repository! Otherwise, you won't be able to take your own course.
 
+<hr>
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

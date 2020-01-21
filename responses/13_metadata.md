@@ -2,7 +2,7 @@
   
 Awesome work so far! Now, you've officially got your first step written. It's a good time to try this course out. Before we do, we need to pay some attention to the metadata in the config file, so that Learning Lab knows what to do with it.
   
-The parts that we need now are the title, description, name of the learner's repo. Learning Lab also needs more detail around each step. The information is there in detail in comments in the config file.
+The parts that we need now are the title, tagline, description, and the name of the learner's repo. Learning Lab also needs more detail around each step. The information is there in detail in comments in the config file.
 
 Here are a few examples:
 
@@ -37,10 +37,11 @@ template:
 
 ## Step 13: Create course metadata
 
-**Important:** Make sure the name is different than the name of this repository, or else you'll have some trouble taking the course yourself.
+**Important:** To ensure you can test this course, the template `name:` **must be different** than the name of this repository. The template name is what Learning Lab will name the repository when it is created on the learner's account. If the learner already has a repository with that name, it will fail --  so, make it unique.
 
 ### :keyboard: Activity: Add the course metadata like title and description to the configuration file
 
 1. [Edit the config file]({{ url }}) (lines 1, 2, and 3) so the comments are gone, and your information is there.
 
+<hr>
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

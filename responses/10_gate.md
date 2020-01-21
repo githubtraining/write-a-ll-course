@@ -1,6 +1,6 @@
 # Phase 2: Observation and Validation (with Gates)
 
-Phase 2 is already decided for us because the _event_ itself is the opening of an issue. If a user can make that trigger, they've learned what we wanted them to learn!
+Phase 2 is where we watch to see if the learner did what we asked them to do. With Learning Lab, we are watching for the _event_ to be sent by GitHub and then checking to see if it was the event we were expecting.
 
 The events that can act as triggers help Learning Lab know when something happens. However, sometimes knowing it happened isn't enough. For example, if we ask a learner to commit a function to a file, we'll get a trigger that they've committed to a branch. But we would receive the same trigger, even if they committed to a different file! In some cases, you may want to use a _gate action_ to validate things. Gates can:
 
@@ -8,13 +8,13 @@ The events that can act as triggers help Learning Lab know when something happen
 - Check the contents of a comment or commit with regex
 - Ensure an opened issue contains body text
 
-Course authors can use **gates** to be validate the user's completion of a step. A [:book: `gate`](https://lab.github.com/docs/actions/gate/) is a Learning Lab action. Gates are conditionals, and they behave much like a conditional in Javascript.
+A [:book: `gate`](https://lab.github.com/docs/actions/gate/) is a Learning Lab action. Gates are conditionals, and they behave much like a conditional in Javascript.
 
-You can also get creative here - maybe you want to have tests be included in the template repository, and then when they're run, the status could be the event, or something that you check.
+You can also get creative here - maybe you want to include tests in the template repository. When the tests are run, the status could be the event that you check.
 
 ## Step 10: Write a gate
 
-We need to validate against the learner's pull request title. This information is accessible to us [:book: from the payload](https://lab.github.com/docs/events#accessing-event-payloads) that is sent with the event. In this case, the information was sent from a `pull_request.opened` event.
+As an example of how gates work, let's validate the learner's pull request title. This information is accessible to us [:book: from the payload](https://lab.github.com/docs/events#accessing-event-payloads) that is sent with the `pull_request.opened` event. 
 
 You can see an example of all the information sent [in the GitHub Developer docs](https://developer.github.com/v3/activity/events/types/#webhook-payload-example-26).
 
@@ -38,6 +38,7 @@ actions:
 5. Set the gate's `operator:`, usually to `===`.
 6. Set the gate's `right:` to the title we expect, like the name of the pull request, or regex for what is expected from the commit contents, or any other amount which makes sense in your case.
 
+<hr>
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>
 
 > Aren't sure what event and gate to use? No worries - you can borrow these:

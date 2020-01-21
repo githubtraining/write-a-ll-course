@@ -1,4 +1,4 @@
-# Create an outline
+# Outline the remaining steps
 
 It is very important to choose events that correlate as directly as possible to what you're asking the learner to do. If you're not using gates or other tests, the event _should_ be what you're asking the learner to do.
 
@@ -11,4 +11,5 @@ Go ahead and put in the events for the rest of the learning objectives. You can 
 1. [Edit the `config.yml` file]({{ url }}) on lines 36, 43, 50, and 57.
 2. Map the rest of your learning objectives to [GitHub Events](https://developer.github.com/v3/activity/events/types/).
 
+<hr>
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

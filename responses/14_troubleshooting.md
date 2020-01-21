@@ -4,12 +4,12 @@ If you're having trouble importing your course, here are a few tips for troubles
 
 ## I can't find the place to import
 
-There are a few different ways to start a course:
+There are a few different ways to create a course:
 
 - Through the Learning Lab course builder
 - Manually
 
-If you do this manually, follow the instructions in the ["Create the course on Learning Lab (manual option"](https://lab.github.com/docs/course-ownership-and-repositories#manual-repository-setup) paragraph.
+Since we used the manual method in this course, follow the instructions in the ["Create the course on Learning Lab (manual option"](https://lab.github.com/docs/course-ownership-and-repositories#manual-repository-setup) paragraph.
 
 This should lead you to a URL that looks like `https://lab.github.com/:owner/new`. _(Ex: https://lab.github.com/githubtraining/new)_
 

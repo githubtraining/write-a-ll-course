@@ -24,4 +24,5 @@ _Are you noticing that we're asking a bit more of you now? Since you've already 
 
 1. [Edit the config file]({{ url }}) in this pull request to include the logic for both responses around the gate.
 
+<hr>
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

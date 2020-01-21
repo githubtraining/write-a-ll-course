@@ -43,4 +43,5 @@ You may notice the file name and structure. They represent the best practices we
 1. [Edit the `01_first-response.md` file]({{ url }}) and write the instructions for your first step.
     - Remember, this is _your_ course. You choose what to teach, what the steps are, and what to say!
 
+<hr>
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>

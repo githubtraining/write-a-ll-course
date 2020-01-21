@@ -36,4 +36,5 @@ Remember the steps you wrote earlier? Let's find the corresponding events. You'l
 
 > Not sure where to start? Use some of the events in the table above to get started!
 
+<hr>
 <h3 align="center">I'll respond below when I detect a commit on this branch.</h3>
