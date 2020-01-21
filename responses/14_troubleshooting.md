@@ -27,6 +27,10 @@ Check the responses referenced in the the `config.yml` file. Do they all exist? 
 
 More detailed error messages are available for draft courses made from pull requests. To do this, the course must first be published. Create another branch with the most up-to-date version of your course. Edit the course version on the `master` branch to reduce the possibility for errors. (You can do this by matching [the boilerplate repository](https://github.com/githubtraining/write-a-ll-course-template/blob/master/config.yml).)
 
+### Actions for every event
+
+If you have events or steps listed in your `config.yml`, they need to have at least one action. Make sure that every step has correlating actions.
+
 ## Still stuck
 
 If you're still stuck, visit us in the [Community Forum]({{ communityBoard }}) and we'll be happy to help!
