@@ -14,7 +14,7 @@ You can continue to [work on your course](https://lab.github.com/docs/testing#te
 
 ### Choosing public vs private courses
 
-If you'd like, you can sign up for private course options as an organization. Contact learninglab@github.com to learn more.
+Learning Lab courses are public by default. If you'd like to create private courses, you can sign up for the organization plan. Contact learninglab@github.com to learn more.
 
 ### Publish a course
 
