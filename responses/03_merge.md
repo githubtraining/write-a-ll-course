@@ -12,4 +12,4 @@ Next, we'll merge this pull request. You can go ahead and take your time breakin
 1. Once you're ready, merge this pull request.
 
 <hr>
-<h3 align="center">I'll respond below this pull request is merged.</h3>
+<h3 align="center">I'll respond below when this pull request is merged.</h3>
