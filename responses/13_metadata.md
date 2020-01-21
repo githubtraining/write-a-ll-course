@@ -2,7 +2,7 @@
   
 Awesome work so far! Now, you've officially got your first step written. It's a good time to try this course out. Before we do, we need to pay some attention to the metadata in the config file, so that Learning Lab knows what to do with it.
   
-The parts that we need now are the title, tagline, description, and the name of the learner's repo. Learning Lab also needs more detail around each step. The information is there in detail in comments in the config file.
+The parts that we need now are the title, tagline, description, and the name of the learner's repository. Learning Lab also needs more detail around each step. The information is there in detail in comments in the config file.
 
 Here are a few examples:
 
