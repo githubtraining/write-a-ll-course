@@ -9,9 +9,9 @@ To put this response in the config, it will be very similar to phase 1. But, _wh
     right: master
     else:
     - type: respond
-      with: unhappy-path-respond.md
+      with: 01_try-again.md
 - type: respond
-  with: happy-path-response.md
+  with: 01_nice-work.md
 ```
 
 ## Step 12: Write the config logic
