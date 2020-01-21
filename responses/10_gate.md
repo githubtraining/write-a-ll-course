@@ -2,7 +2,7 @@
 
 Phase 2 is where we watch to see if the learner did what we asked them to do. With Learning Lab, we are watching for the _event_ to be sent by GitHub and then checking to see if it was the event we were expecting.
 
-The events that can act as triggers help Learning Lab know when something happens. However, sometimes knowing it happened isn't enough. For example, if we ask a learner to commit a function to a file, we'll get a trigger that they've committed to a branch. But we would receive the same trigger, even if they committed to a different file! In some cases, you may want to use a _gate action_ to validate things. Gates can:
+The events that are sent to Learning Lab alert Learning Lab that something has happened. But, to create a good learning experience, we should validate that the learner did the right thing. For example, if we ask a learner to commit a function to a file, we'll get an event when they've committed to a branch. But we would receive the same trigger, but they may not have committed to the correct file! In these cases, use a _gate action_ for validation. Gates can:
 
 - Validate that a closed pull request was merged
 - Check the contents of a comment or commit with regex
