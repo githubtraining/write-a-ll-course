@@ -6,13 +6,13 @@ Every comment that I make is an example of a real, human-proofed answer. Compare
 
 ### Action `type: respond`
 
-Now that you've given me something to say, we need to figure out _how_ to say it to with Learning Lab. Now is the time to learn about Learning Lab's _actions_. Actions are reusable modules that each Learning Lab course has access to. They are each designed to do very specific things, and nothing more. This is to optimize for reusability and simplicity.
+Now that you've written a response, we need to figure out _how_ to say it to with Learning Lab. Now is the time to learn about Learning Lab's _actions_. Actions are reusable modules that each Learning Lab course has access to. They are each designed to do very specific things, and nothing more. This is to optimize for reusability and simplicity.
 
-There are all kinds of actions so I can do different things like responding, opening pull requests, merging, and more. You can see all of the available actions in [Learning Lab's documentation](https://lab.github.com/docs/actions/).
+There are all kinds of actions. Learning Lab can do different things like responding, opening pull requests, merging, and more. You can see all of the available actions in [Learning Lab's documentation](https://lab.github.com/docs/actions/).
 
 ## Step 9: Write the first Learning Lab action
 
-You've got the response file, and now it's time to edit the `config` file with the proper action: respond. Because this is our first instruction, we will put it in the "before" step so the learner knows what we are waiting for them to do when they first enter the course. It will look like this:
+You've got the response file, and now it's time to edit the `config` file with the proper action: respond. Because this is the first instruction, it belongs in the "before" step. That way, the learner knows what we are waiting for them to do when they first enter the course. It will look like this:
 
 ```
     before:
