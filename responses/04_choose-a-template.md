@@ -26,9 +26,10 @@ Select a template repository - or use ours - based on the points listed above.
 
 ### :keyboard: Activity: Edit the config file to reference your chosen template repository
 
-1. Choose a repository to be a template. 
+1. Choose a repository to be a template.
     - It's important that {{ owner }}, the owner of _this_ repository, is also the owner of the template repository.
     - The template repository doesn't have to be complete at this point, but it should have at least one commit. If you don't know where to begin, create a new repository with a README on your account.
+    - To ensure you can test this course, the template `name:` **must be different** than the name of this repository. The template name is what Learning Lab will name the repository when it is created on the learner's account. If the learner already has a repository with that name, it will fail --  so, make it unique.
 2. [Edit the `config.yml` file in this branch]({{ url }}) to replace the commented template `name` and `repo`.
     - **Important!** Make sure the `name:` field is _different_ than this repository! Otherwise, you won't be able to take your own course.
 

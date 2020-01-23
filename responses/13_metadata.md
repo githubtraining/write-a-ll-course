@@ -37,8 +37,6 @@ template:
 
 ## Step 13: Create course metadata
 
-**Important:** To ensure you can test this course, the template `name:` **must be different** than the name of this repository. The template name is what Learning Lab will name the repository when it is created on the learner's account. If the learner already has a repository with that name, it will fail --  so, make it unique.
-
 ### :keyboard: Activity: Add the course metadata like title and description to the configuration file
 
 1. [Edit the config file]({{ url }}) (lines 1, 2, and 3) so the comments are gone, and your information is there.
