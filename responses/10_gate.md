@@ -50,7 +50,7 @@ actions:
 >   link: '{{ repoUrl }}/issues/1'
 >   actions:
 >   - type: gate
->     left: '%payload.assignee.login%'
+>     left: %payload.pull_request.title%'
 >     operator: ===
->     right: '%user.username%'
+>     right: Add name to README
 > ```
