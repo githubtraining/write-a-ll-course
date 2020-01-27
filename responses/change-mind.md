@@ -1,1 +1,0 @@
-We'll continue the course instructions in case you change your mind and would like to continue. If you do, just return to this issue to pick it up where you left off. 
