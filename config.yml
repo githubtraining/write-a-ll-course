@@ -3,7 +3,7 @@ tagline: Learn how to create project driven, hands on courses with Learning Lab
 description: Your Learning Lab course will help developers around the world discover new technologies, learn new skills and build better software. You have knowledge to share and this course will help you take your first steps, today.
 template:
   name: lab-starter
-  repo: write-a-ll-course-template-2.0
+  repo: write-a-ll-course-template
 before:
   - type: createLabel
     name: help
