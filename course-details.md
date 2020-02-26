@@ -4,10 +4,20 @@ If you'd like to get started in building courses for others, this is the course 
 
 # What you'll learn
 
+This course will answer questions like:
+- How does a Learning Lab course work?
+- What are GitHub events?
+- What's a step?
+- How do I write responses?
+- What topic is a good candidate for a Learning Lab course?
+- How do I give a learner feedback?
+- How do I list a course in the catalog and publish it? 
+
+After taking this course, you'll be able to:
 - Design a course using your chosen topic
+- Create your course on GitHub Learning Lab
 - Break down your topic into smaller steps for GitHub
-- Identify the structure of a Learning Lab course
-- Define a template repository
+- Create a template repository
 
 # What you'll build
 
