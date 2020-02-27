@@ -45,7 +45,6 @@ actions:
 > ```
 > - title: Assign yourself
 >   description: Assign the first issue to yourself.
->   translations:
 >   event: issues.assigned
 >   link: '{{ repoUrl }}/issues/1'
 >   actions:
