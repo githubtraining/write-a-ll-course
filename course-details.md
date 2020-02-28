@@ -27,8 +27,11 @@ For this course, the best reference point is any other completed Learning Lab co
 
 # Prerequisites
 
-- **GitHub knowledge**: For this course, you'll need to know how to use GitHub to work with text files. If you need a refresher on the GitHub flow, check out [the Introduction to GitHub course]({{ host}}/courses/introduction-to-github). If you need a refresher on Markdown, check out [the Communicating using Markdown course]({{ host}}/courses/communicating-using-markdown).
-- **Webhooks & the GitHub API**: You'll also need a general understanding of webhooks and the GitHub API.  Try [the Getting started with GitHub Apps course]({{ host}}/courses/getting-started-with-github-apps).
+We recommend you first complete the following courses:
+
+- [Introduction to GitHub](https://lab.github.com/githubtraining/introduction-to-github/) to learn how to use GitHub and pull requests to edit files.
+- [Communicating using Markdown](https://lab.github.com/githubtraining/communicating-using-markdown) to learn Markdown, which is used to create response files and throughout the course creation process.
+- [Getting started with GitHub Apps](https://lab.github.com/githubtraining/getting-started-with-github-apps) for understanding webhooks, events, and the basics of the GitHub API.
 
 # Audience
 
