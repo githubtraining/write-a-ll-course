@@ -364,3 +364,7 @@ steps:
       # Step 16: Back to learning objectives/events, create phases 1-3 for additional steps
     - type: respond
       with: 16_finish-it.md
+
+tags: [
+  "Courses", "Teaching", "YAML", "Learning Lab", "Learning"
+]
