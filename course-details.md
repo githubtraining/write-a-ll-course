@@ -33,6 +33,10 @@ We recommend you first complete the following courses:
 - [Communicating using Markdown](https://lab.github.com/githubtraining/communicating-using-markdown) to learn Markdown, which is used to create response files and throughout the course creation process.
 - [Getting started with GitHub Apps](https://lab.github.com/githubtraining/getting-started-with-github-apps) for understanding webhooks, events, and the basics of the GitHub API.
 
+# Projects used
+
+This course uses all original content, we didn't use any open source projects to create it.
+
 # Audience
 
-Anyone with something to teach through GitHub, like developers, teachers, and team leads.
+Developers, teachers, and team leads.
