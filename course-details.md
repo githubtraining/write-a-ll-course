@@ -23,7 +23,7 @@ After taking this course, you'll be able to:
 
 ![screenshot of a sample config.yml file](https://user-images.githubusercontent.com/16547949/75559284-2fbbc480-5a11-11ea-8288-49ac143dfa4a.png)
 
-For this course, the best reference point is any other completed Learning Lab course! Take a look at the [course code for all our courses](https://github.com/search?q=topic%3Alearning-lab+org%3Agithubtraining+fork%3Atrue). Feel free to dive into the `config.yml` file for each course and explore!
+For this course, the best reference point is any other completed Learning Lab course! Take a look at the [source code for all our courses](https://github.com/search?q=topic%3Alearning-lab+org%3Agithubtraining+fork%3Atrue). Feel free to dive into the `config.yml` file for each course and explore!
 
 # Prerequisites
 
