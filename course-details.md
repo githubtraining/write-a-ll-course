@@ -1,52 +1,42 @@
-# Estimated duration
-
-90 minutes
-
-# Course description
-
 Learning Lab helps people build real world skills through hands-on activities. This course streamlines the course building process, and gives you all the tools you need to help others learn.
 
 If you'd like to get started in building courses for others, this is the course for you! 
 
 # What you'll learn
 
+This course will answer questions like:
+- How does a Learning Lab course work?
+- What are GitHub events?
+- What's a step?
+- How do I write responses?
+- What topic is a good candidate for a Learning Lab course?
+- How do I give a learner feedback?
+- How do I list a course in the catalog and publish it? 
+
+After taking this course, you'll be able to:
 - Design a course using your chosen topic
+- Create your course on GitHub Learning Lab
 - Break down your topic into smaller steps for GitHub
-- Identify the structure of a Learning Lab course
-- Define a template repository
+- Create a template repository
 
 # What you'll build
 
-- Your own course steps, based on actions that you choose
-- Instructions and responses for learners
-- A published GitHub Learning Lab course
+![screenshot of a sample config.yml file](https://user-images.githubusercontent.com/16547949/75559284-2fbbc480-5a11-11ea-8288-49ac143dfa4a.png)
+
+For this course, the best reference point is any other completed Learning Lab course! Take a look at the [source code for all our courses](https://github.com/search?q=topic%3Alearning-lab+org%3Agithubtraining+fork%3Atrue). Feel free to dive into the `config.yml` file for each course and explore!
 
 # Prerequisites
 
-- **GitHub knowledge**: For this course, you'll need to know how to use GitHub to work with text files. If you need a refresher on the GitHub flow, check out [the Introduction to GitHub course]({{ host}}/courses/introduction-to-github). If you need a refresher on Markdown, check out [the Communicating using Markdown course]({{ host}}/courses/communicating-using-markdown).
-- **Webhooks & the GitHub API**: You'll also need a general understanding of webhooks and the GitHub API.  Try [the Getting started with GitHub Apps course]({{ host}}/courses/getting-started-with-github-apps).
+We recommend you first complete the following courses:
 
-# Course steps
+- [Introduction to GitHub](https://lab.github.com/githubtraining/introduction-to-github/) to learn how to use GitHub and pull requests to edit files.
+- [Communicating using Markdown](https://lab.github.com/githubtraining/communicating-using-markdown) to learn Markdown, which is used to create response files and throughout the course creation process.
+- [Getting started with GitHub Apps](https://lab.github.com/githubtraining/getting-started-with-github-apps) for understanding webhooks, events, and the basics of the GitHub API.
 
-The steps in this course are:
-{{ courseSteps }}
+# Projects used
 
-# Getting help
-
-Here are some ways you can get help:
-
-- This course has a dedicated message board on the [GitHub Community]({{ communityBoard }}) website. If you want to discuss this course with GitHub Trainers or other participants create a post over there. The message board can also be used to troubleshoot any issue you encounter while taking this course.
-
-- To report bugs or request changes to the course, please open an [issue in the author's repository]({{ courseRepo }}).
+This course uses all original content, we didn't use any open source projects to create it.
 
 # Audience
 
-Anyone with something to teach through GitHub, like developers, teachers, and team leads.
-
-# Release
-
-This course was last updated on Tuesday, December 31, 2019.
-
-# License
-
-The course logic is licensed [CC-BY-4.0](https://github.com/githubtraining/write-a-ll-course/blob/master/LICENSE) and the template repository is licensed [MIT](https://github.com/githubtraining/write-a-ll-course-template/blob/master/LICENSE).
+Developers, teachers, and team leads.
