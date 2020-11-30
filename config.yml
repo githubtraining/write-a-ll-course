@@ -104,7 +104,7 @@ steps:
     - type: mergeBranch
       head: template
     - type: mergeBranch
-      head: master
+      head: main
       base: map-events
     - type: deleteBranch
       branch: template

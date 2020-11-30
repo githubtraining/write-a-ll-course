@@ -6,7 +6,7 @@ To put this response in the config, it will be very similar to phase 1. But, _wh
 - type: gate
     left: '%payload.pull_request.base.ref%'
     operator: ===
-    right: master
+    right: main
     else:
     - type: respond
       with: 01_try-again.md
