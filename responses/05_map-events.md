@@ -2,7 +2,7 @@
 
 Alright - you've chosen a project, and you've laid out the steps for your learners. Next, we're going to get into something new with Learning Lab: events! (You can learn more about events in [the documentation](https://lab.github.com/docs/events).)
 
-An `event` is the webhook that is triggered when the learner does something in their repository. Every webhook for the learner's repository is sent to Learning Lab. These events are "read" by Learning Lab. If it is the event the bot has been waiting for, the bot will do what you command. Otherwise, it will ignore the event.  [You can see all of the events in GitHub's documentation](https://developer.github.com/v3/activity/events/types/). Some of the most common examples are `pull_request.synchronize` or `issue.comment`. 
+An `event` is the webhook that is triggered when the learner does something in their repository. Every webhook for the learner's repository is sent to Learning Lab. These events are "read" by Learning Lab. If it is the event the bot has been waiting for, the bot will do what you command. Otherwise, it will ignore the event.  [You can see all of the events in GitHub's documentation](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads). Some of the most common examples are `pull_request.synchronize` or `issue.comment`. 
 
 ### Map behaviors to events
 
@@ -17,11 +17,11 @@ Try to choose events that correspond directly to what you want the learner to do
 | Behavior | Events |
 | ------------- | ------------- |
 | What can I observe that confirms the user demonstrated the skill or knowledge? | What event triggers are available through GitHub? |
-| Write a function (commit) | [`pull_request.synchronize`](https://developer.github.com/v3/activity/events/types/#pullrequestevent) |
-| Solve a merge conflict (commit) | [`push`](https://developer.github.com/v3/activity/events/types/#pushevent) |
-| Open a pull request | [`pull_request`](https://developer.github.com/v3/activity/events/types/#pullrequestevent) |
-| Implement a test | [`status`](https://developer.github.com/v3/activity/events/types/#statusevent) |
-| Comment on an issue | [`issue_commented.created`](https://developer.github.com/v3/activity/events/types/#issuecommentevent) |
+| Write a function (commit) | [`pull_request.synchronize`](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads#pull_request) |
+| Solve a merge conflict (commit) | [`push`](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads#push) |
+| Open a pull request | [`pull_request`](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads#pull_request) |
+| Implement a test | [`status`](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads#status) |
+| Comment on an issue | [`issue_comment.created`](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads#issue_comment) |
 
 ## Step 5: Map learning objectives to events
 
@@ -31,7 +31,7 @@ Remember the steps you wrote earlier? Let's find the corresponding events. You'l
 
 ### :keyboard: Activity: Map the learning objectives you wrote to specific events from GitHub webhooks
 
-1. Take a look through [GitHub's documentation for event triggers](https://developer.github.com/v3/activity/events/types/).
+1. Take a look through [GitHub's documentation for event triggers](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads).
 2. [Edit the `config.yml` file]({{ url }}) on line 29 and make note of the event trigger that matches your first objective.
 
 > Not sure where to start? Use some of the events in the table above to get started!

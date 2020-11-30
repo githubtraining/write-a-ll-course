@@ -16,7 +16,7 @@ You can also get creative here - maybe you want to include tests in the template
 
 As an example of how gates work, let's validate the learner's pull request title. This information is accessible to us [:book: from the payload](https://lab.github.com/docs/events#accessing-event-payloads) that is sent with the `pull_request.opened` event. 
 
-You can see an example of all the information sent [in the GitHub Developer docs](https://developer.github.com/v3/activity/events/types/#webhook-payload-example-26).
+You can see an example of all the information sent [in the GitHub Developer docs](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads#example-delivery).
 
 We'll add the [:book: `left:` option](https://lab.github.com/docs/actions/gate/#options) to the gate, and compare its value to the expected pull request's title.
 
