@@ -4,7 +4,7 @@ Great! When you commented, you triggered something called a webhook that I heard
 
 Now that you know what you want to teach, the next thing to do is break it down into steps. This can be tricky - put on a teacher hat and an engineer hat at the same time.
 
-To break down the thing you want to teach, think about the observable behaviors. They should show that the user is doing it right. If you were watching this person, how would you know they've mastered the thing? Some examples are:
+To break down the thing you want to teach, think about the observable behaviors. They should show that the user is doing it right. If you were watching this person, how would you know they have learned the thing? Some examples are:
 
 - Close an issue
 - Write a functional SQL query

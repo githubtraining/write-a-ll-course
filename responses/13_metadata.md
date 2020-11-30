@@ -6,7 +6,7 @@ The parts that we need now are the title, description, and the name of the learn
 
 Here are a few examples:
 
-- [Introduction to GitHub](https://github.com/githubtraining/introduction-to-github/blob/master/config.yml)
+- [Introduction to GitHub](https://github.com/githubtraining/introduction-to-github/blob/main/config.yml)
 ```
 title: Introduction to GitHub
 description: If you are looking for a quick and fun introduction to GitHub, you've found it. This class will get you started using GitHub in less than an hour.
@@ -15,7 +15,7 @@ template:
   repo: caption-this-template
   description: 'A robot powered training repository :robot:'
 ```
-- [Communicating Using Markdown](https://github.com/githubtraining/communicating-using-markdown/blob/master/config.yml)
+- [Communicating Using Markdown](https://github.com/githubtraining/communicating-using-markdown/blob/main/config.yml)
 ```
 title: "Communicating using Markdown"
 description: "This course will walk you through everything you need to start organizing ideas and collaborating using Markdown, a lightweight language for text formatting."
@@ -23,7 +23,7 @@ template:
   name: "markdown-portfolio"
   repo: "communicating-using-md-template"
 ```
-- [This course - Writing a Learning Lab course](https://github.com/githubtraining/write-a-ll-course/blob/master/config.yml)
+- [This course - Writing a Learning Lab course](https://github.com/githubtraining/write-a-ll-course/blob/main/config.yml)
 ```
 title: Write a Learning Lab course
 description: Use Learning Lab's strengths for fast feedback to author your own course.
