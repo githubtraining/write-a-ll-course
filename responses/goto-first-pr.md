@@ -1,1 +1,0 @@
-Let's go to the [first pull request]({{ url }}) which I've opened for you. 

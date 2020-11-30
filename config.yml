@@ -1,584 +1,370 @@
 title: Write a Learning Lab course
-tagline: Learn how to author your own Learning Lab course.
-description: Get starter code, or let the Learning Lab bot guide you as you author your first course.
+description: Your Learning Lab course will help developers around the world discover new technologies, learn new skills and build better software. You have knowledge to share and this course will help you take your first steps, today.
 template:
   name: lab-starter
   repo: write-a-ll-course-template
 before:
-  - type: createIssue
-    title: Welcome
-    body: 00.0_welcome.md
-    comments:
-      - welcome-2.md
+  - type: createLabel
+    name: help
+    color: ff0000
+  - type: createLabel
+    name: "1: Committing a header"
+    color: 4b0082
+  - type: createLabel
+    name: "2: Closing an issue"
+    color: 0000cd
+  - type: createLabel
+    name: "3: Fixing a bug"
+    color: 40e0d0
+  - type: createLabel
+    name: "4: Writing a function"
+    color: e9967a
+
+# Template: 
+  # Template: commented config, README, course-details.
+  # Branch `course-planning` for step 1 with a few ideas. User told not to edit the first two.
+  # Branch `template` for step 4, with comments added to the place where the template repository goes
+  # Branch `map-events` for step 5, with learning objective for 1 mapped out, and 2 is ready to go with comments 
+  # Branch `first-response` for step 8. After step 7 it gets merged into `map-events`. It has an empty response file for the first step.
+  # Branch `first-feedback` for step 11. After step 10 it gets merged into `map-events`. It has two empty response files.
+
+# Step 1: Decide what to teach - what's the right step? 
+  # README.md or course-details
+  # We have suggestions but they can also write their own. Our suggestions are ideas, not solutions. Ex: Introduction to GitHub, Introduction to Markdown
+
+  - type: createPullRequest
+    title: Choose a topic for your course
+    body: 01_welcome.md
+    head: course-planning
   - type: updateBranchProtection
 
-# Repo artifacts:
-# 1. Issue: Welcome
-# 2. PR: Add a course title and description
-# 3. PR: Setup the learner's repo
-# 4. PR: Write the course steps
-# 5. Issue: Publish your course
-
 steps:
+  - title: Choose a topic for your course
+    description: Choose what you'd like to teach through Learning Lab, or borrow one of our suggestions for practice.
+    event: issue_comment.created
+    link: '{{ repoUrl }}/pull/1'
+    actions:
+    # Step 2: Break course into smaller, targeted learning objectives
+    - type: respond
+      with: 02_break-it-down.md
+      data:
+        url: '%payload.repository.html_url%/edit/course-planning/config.yml?'
+  - title: Break your course into smaller steps
+    description: Break down what you'd like to teach into smaller learning objectives.
+    event: pull_request.synchronize
+    link: '{{ repoUrl }}/pull/1'
+    actions: 
+    # Step 3: Merge the pull request
+    - type: removeBranchProtection
+    - type: respond
+      with: 03_merge.md
+      data:
+        url: '%payload.repository.html_url%/edit/course-planning/config.yml?'
 
-# 1
-- title: Welcome
-  description: Decide whether to complete a guided course, or use boilerplate as is.
-  event: issues
-  link: '{{ repoUrl }}/issues/1'
-  actions:
-  - type: gate
-    left: '%payload.issue.title%'
-    operator: ===
-    right: Welcome
-  - type: gate
-    left: '%payload.action%'
-    operator: ===
-    right: closed
-    required: false
-    else:
+  - title: Merge your learning objectives
+    description: Merge the pull request breaking down your course topic into smaller learning objectives.
+    event: pull_request.closed
+    link: '{{ repoUrl }}/pull/1'
+    actions:
     - type: gate
-      left: '%payload.action%'
-      operator: ===
-      right: assigned
+      every: true
+      gates:
+      - left: '%payload.action%'
+        operator: ===
+        right: closed
+      - left: '%payload.pull_request.merged%'
     - type: respond
-      with: how-to-publish.md
-      data: 
-        url: '%payload.repository.html_url%/fork'
+      with: 03_nice-work.md
+    # Step 4: Choose a template project
+    - type: createPullRequest
+      title: Choose a template project
+      body: 04_choose-a-template.md
+      head: template
+      data:
+        url: '%payload.repository.html_url%/edit/template/config.yml?'
+    - type: updateBranchProtection
+
+  - title: Reference the template
+    description: Edit the config file to reference your chosen template repository.
+    event: pull_request.synchronize
+    link: '{{ repoUrl }}/pull/2'
+    actions:
+  # - type: gate # we validate that the repository exists
+    - type: getPullRequest
+      waitForMergeable: true
+      action_id: pr
+    - type: gate
+      left: "%actions.pr.data.mergeable%"
+      else:
+        type: respond
+        with: 04_merge-conflict.md
     - type: respond
-      with: change-mind.md
-  - type: createPullRequest
-    title: Add a course title and description
-    body: 01.0_add-title.md
-    head: title
-    action_id: metaPR
-  - type: assignRegistrant
-    issue: '%actions.metaPR.data.number%'
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%actions.metaPR.data.head.repo.owner.login%'
-    repo: '%actions.metaPR.data.head.repo.name%'
-    number: '%actions.metaPR.data.number%'
-    commit_id: '%actions.metaPR.data.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-      title: My amazing course
-      ```
-    position: 6
-  - type: respond
-    with: goto-first-pr.md
-    data:
-      url: '%actions.metaPR.data.html_url%'
+      with: 04_good-template.md
+    - type: removeBranchProtection
+    - type: mergeBranch
+      head: template
+    - type: mergeBranch
+      head: master
+      base: map-events
+    - type: deleteBranch
+      branch: template
+  # Step 5: Mapping learning objectives to events and how to choose events that align with the learning objective
+    - type: createPullRequest
+      title: Map learning objectives to events
+      body: 05_map-events.md
+      head: map-events
+      data:
+        url: '%payload.repository.html_url%/edit/map-events/config.yml?'
+    - type: updateBranchProtection
 
-# 2
-- title: Give your course a title
-  description: Name your course so learners can find it.
-  event: pull_request.synchronize
-  link: '{{ repoUrl }}/pull/1'
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^title: *\w(?![ \t]*#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
+  - title: Map learning objectives to events
+    description: Map the learning objectives you wrote to specific events from GitHub webhooks.
+    event: pull_request.synchronize
+    link: '{{ repoUrl }}/pull/3'
+    actions:
+   # - type: gate #  we check if they have events or things that aren't events where events should be
+    # Step 6: Rough outline of learning objectives as events
     - type: respond
-      with: 02.1_e-no-title.md
-  - type: respond
-    with: 11.0_add-descriptions.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-      tagline: Learn how to open a pull request
-      ```
-    position: 7
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-      description: Go from 0 to pull request 1 in less than 10 minutes with this course.
-      ```
-    position: 8
+      with: 06_create-outline.md
+      data:
+        url: '%payload.repository.html_url%/edit/map-events/config.yml?'
 
-# 3
-- title: Add some descriptions to your course
-  description: Give your course a description and tagline so learners can identify it.
-  link: '{{ repoUrl }}/pull/1'
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^tagline:(?![ \t]*#).*$\ndescription:(?![ \t]*#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
+  - title: Create an outline of learning objectives as events
+    description: Using the same strategy of mapping learning objectives to events, create an outline of events for your course.
+    event: pull_request.synchronize
+    link: '{{ repoUrl }}/pull/3'
+    actions:
+    # - type: gate  we validate that there are actually events
+    # Step 7: 3 phases of a step
     - type: respond
-      with: 12.1_e-no-meta.md
-  - type: requestReviewFromRegistrant
-  - type: respond
-    with: approve-first-pr.md
+      with: 07_3-phases.md
 
-# 4
-- title: Approve the course metadata
-  description: Approve the pull request containing the course's metadata.
-  link: '{{ repoUrl }}/pull/1'
-  event: pull_request_review.submitted
-  actions:
-  - type: gate
-    left: '%payload.review.state%'
-    operator: ===
-    right: approved
-  - type: mergePullRequest
-  - type: createPullRequest
-    title: Setup the learner's repo
-    body: 02.0_add-template.md
-    head: repo-setup
-    action_id: repoPR
-  - type: respond
-    with: goto-template-pr.md
-    data:
-      url: '%actions.repoPR.data.html_url%'
-  - type: assignRegistrant
-    issue: '%actions.repoPR.data.number%'
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%actions.repoPR.data.head.repo.owner.login%'
-    repo: '%actions.repoPR.data.head.repo.name%'
-    number: '%actions.repoPR.data.number%'
-    commit_id: '%actions.repoPR.data.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        repo: lab-starter-template
-      ```
-    position: 7
-
-# 5
-- title: Point to the template repo
-  description: Designate a template repository from which to clone.
-  link: '{{ repoUrl }}/pull/2'
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^\s{2}repo: *lab-starter-template(?!#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 03.1_e-no-repo.md
-  - type: respond
-    with: 03.0_add-repo-name.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        name: my-sparkles-repo
-      ```
-    position: 6
-
-# 6
-- title: Give the learner's repo a name
-  description: Designate a name for the repository when it is created for the learner.
-  link: '{{ repoUrl }}/pull/2'
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^\s{2}name: *\w(?![ \t]*#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 04.1_e-no-name.md
-  - type: requestReviewFromRegistrant
-  - type: respond
-    with: approve-second-pr.md
-
-# 7
-- title: Approve the repo setup
-  description: Approve the template repo information
-  link: '{{ repoUrl }}/pull/2'
-  event: pull_request_review.submitted
-  actions:
-  - type: gate
-    left: '%payload.review.state%'
-    operator: ===
-    right: approved
-  - type: mergePullRequest
-  - type: createPullRequest
-    title: Write the course steps
-    body: 04.0_create-issue.md
-    head: write-steps
-    action_id: stepsPR
-  - type: respond
-    with: goto-steps-pr.md
-    data:
-      url: '%actions.stepsPR.data.html_url%'
-  - type: assignRegistrant
-    issue: '%actions.stepsPR.data.number%'
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%actions.stepsPR.data.head.repo.owner.login%'
-    repo: '%actions.stepsPR.data.head.repo.name%'
-    number: '%actions.stepsPR.data.number%'
-    commit_id: '%actions.stepsPR.data.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-      - type: createIssue
-      ```
-    position: 7
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%actions.stepsPR.data.head.repo.owner.login%'
-    repo: '%actions.stepsPR.data.head.repo.name%'
-    number: '%actions.stepsPR.data.number%'
-    commit_id: '%actions.stepsPR.data.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        title: Welcome
-      ```
-    position: 8
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%actions.stepsPR.data.head.repo.owner.login%'
-    repo: '%actions.stepsPR.data.head.repo.name%'
-    number: '%actions.stepsPR.data.number%'
-    commit_id: '%actions.stepsPR.data.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        body: welcome-text.md
-      ```
-    position: 9
-
-# 8
-- title: Create an issue using Learning Lab
-  description: Use the `before` block to create an issue in the learner's repo.
-  link: '{{ repoUrl }}/pull/3'
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^- type: *createIssue(?!#).*$\n  title: *(?![ \t]*#).*$\n. body: *welcome-text.md(?!#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 05.1_e-no-new-issue.md
-  - type: respond
-    with: 05.0_add-response.md
-    data:
-      fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%/responses?filename=responses/welcome-text.md'
-
-# 9
-- title: Create your first response
-  description: Add content to the repo's first issue.
-  link: '{{ repoUrl }}/pull/3'
-  event: pull_request.synchronize
-  actions:
-  - type: getTree
-    action_id: tree
-    recursive: true
-    sha: '%payload.pull_request.head.sha%'
-  - type: gate
-    left: '%actions.tree.data.tree%'
-    operator: includes
-    right: path:responses/welcome-text.md
-    else:
-      type: respond
-      with: 06.1_e-no-response.md
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'responses/welcome-text.md'
-  - type: gate
-    left: '/\w+/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 06.1_e-no-response.md
-  - type: respond
-    with: 06.0_add-first-step.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-      - title: Create a new pull request
-      ```
-    position: 19
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        description: Add your name to the README.md file in your new pull request
-      ```
-    position: 20
-
-# 10
-- title: Name your first step and give it a description
-  description: Identify the first step so the learner knows what's expected.
-  link: '{{ repoUrl }}/pull/3'
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^\s{2}description:(?![ \t]*#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 07.1_e-no-step-title.md
-  - type: respond
-    with: 07.0_add-trigger.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-        event: pull_request.opened
-      ```
-    position: 21
-
-# 11
-- title: Trigger your first step with a GitHub event
-  description: Add a pull_request.opened event.
-  link: '{{ repoUrl }}/pull/3'
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^\s{2}event: *pull_request.opened(?!#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 08.1_e-no-event.md
-  - type: respond
-    with: 08.0_validate.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
+  - title: Choose the example that shows the three phases
+    description: Apply a label that corresponds to the example showing the three phases of a step.
+    event: pull_request.labeled
+    link: '{{ repoUrl }}/pull/3'
+    actions:
+    #- type: gate check that the correct label was applied - correct labels are 2 "2: Closing an issue" and 3 "3: Fixing a bug"
+      # else: If user needs help, longer explanation of each example, plus instructions/video of how to add labels
+    - type: gate
+      every: true
+      gates:
+      - left: '%payload.pull_request.labels.0.name%'
+        operator: ===
+        right: "2: Closing an issue"
+      - left: '%payload.pull_request.labels.1.name%'
+        operator: ===
+        right: "3: Fixing a bug"
+      else:
         - type: gate
-      ```
-    position: 27
-
-# 12
-- title: Validate a learner's pull request
-  description: Add a gate to determine if the learner took the expected action.
-  link: '{{ repoUrl }}/pull/3'
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^\s{2}- type: *gate(?!#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
-    - type: respond
-      with: 09.1_e-no-gate.md
-  - type: respond
-    with: 09.0_add-context.md
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-          left: '\%payload.pull_request.title\%'
-      ```
-    position: 28
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
+          left: '%payload.pull_request.labels.0.name%'
           operator: ===
-      ```
-    position: 29
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-          right: Add name to README
-      ```
-    position: 30
-
-# 13
-- title: Use contextual information to validate
-  description: Add options to the gate action.
-  link: '{{ repoUrl }}/pull/3'
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  # - type: gate
-  #   left: '/^\s{4}left: *'\%payload.pull_request.title\%'(?!#).*$\n\s{4}operator: *===(?!#).*$\n\s{4}right: *Add name to README(?!#).*$/gm'
-  #   operator: test
-  #   right: '%actions.fileContents%'
-  #   else:
-  #   - type: respond
-  #     with: 10.1_e-no-gate-options.md
-  - type: respond
-    with: 10.0_respond-success.md
-    data:
-      fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%/?filename=README.md'
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
+          right: "help"
         - type: respond
-      ```
-    position: 31
-  - type: octokit
-    method: pullRequests.createComment
-    owner: '%payload.repository.owner.login%'
-    repo: '%payload.repository.name%'
-    number: '%payload.number%'
-    commit_id: '%payload.pull_request.head.sha%'
-    path: config.yml
-    body: |
-      ```suggestion
-          with: pr-opened.md
-      ```
-    position: 32
-
-# 14
-- title: Respond to a learner's successful pull request
-  description: Use a respond action when a learner opens their pull request.
-  link: '{{ repoUrl }}/pull/3'
-  event: pull_request.synchronize
-  actions:
-  - type: getFileContents
-    action_id: fileContents
-    filename: 'config.yml'
-  - type: gate
-    left: '/^\s{2}- type: *respond(?!#).*$\n    with: *pr-opened.md(?!#).*$/gm'
-    operator: test
-    right: '%actions.fileContents%'
-    else:
+          with: 07_help.md
+      # Step 8: Pick 1 learning objective and write the phase 1 response
     - type: respond
-      with: 11.1_e-no-respond-action.md
-  - type: respond
-    with: 12.0_add-readme.md
-    data:
-      fileUrl: '%payload.repository.html_url%/new/%payload.pull_request.head.ref%?filename=README.md'
+      with: 08_first-response.md
+      data:
+        url: '%payload.repository.html_url%/edit/map-events/responses/01_first-response.md?'
+    - type: mergeBranch
+      base: map-events
+      head: first-response
 
-# 15
-- title: Add a README to your course
-  description: Write a longform description for your course.
-  link: '{{ repoUrl }}/pull/3'
-  event: pull_request.synchronize
-  actions:
-  - type: getTree
-    action_id: tree
-    recursive: true
-    sha: '%payload.pull_request.head.sha%'
-  - type: gate
-    left: '%actions.tree.data.tree%'
-    operator: includes
-    right: path:README.md
-    else:
-      type: respond
-      with: 13.1_e-no-readme.md
-  - type: requestReviewFromRegistrant
-  - type: respond
-    with: 13.0_publish.md
+  - title: Create the first response
+    description: Write the first response, phase 1, for the first step of your course.
+    event: pull_request.synchronize
+    link: '{{ repoUrl }}/pull/3'
+    actions:
+   # - type: gate # we validate that it's more than 5 words or something.
+    - type: getFileContents
+      filename: 'responses/01_first-response.md'
+      action_id: contents
+    - type: gate
+      left: '/((\w+\s)|(\w+.\s)){4,}\w+/'
+      operator: test
+      right: '%actions.contents%'
+      else:
+        - type: respond
+          with: 08_correct-response.md
+          data:
+            url: '%payload.repository.html_url%/edit/map-events/responses/01_first-response.md?'
+   # Step 9: How to give the user the response? ACTIONS in the config
+    - type: respond
+      with: 09_first-action.md
+      data:
+        url: '%payload.repository.html_url%/edit/map-events/config.yml?'
 
-# 16
-- title: Approve the steps
-  description: Submit an approval for the steps pull request.
-  link: '{{ repoUrl }}/pull/3'
-  event: pull_request_review.submitted
-  actions:
-  - type: gate
-    left: '%payload.review.state%'
-    operator: ===
-    right: approved
-  - type: mergePullRequest
-  - type: createIssue
-    title: Publish your course
-    body: 14.0_congratulations.md
-    action_id: publishIssue
-  - type: respond
-    issue: '%actions.publishIssue.data.number%'
-    with: how-to-publish.md
-    data: 
-      url: '%payload.repository.html_url%/fork'
-  - type: respond
-    with: goto-publish.md
-    data:
-      url: '%actions.publishIssue.data.html_url%'
+  - title: Write the first Learning Lab action
+    description: Write the first Learning Lab action for a response into your course's configuration file.
+    event: pull_request.synchronize
+    link: '{{ repoUrl }}/pull/3'
+    actions:
+    # - type: gate We validate that the proper text is added, with an action response pointing to the right file in the right line of the config.
+    - type: getFileContents
+      filename: 'config.yml'
+      sha: '%payload.pull_request.head.sha%'
+      action_id: contents
+    - type: gate
+      left: '/(type: respond |type: respond)(\n|\r)(  |\t)(with: 01_first-response.md)/'
+      operator: test
+      right: '%actions.contents%'
+      else:
+        - type: respond
+          with: 09_config-reference.md
+          data:
+            url: '%payload.repository.html_url%/edit/map-events/config.yml?'
+    # Step 10: Phase 2 - checking if the user did it, intro to Gate
+    - type: respond
+      with: 10_gate.md
+      data:
+        url: '%payload.repository.html_url%/edit/map-events/config.yml?'
+
+  - title: Write a gate
+    description: Write a gate to check the user's first step  
+    event: pull_request.synchronize
+    link: '{{ repoUrl }}/pull/3'
+    actions: 
+    # - type: gate We validate it's actually a gate
+    - type: getFileContents
+      filename: 'config.yml'
+      action_id: contents
+    - type: gate
+      left: '/(type: gate)(\n|\r)(    |\t\t)(left:.+)(\n|\r)(    |\t\t)(operator:.+)(\n|\r)(    |\t\t)(right:.+)/'
+      operator: test
+      right: '%actions.contents%'
+      else:
+        - type: respond
+          with: 10_gate-check.md
+          data:
+            url: '%payload.repository.html_url%/edit/map-events/config.yml?'
+    # Step 11: Phase 3 - feedback, create the response
+    - type: mergeBranch
+      base: map-events
+      head: first-feedback
+    - type: respond
+      with: 11_feedback.md
+      data:
+        niceUrl: '%payload.repository.html_url%/edit/map-events/responses/01_nice-work.md?'
+        tryagainUrl: '%payload.repository.html_url%/edit/map-events/responses/01_try-again.md?'
+
+
+  - title: Write feedback for the learner
+    description: Write feedback into the feedback response for the learner to let them know they've done it right.
+    event: issue_comment.created
+    link: '{{ repoUrl }}/pull/3'
+    actions: 
+    # - type: gate we validate that the correct file was changed, with enough words
+    - type: getPullRequest
+      action_id: pull_request
+    - type: getFileContents
+      filename: 'responses/01_nice-work.md'
+      sha: '%actions.pull_request.data.head.sha%'
+      action_id: contents
+    - type: gate
+      left: '/((\w+\s)|(\w+.\s)){4,}\w+/'
+      operator: test
+      right: '%actions.contents%'
+      else:
+        - type: respond
+          with: 11_correct-response1.md
+          data:
+            url: '%payload.repository.html_url%/edit/map-events/responses/01_nice-work.md?'
+    - type: getFileContents
+      filename: 'responses/01_try-again.md'
+      sha: '%actions.pull_request.data.head.sha%'
+      action_id: contents
+    - type: gate
+      left: '/((\w+\s)|(\w+.\s)){4,}\w+/'
+      operator: test
+      right: '%actions.contents%'
+      else:
+        - type: respond
+          with: 11_correct-response2.md
+          data:
+            url: '%payload.repository.html_url%/edit/map-events/responses/01_try-again.md?'
+    # Step 12: Code the response action for phase 3 into the config
+    - type: respond
+      with: 12_phase-3-config.md
+      data:
+        url: '%payload.repository.html_url%/edit/map-events/config.yml?'
+
+  - title: Write the config logic
+    description: Write the config logic for both responses to the learner in their first step.
+    event: pull_request.synchronize
+    link: '{{ repoUrl }}/pull/3'
+    actions:
+    # - type: gate we check that they have both responses
+    - type: getFileContents
+      filename: 'config.yml'
+      sha: '%payload.pull_request.head.sha%'
+      action_id: contents
+    - type: gate
+      left: '/(type: respond)(\n|\r)(    |\t\t)(with: 01_nice-work.md)/'
+      operator: test
+      right: '%actions.contents%'
+      else:
+        - type: respond
+          with: 12_feedback-reference.md
+          data:
+            url: '%payload.repository.html_url%/edit/map-events/config.yml?'
+    # Step 13: Config metadata (title, etc)
+    - type: respond
+      with: 13_metadata.md
+      data:
+        url: '%payload.repository.html_url%/edit/map-events/config.yml?'
+
+  - title: Create course metadata
+    description: Add the course metadata like title and description to the configuration file.
+    event: pull_request.synchronize
+    link: '{{ repoUrl }}/pull/3'
+    actions:
+    # - type: gate  We validate they committed valid metadata. 
+    - type: getFileContents
+      filename: 'config.yml'
+      sha: '%payload.pull_request.head.sha%'
+      action_id: contents
+    - type: gate
+      left: '/(title:.+)(\n|\r)(tagline:.+)*(\n|\r)*(description:)/'
+      operator: test
+      right: '%actions.contents%'
+      else:
+        - type: respond
+          with: 13_check-metadata.md
+          data:
+            url: '%payload.repository.html_url%/edit/map-events/config.yml?'           
+    # Step 14: Import the course as a draft
+    - type: createIssue
+      title: Import the course
+      body: 14_import-course.md 
+    - type: respond
+      with: 13_nice-job.md
+    - type: removeBranchProtection
+    - type: mergeBranch
+      head: map-events
+    - type: respond
+      with: 14_troubleshooting.md
+      issue: Import the course
+
+  - title: Import the course
+    description: Import this repository as a course on GitHub Learning Lab.
+    event: issue_comment.created # should be import ???
+    link: '{{ repoUrl }}/issues/4'
+    actions:
+    # Step 15: Try to take your own course 
+    - type: respond
+      with: 15_try-it.md
+      issue: 4
+
+  - title: Close the issue
+    description: To signal that you've tested your course, close this issue.
+    event: issues.closed
+    link: '{{ repoUrl }}/issues/4'
+    actions:
+      # Step 16: Back to learning objectives/events, create phases 1-3 for additional steps
+    - type: respond
+      with: 16_finish-it.md
+
+tags: [
+  "Courses", "Teaching", "YAML", "Learning Lab", "Learning"
+]
